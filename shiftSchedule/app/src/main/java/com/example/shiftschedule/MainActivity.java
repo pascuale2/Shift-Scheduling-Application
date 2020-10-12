@@ -66,6 +66,7 @@ public class MainActivity extends AppCompatActivity {
     public void goToRegister(View view) {
         Intent intent = new Intent(MainActivity.this, registerpage.class);
         startActivity(intent);
+        finish();
     }
 
     // this function sets limits on how many times you can attempt to log in.
