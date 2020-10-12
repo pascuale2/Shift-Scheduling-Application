@@ -41,11 +41,13 @@ public class landingPage extends AppCompatActivity {
         }
 
         password = storage.getString(usernameKey, "");
+
+
         // making a small pop-up notification appear to show the details of the username and password
-        // you can edit the following 3 lines as this is simply showing you guys how to fetch data and display
-        String output = "Username is: " + usernameKey + "\nPassword is: " + password + ".";
-        Toast toast = Toast.makeText(getApplicationContext(), output, Toast.LENGTH_LONG);
-        toast.show();
+        // you can remove comments on the following 3 lines as this is simply showing you guys how to fetch data and display
+        //String output = "Username is: " + usernameKey + "\nPassword is: " + password + ".";
+        //Toast toast = Toast.makeText(getApplicationContext(), output, Toast.LENGTH_LONG);
+        //toast.show();
 
     }
 
