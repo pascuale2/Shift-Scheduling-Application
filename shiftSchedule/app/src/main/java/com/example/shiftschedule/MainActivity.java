@@ -6,10 +6,13 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.util.Log;
+import android.view.Gravity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -33,7 +36,7 @@ public class MainActivity extends AppCompatActivity {
     private EditText password;
     private Button loginButton;
     private TextView Info;
-    private int counter = 3;
+    private int counter;
     private SharedPreferences storage;
 
     @Override
@@ -46,52 +49,67 @@ public class MainActivity extends AppCompatActivity {
         password = (EditText)findViewById(R.id.passwordEditText);
         loginButton = (Button)findViewById(R.id.loginButton);
         Info = (TextView)findViewById(R.id.attemptsText);
-
+        counter = 3;
         // If the sharedPreferences file already exists, grab it, otherwise this will create it
         // make SURE you put it in Context.MODE_PRIVATE, as this means ONLY this app can access this information
         storage = getApplicationContext().getSharedPreferences("accountStorage", Context.MODE_PRIVATE);
 
     }
 
+    // onClick function for loginAccount to take you to the landing Page/Activity
     public void loginAccount(View view) {
+        // grab key from our preferences
         validate(username.getText().toString(), password.getText().toString());
     }
 
+    // onClick function for registerButton to take you to register Page/Activity
+    public void goToRegister(View view) {
+        Intent intent = new Intent(MainActivity.this, registerpage.class);
+        startActivity(intent);
+    }
+
+    // this function sets limits on how many times you can attempt to log in.
+    public void numAttempts() {
+        counter--;
+        Info.setText("Login attempts remaining: " + String.valueOf(counter));
+        if(counter == 0){
+            loginButton.setEnabled(false);
+        }
+    }
     public void validate(String userName, String userPassword){
-        userName = userName.toLowerCase();
-        if ((userName.equals(("admin")) && (userPassword.equals("1234")))) {
-            // we are hardcoding the login here, either myself or someone else will need to find a
-            // way to store them
+        //userName = userName.toLowerCase();
+        if (storage.contains(userName)) {
+            String passwordCheck = storage.getString(userName, "");
 
-            //test to store information here, this code will be commented out once we have a register account page functional
+            // one more check to see if they got the password right.
+            if (userPassword.equals(passwordCheck)) {
+                Intent intent = new Intent(MainActivity.this, landingPage.class);
 
-            // In order to store our information, we need to create an editor to edit shared preferences
-            SharedPreferences.Editor editor = storage.edit();
-
-            // Ideally this would be done in register client page, and we simply retrieve it in login page
-            // key: username --> value: password. To access the password, need correct username
-            editor.putString( username.getText().toString(), password.getText().toString());
-
-            // now the last thing you need to do is "commit" the changes to the file, like git commit
-            editor.commit();
-
-
-            // intent is what allows us to switch screens
-            Intent intent = new Intent(MainActivity.this, landingPage.class);
-
-            // in order to pass just a single value (such as the username to access password value), we can do this method:
-            intent.putExtra("username", username.getText().toString());
-
-            startActivity(intent);
-
-
-        }else{
-            // this will decrement every time they fail to login.
-            counter--;
-            Info.setText("Login attempts remaining: " + String.valueOf(counter));
-            if(counter == 0){
-                loginButton.setEnabled(false);
+                // this is how we pass a single variable WITHOUT using sharedPreferences to next screen
+                // You can comment out the following line (intent.putExtra....) but NOT startActivity
+                intent.putExtra("username", username.getText().toString());
+                startActivity(intent);
+                finish();
             }
+            else {
+                //this is if the username is correct, but password is wrong
+                Log.d("Contains", "found username within storage. userPassword does not match:\n" + userPassword + " != " + passwordCheck);
+                String error = "ERROR: Incorrect password. Please try again.";
+                Toast toast = Toast.makeText(MainActivity.this, error, Toast.LENGTH_LONG);
+                toast.show();
+                numAttempts();
+            }
+        }
+        else{
+
+            // this will decrement every time they fail to login`
+            String test = "ERROR: email is wrong. Please try again";
+            Log.d("storage", test);
+            //String test = "did storage match? " + storage.contains(userName) + "username: " + userName + "\nPassword: " + storage.getString(userName,"");
+            Toast toast = Toast.makeText(MainActivity.this, test, Toast.LENGTH_LONG);
+            toast.show();
+            numAttempts();
+
         }
     }
 }
