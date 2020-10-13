@@ -23,12 +23,13 @@
 
     <TextView
         android:id="@+id/textView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="196dp"
+        android:layout_height="91dp"
         android:fontFamily="sans-serif-light"
-        android:text="HOME SCREEN"
-        android:textColor="#FFFF"
+        android:gravity="center_horizontal"
+        android:text="MANAGER DASHBOARD"
 
+        android:textColor="#FFFF"
         android:textSize="32sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -42,15 +43,16 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="420dp"
+        android:background="#0AFFFFFF"
         android:orientation="vertical"
-        app:layout_constraintBottom_toBottomOf="parent"
-        android:background="@drawable/top_curve_bg_menu">
+        app:layout_constraintBottom_toBottomOf="parent">
 
         <!--THIS IS FOR THE LAYOUT OF THE BUTTONS (START)-->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="203dp"
             android:layout_weight="2"
+            android:background="#00FFFFFF"
             android:orientation="horizontal"
             android:paddingLeft="16dp"
             android:paddingTop="30dp"
@@ -63,9 +65,9 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:background="#FFF"
-                android:orientation="vertical"
-                android:onClick="goToSchedule">
+                android:background="#00FFFFFF"
+                android:onClick="goToSchedule"
+                android:orientation="vertical">
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -100,9 +102,9 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:background="#FFF"
-                android:orientation="vertical"
-                android:onClick="seeEmployees">
+                android:background="#00FFFFFF"
+                android:onClick="seeEmployees"
+                android:orientation="vertical">
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -134,36 +136,38 @@
         </LinearLayout>
 
         <LinearLayout
-            android:paddingLeft="16dp"
-            android:paddingRight="16dp"
-            android:paddingTop="8dp"
-            android:paddingBottom="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:layout_weight="2"
             android:orientation="horizontal"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:paddingLeft="16dp"
+            android:paddingTop="8dp"
+            android:paddingRight="16dp"
+            android:paddingBottom="10dp">
 
             <!--THIS IS FOR THE BOTTOM LEFT BUTTON START-->
             <LinearLayout
-                android:orientation="vertical"
-                android:layout_weight="1"
-                android:background="#FFF"
                 android:layout_width="0dp"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="#00FFFFFF"
+                android:orientation="vertical">
+
                 <LinearLayout
-                    android:orientation="vertical"
-                    android:layout_marginRight="10dp"
-                    android:layout_marginLeft="10dp"
-                    android:background="@drawable/btn_bg_push_schedule"
                     android:layout_width="match_parent"
-                    android:layout_height="172dp">
+                    android:layout_height="172dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    android:background="@drawable/btn_bg_push_schedule"
+                    android:orientation="vertical">
 
                     <ImageView
                         android:layout_width="132dp"
                         android:layout_height="86dp"
-                        android:layout_marginTop="10dp"
                         android:layout_gravity="center"
+                        android:layout_marginTop="10dp"
                         android:src="@drawable/push_schedule" />
+
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -171,32 +175,33 @@
                         android:fontFamily="sans-serif-light"
                         android:text="PUSH\nUPDATED\nSCHEDULE"
                         android:textAlignment="center"
-                        android:textSize="18sp"
-                        android:textColor="#FFF"/>
+                        android:textColor="#FFF"
+                        android:textSize="18sp" />
                 </LinearLayout>
             </LinearLayout>
 
             <!--THIS IS FOR THE BOTTOM RIGHT BUTTON-->
             <LinearLayout
-                android:orientation="vertical"
-                android:layout_weight="1"
-                android:background="#FFF"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:onClick="LGgoBack">
+                android:layout_weight="1"
+                android:background="#00FFFFFF"
+                android:onClick="LGgoBack"
+                android:orientation="vertical">
+
                 <LinearLayout
-                    android:orientation="vertical"
-                    android:layout_marginRight="10dp"
-                    android:layout_marginLeft="10dp"
-                    android:background="@drawable/btn_bg_logout"
                     android:layout_width="match_parent"
-                    android:layout_height="170dp">
+                    android:layout_height="170dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    android:background="@drawable/btn_bg_logout"
+                    android:orientation="vertical">
 
                     <ImageView
                         android:layout_width="118dp"
                         android:layout_height="87dp"
-                        android:layout_marginTop="25dp"
                         android:layout_gravity="center"
+                        android:layout_marginTop="25dp"
                         android:src="@drawable/logout" />
 
                     <TextView
