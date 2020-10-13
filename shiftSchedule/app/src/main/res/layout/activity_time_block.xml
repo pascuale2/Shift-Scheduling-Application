@@ -32,6 +32,7 @@
         android:layout_marginStart="29dp"
         android:layout_marginTop="28dp"
         android:background="@drawable/accent_corner"
+        android:onClick="goBack2"
         android:src="@drawable/back_btn" />
 
 </RelativeLayout>

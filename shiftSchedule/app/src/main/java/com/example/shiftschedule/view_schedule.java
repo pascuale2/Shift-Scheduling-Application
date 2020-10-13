@@ -1,4 +1,4 @@
-package com.example.dashboard;
+package com.example.shiftschedule;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -39,4 +39,9 @@ public class view_schedule extends AppCompatActivity {
             }
         });
     }
+
+    public void goBack1 (View view){
+        finish();
+    }
+
 }

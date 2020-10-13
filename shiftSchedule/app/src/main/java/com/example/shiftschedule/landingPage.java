@@ -56,6 +56,12 @@ public class landingPage extends AppCompatActivity {
         startActivity(intent);
     }
 
+    public void goToSchedule(View view) {
+        Intent intent = new Intent(landingPage.this, view_schedule.class);
+        startActivity(intent);
+    }
+
+
     public void goBack (View view){
         finish();
     }

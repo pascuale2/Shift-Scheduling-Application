@@ -59,14 +59,13 @@ public class MainActivity extends AppCompatActivity {
     // onClick function for loginAccount to take you to the landing Page/Activity
     public void loginAccount(View view) {
         // grab key from our preferences
-        validate(username.getText().toString(), password.getText().toString());
+        validate(username.getText().toString().toLowerCase(), password.getText().toString());
     }
 
     // onClick function for registerButton to take you to register Page/Activity
     public void goToRegister(View view) {
         Intent intent = new Intent(MainActivity.this, registerpage.class);
         startActivity(intent);
-        finish();
     }
 
     // this function sets limits on how many times you can attempt to log in.

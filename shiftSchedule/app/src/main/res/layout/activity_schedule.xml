@@ -41,6 +41,7 @@
         android:layout_marginStart="29dp"
         android:layout_marginTop="28dp"
         android:background="@drawable/accent_corner"
+        android:onClick="goBack1"
         android:src="@drawable/back_btn" />
 
     <Button

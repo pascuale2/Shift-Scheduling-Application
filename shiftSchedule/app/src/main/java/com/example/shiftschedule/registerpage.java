@@ -67,7 +67,7 @@ public class registerpage extends AppCompatActivity {
 
     // checks if email in both text fields match
     protected boolean confirmEmail(String emailText, String emailTextConfirm) {
-        return emailText.equals(emailTextConfirm);
+        return emailText.toLowerCase().equals(emailTextConfirm);
     }
 
     public void submitAction(View view){
@@ -88,7 +88,7 @@ public class registerpage extends AppCompatActivity {
             SharedPreferences.Editor editor = storage.edit();
             //editor.clear();      // this line clears all the preferences within the sharedPreferences file it points to. LEAVE COMMENTED OUT
             // key --> value
-            editor.putString(emailConfirm.getText().toString(), passwordConfirm.getText().toString());
+            editor.putString(emailConfirm.getText().toString().toLowerCase(), passwordConfirm.getText().toString());
             // after putting in email --> password, need to commit like git commit
             editor.commit();
 

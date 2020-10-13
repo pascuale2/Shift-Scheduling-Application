@@ -1,4 +1,4 @@
-package com.example.dashboard;
+package com.example.shiftschedule;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -25,4 +25,9 @@ public class time_block extends AppCompatActivity {
             }
         });
     }
+
+    public void goBack2 (View view){
+        finish();
+    }
+
 }
