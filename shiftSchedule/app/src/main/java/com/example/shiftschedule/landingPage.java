@@ -34,16 +34,20 @@ public class landingPage extends AppCompatActivity {
         storage = getApplicationContext().getSharedPreferences("accountStorage", Context.MODE_PRIVATE);
 
         // grabbing the username we passed into this activity through extras Bundle
+
         extras = getIntent().getExtras();
         if (extras != null) {
             usernameKey = extras.getString("username");
         }
 
         password = storage.getString(usernameKey, "");
+
+
         // making a small pop-up notification appear to show the details of the username and password
-        String output = "Username is: " + usernameKey + "\nPassword is: " + password + ".";
-        Toast toast = Toast.makeText(getApplicationContext(), output, Toast.LENGTH_LONG);
-        toast.show();
+        // you can remove comments on the following 3 lines as this is simply showing you guys how to fetch data and display
+        //String output = "Username is: " + usernameKey + "\nPassword is: " + password + ".";
+        //Toast toast = Toast.makeText(getApplicationContext(), output, Toast.LENGTH_LONG);
+        //toast.show();
 
     }
 
