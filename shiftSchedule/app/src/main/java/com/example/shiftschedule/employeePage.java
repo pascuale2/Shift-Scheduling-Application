@@ -13,7 +13,7 @@ public class employeePage extends AppCompatActivity {
         setContentView(R.layout.activity_employee_page);
     }
 
-    public void goBack3 (View view){
+    public void LPgoBack (View view){
         finish();
     }
 }

@@ -62,7 +62,7 @@ public class landingPage extends AppCompatActivity {
     }
 
 
-    public void goBack (View view){
+    public void LGgoBack (View view){
         finish();
     }
 }

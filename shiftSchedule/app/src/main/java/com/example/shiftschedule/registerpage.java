@@ -75,7 +75,7 @@ public class registerpage extends AppCompatActivity {
         // if email doesn't already exist
 
         if (confirmPassword(password.getText().toString(), passwordConfirm.getText().toString()) &&
-                confirmEmail(email.getText().toString(), emailConfirm.getText().toString()) &&
+                confirmEmail(email.getText().toString().toLowerCase(), emailConfirm.getText().toString().toLowerCase()) &&
         isEmailValid(emailConfirm.getText().toString()) ) {
             // if it passes both checks, store information
 

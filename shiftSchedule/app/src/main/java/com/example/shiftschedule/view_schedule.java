@@ -40,7 +40,7 @@ public class view_schedule extends AppCompatActivity {
         });
     }
 
-    public void goBack1 (View view){
+    public void LPgoBack (View view){
         finish();
     }
 
