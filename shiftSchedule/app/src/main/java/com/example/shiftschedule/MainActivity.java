@@ -5,10 +5,12 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -44,6 +46,9 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        // Makes The Status Bar and The Bottom Bar Transparent
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_NAVIGATION, WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS);
+
         // need to initialize/point our members to our actual boxes in the layout
         username = (EditText)findViewById(R.id.usernameEditText);
         password = (EditText)findViewById(R.id.passwordEditText);
@@ -71,7 +76,7 @@ public class MainActivity extends AppCompatActivity {
     // this function sets limits on how many times you can attempt to log in.
     public void numAttempts() {
         counter--;
-        Info.setText("Login attempts remaining: " + String.valueOf(counter));
+        Info.setText("LOGIN ATTEMPTS REMAINING: " + String.valueOf(counter));
         if(counter == 0){
             loginButton.setEnabled(false);
         }
@@ -103,7 +108,7 @@ public class MainActivity extends AppCompatActivity {
         else{
 
             // this will decrement every time they fail to login`
-            String test = "ERROR: email is wrong. Please try again";
+            String test = "ERROR: Email is wrong. Please try again";
             Log.d("storage", test);
             //String test = "did storage match? " + storage.contains(userName) + "username: " + userName + "\nPassword: " + storage.getString(userName,"");
             Toast toast = Toast.makeText(MainActivity.this, test, Toast.LENGTH_LONG);

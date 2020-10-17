@@ -9,6 +9,37 @@
 
     <TextView
         android:id="@+id/registerPageTest"
+        android:layout_width="403dp"
+        android:layout_height="104dp"
+        android:fontFamily="sans-serif-light"
+        android:gravity="center"
+        android:text="Create Your\nAccount"
+        android:textColor="#DDDBDB"
+        android:textStyle="bold"
+        app:autoSizeTextType="uniform"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.218" />
+
+    <EditText
+        android:id="@+id/RPemailTextView"
+        android:layout_width="262dp"
+        android:layout_height="44dp"
+        android:layout_marginTop="4dp"
+        android:background="@drawable/input_field_bg"
+        android:backgroundTint="#FFFFFF"
+        android:ellipsize="start"
+        android:ems="10"
+
+        android:hint="Enter Email"
+        android:inputType="textEmailAddress"
+        android:textColor="#000000"
+        android:textColorHint="#B3000000"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.496"
         android:layout_width="359dp"
         android:layout_height="59dp"
         android:fontFamily="sans-serif-light"
@@ -40,6 +71,20 @@
 
     <EditText
         android:id="@+id/RPpasswordInitial"
+        android:layout_width="262dp"
+        android:layout_height="44dp"
+        android:layout_marginTop="12dp"
+        android:background="@drawable/input_field_bg"
+        android:backgroundTint="#FFFFFF"
+        android:ellipsize="start"
+        android:ems="10"
+
+        android:hint="Enter Password"
+        android:inputType="textPassword"
+        android:textColor="#000000"
+        android:textColorHint="#B3000000"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.496"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="24dp"
@@ -57,6 +102,20 @@
 
     <EditText
         android:id="@+id/RPpasswordConfirm"
+        android:layout_width="262dp"
+        android:layout_height="44dp"
+        android:layout_marginTop="12dp"
+        android:background="@drawable/input_field_bg"
+        android:backgroundTint="#FFFFFF"
+        android:ellipsize="start"
+        android:ems="10"
+
+        android:hint="Confirm Password"
+        android:inputType="textPassword"
+        android:textColor="#000000"
+        android:textColorHint="#B3000000"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.496"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="24dp"
@@ -74,6 +133,9 @@
 
     <Button
         android:id="@+id/RPsubmitButton"
+        android:layout_width="205dp"
+        android:layout_height="50dp"
+        android:background="@drawable/btn_bg_schedule"
         android:layout_width="208dp"
         android:layout_height="42dp"
         android:layout_marginTop="80dp"
@@ -83,6 +145,24 @@
         android:textColor="#FBFBFB"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/RPpasswordConfirm"
+        app:layout_constraintVertical_bias="0.185" />
+
+    <EditText
+        android:id="@+id/RPconfirmEmail"
+        android:layout_width="262dp"
+        android:layout_height="44dp"
+        android:layout_marginTop="12dp"
+        android:background="@drawable/input_field_bg"
+        android:backgroundTint="#FFFFFF"
+        android:ellipsize="start"
+        android:ems="10"
+
+        android:hint="Confirm Email"
+        android:inputType="textEmailAddress"
+        android:textColor="#000000"
+        android:textColorHint="#B3000000"
         app:layout_constraintHorizontal_bias="0.487"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/RPpasswordConfirm"
@@ -101,7 +181,7 @@
         android:textColor="#FAF8F8"
         android:textColorHint="#FBFAFA"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintHorizontal_bias="0.496"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/RPemailTextView" />
 

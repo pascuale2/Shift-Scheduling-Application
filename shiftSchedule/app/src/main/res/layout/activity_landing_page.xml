@@ -43,6 +43,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="420dp"
+        android:background="@drawable/top_curve_bg_menu"
         android:background="#0AFFFFFF"
         android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent">
