@@ -1,6 +1,6 @@
 # f20lovelace
 
-# TESTING
+# Work Scheduling Application
 group members:
 - Alex Creencia
 - Erwin Pascual
