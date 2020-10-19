@@ -1,5 +1,8 @@
 # f20lovelace
 
 # TESTING
-group member:
-- Alex C
+group members:
+- Alex Creencia
+- Erwin Pascual
+- Jaxon Strembitsky
+- Wamiq Hussain
