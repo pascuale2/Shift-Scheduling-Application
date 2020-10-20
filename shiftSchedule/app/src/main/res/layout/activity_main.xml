@@ -74,31 +74,33 @@
         android:textColor="#FFF"
         android:textSize="24sp"
         app:autoSizeTextType="uniform"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.493"
         app:layout_constraintStart_toStartOf="parent"
-        tools:layout_editor_absoluteY="473dp" />
+        app:layout_constraintTop_toBottomOf="@+id/registerButton"
+        app:layout_constraintVertical_bias="0.227" />
 
     <TextView
         android:id="@+id/textView2"
         android:layout_width="233dp"
         android:layout_height="48dp"
-        android:layout_marginEnd="104dp"
         android:fontFamily="sans-serif-light"
         android:gravity="center"
         android:text="Please Log In"
-        android:textStyle="bold"
         android:textColor="#CDCCCC"
+        android:textStyle="bold"
         app:autoSizeTextType="uniform"
         app:layout_constraintBottom_toTopOf="@+id/usernameEditText"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.932" />
+        app:layout_constraintVertical_bias="0.921" />
 
     <TextView
         android:id="@+id/textView4"
         android:layout_width="355dp"
         android:layout_height="71dp"
-        android:layout_marginEnd="28dp"
         android:layout_marginBottom="4dp"
         android:fontFamily="sans-serif-light"
         android:text="Shift Scheduler"
@@ -106,6 +108,7 @@
         app:autoSizeTextType="uniform"
         app:layout_constraintBottom_toTopOf="@+id/textView2"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.894" />
 
