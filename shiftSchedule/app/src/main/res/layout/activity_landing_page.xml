@@ -10,15 +10,13 @@
 
     <ImageView
         android:id="@+id/imageView2"
-        android:layout_width="166dp"
-        android:layout_height="92dp"
-        android:layout_marginTop="36dp"
-        app:layout_constraintBottom_toTopOf="@+id/textView"
+        android:layout_width="163dp"
+        android:layout_height="82dp"
+        android:layout_marginTop="8dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintHorizontal_bias="0.502"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.8"
         app:srcCompat="@drawable/home" />
 
     <TextView
@@ -30,19 +28,17 @@
         android:text="MANAGER DASHBOARD"
 
         android:textColor="#FFFF"
-        android:textSize="32sp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:textSize="30sp"
+        app:layout_constraintBottom_toTopOf="@+id/linearLayout"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.24" />
+        app:layout_constraintTop_toBottomOf="@+id/imageView2"
+        app:layout_constraintVertical_bias="1.0" />
 
     <LinearLayout
+        android:id="@+id/linearLayout"
         android:layout_width="match_parent"
-        android:layout_height="420dp"
+        android:layout_height="386dp"
         android:background="@drawable/top_curve_bg_menu"
         android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent">
@@ -50,7 +46,7 @@
         <!--THIS IS FOR THE LAYOUT OF THE BUTTONS (START)-->
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="203dp"
+            android:layout_height="191dp"
             android:layout_weight="2"
 
             android:orientation="horizontal"
@@ -71,7 +67,7 @@
 
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="172dp"
+                    android:layout_height="160dp"
                     android:layout_marginLeft="10dp"
                     android:layout_marginRight="10dp"
                     android:background="@drawable/btn_bg_schedule"
@@ -92,7 +88,7 @@
                         android:text="VIEW/EDIT\nCURRENT\nSCHEDULE"
                         android:textAlignment="center"
                         android:textColor="#FFF"
-                        android:textSize="18sp" />
+                        android:textSize="16sp" />
                 </LinearLayout>
             </LinearLayout>
             <!--THIS IS FOR THE TOP LEFT BUTTON END-->
@@ -108,7 +104,7 @@
 
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="170dp"
+                    android:layout_height="160dp"
                     android:layout_marginLeft="10dp"
                     android:layout_marginRight="10dp"
                     android:background="@drawable/btn_bg_employee"
@@ -129,7 +125,7 @@
                         android:text=" VIEW/ADD/EDIT\nEMPLOYEES"
                         android:textAlignment="center"
                         android:textColor="#FFF"
-                        android:textSize="18sp" />
+                        android:textSize="16sp" />
                 </LinearLayout>
             </LinearLayout>
             <!--THIS IS FOR THE TOP RIGHT BUTTON END-->
@@ -155,7 +151,7 @@
 
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="172dp"
+                    android:layout_height="160dp"
                     android:layout_marginLeft="10dp"
                     android:layout_marginRight="10dp"
                     android:background="@drawable/btn_bg_push_schedule"
@@ -176,7 +172,7 @@
                         android:text="PUSH\nUPDATED\nSCHEDULE"
                         android:textAlignment="center"
                         android:textColor="#FFF"
-                        android:textSize="18sp" />
+                        android:textSize="16sp" />
                 </LinearLayout>
             </LinearLayout>
 
@@ -191,7 +187,7 @@
 
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="170dp"
+                    android:layout_height="160dp"
                     android:layout_marginLeft="10dp"
                     android:layout_marginRight="10dp"
                     android:background="@drawable/btn_bg_logout"
@@ -218,7 +214,6 @@
             </LinearLayout>
         </LinearLayout>
     </LinearLayout>
-
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
