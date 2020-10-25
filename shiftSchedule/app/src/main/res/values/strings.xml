@@ -11,4 +11,8 @@
 
     <string name="hello_first_fragment">Hello first fragment</string>
     <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
+    <string name="title_activity_schedule_tabs">schedule_tabs</string>
+    <string name="tab_text_1">Month</string>
+    <string name="tab_text_2">Week</string>
+    <string name="tab_text_3">Day</string>
 </resources>
