@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/gradient"
+    android:background="@drawable/register_background"
     tools:context=".registerpage">
 
     <TextView
@@ -14,15 +14,15 @@
         android:fontFamily="sans-serif-light"
         android:gravity="center"
         android:text="Create Your\nAccount"
-        android:textColor="#DDDBDB"
+        android:textColor="#FFFFFF"
         android:textStyle="bold"
         app:autoSizeTextType="uniform"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="0.473"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.218" />
+        app:layout_constraintVertical_bias="0.207" />
 
     <EditText
         android:id="@+id/RPemailTextView"
@@ -83,9 +83,9 @@
 
     <Button
         android:id="@+id/RPsubmitButton"
-        android:layout_width="205dp"
-        android:layout_height="50dp"
-        android:background="@drawable/btn_bg_schedule"
+        android:layout_width="232dp"
+        android:layout_height="38dp"
+        android:background="@drawable/btn_bg_employee"
         android:onClick="submitAction"
         android:text="Submit"
         android:textColor="#FBFBFB"
@@ -93,7 +93,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/RPpasswordConfirm"
-        app:layout_constraintVertical_bias="0.185" />
+        app:layout_constraintVertical_bias="0.168" />
 
     <EditText
         android:id="@+id/RPconfirmEmail"

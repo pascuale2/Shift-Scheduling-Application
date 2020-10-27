@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/relativeLayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <com.alamkanak.weekview.WeekView
+        android:id="@+id/weekView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:horizontalScrollingEnabled="true"
+
+        app:columnGap="8dp"
+        app:numberOfVisibleDays="1"
+
+        app:fontFamily="sans-serif-light"
+        app:textStyle="bold"
+
+        app:dayBackgroundColor="@color/white"
+        app:defaultEventColor="@color/colorPrimary"
+        app:eventTextColor="@color/white"
+
+        app:todayHeaderTextColor="@color/icon_orange"
+        app:headerBackgroundColor="@color/light_gray"
+        app:headerPadding="15dp"
+        app:headerTextSize="24dp"
+
+        app:hourHeight="60dp"
+        app:timeColumnBackgroundColor="@color/white"
+        app:timeColumnPadding="6dp"
+        app:timeColumnTextColor="#000000"
+        app:timeColumnTextSize="13dp"
+        app:todayBackgroundColor="#FFFFFF" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

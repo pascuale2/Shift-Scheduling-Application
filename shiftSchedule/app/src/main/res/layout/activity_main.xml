@@ -4,18 +4,18 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/gradient"
+    android:background="@drawable/login_background"
     tools:context=".MainActivity">
 
     <Button
         android:id="@+id/loginButton"
-        android:layout_width="214dp"
-        android:layout_height="47dp"
-        android:layout_marginTop="28dp"
+        android:layout_width="232dp"
+        android:layout_height="38dp"
+        android:layout_marginTop="20dp"
         android:background="@drawable/btn_bg_employee"
         android:fontFamily="sans-serif-medium"
         android:onClick="loginAccount"
-        android:text="Login"
+        android:text="SIGN IN"
         android:textColor="#FFFFFF"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
@@ -26,7 +26,7 @@
         android:id="@+id/usernameEditText"
         android:layout_width="262dp"
         android:layout_height="45dp"
-        android:layout_marginTop="240dp"
+        android:layout_marginTop="248dp"
 
         android:background="@drawable/input_field_bg"
         android:backgroundTint="#FFFFFF"
@@ -42,7 +42,6 @@
         android:textColorLink="#040404"
         android:textCursorDrawable="@color/design_default_color_primary"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -50,7 +49,7 @@
         android:id="@+id/passwordEditText"
         android:layout_width="262dp"
         android:layout_height="42dp"
-        android:layout_marginTop="12dp"
+        android:layout_marginTop="16dp"
         android:background="@drawable/input_field_bg"
         android:backgroundTint="#FFFFFF"
         android:ellipsize="start"
@@ -62,7 +61,7 @@
         android:textColor="#000000"
         android:textColorHint="#B3000000"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.491"
+        app:layout_constraintHorizontal_bias="0.496"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/usernameEditText" />
 
@@ -74,12 +73,11 @@
         android:textColor="#FFF"
         android:textSize="24sp"
         app:autoSizeTextType="uniform"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/textView4"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.493"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/registerButton"
-        app:layout_constraintVertical_bias="0.227" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.576" />
 
     <TextView
         android:id="@+id/textView2"
@@ -87,37 +85,37 @@
         android:layout_height="48dp"
         android:fontFamily="sans-serif-light"
         android:gravity="center"
-        android:text="Please Log In"
-        android:textColor="#CDCCCC"
+        android:text="LOG IN"
+        android:textColor="#EAEAEA"
         android:textStyle="bold"
         app:autoSizeTextType="uniform"
-        app:layout_constraintBottom_toTopOf="@+id/usernameEditText"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.841"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.921" />
+        app:layout_constraintTop_toBottomOf="@+id/textView4" />
 
     <TextView
         android:id="@+id/textView4"
-        android:layout_width="355dp"
-        android:layout_height="71dp"
-        android:layout_marginBottom="4dp"
+        android:layout_width="337dp"
+        android:layout_height="58dp"
+        android:layout_marginTop="100dp"
         android:fontFamily="sans-serif-light"
+        android:gravity="center"
         android:text="Shift Scheduler"
-        android:textColor="#EAE9E9"
+        android:textColor="#FFFFFF"
+        android:textStyle="bold"
         app:autoSizeTextType="uniform"
-        app:layout_constraintBottom_toTopOf="@+id/textView2"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.51"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.894" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <Button
         android:id="@+id/registerButton"
         android:layout_width="214dp"
-        android:layout_height="47dp"
-        android:layout_marginTop="12dp"
-        android:background="@drawable/btn_bg_schedule"
+        android:layout_height="25dp"
+        android:layout_marginTop="8dp"
+        android:background="#00FFFFFF"
         android:onClick="goToRegister"
         android:shadowColor="#7E1717"
         android:text="Register"
