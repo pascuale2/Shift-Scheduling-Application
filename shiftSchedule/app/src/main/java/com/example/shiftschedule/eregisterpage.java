@@ -16,53 +16,50 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-public class registerpage extends AppCompatActivity {
+public class eregisterpage extends AppCompatActivity {
 
     /*
-    Register page created by Alex Creencia
-    Last Edited: October 12th, 2020 by Alex Creencia
-    register Page activity that holds all required information for creating an account
+    Employee Register page created by Jaxon Strembitsky
+    Employee register Page activity that holds all required information for creating an employee
 
     MEMBERS
 
      */
     private EditText email;
     private EditText emailConfirm;
-    private EditText password;
-    private EditText passwordConfirm;
+    private EditText date;
+    private EditText age;
+    private EditText sex;
     private Button submitButton;
     private SharedPreferences storage;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_registerpage);
+        setContentView(R.layout.activity_eregisterpage);
 
-        Window window = registerpage.this.getWindow();
+        Window window = eregisterpage.this.getWindow();
         window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
-        window.setStatusBarColor(ContextCompat.getColor(registerpage.this, R.color.hot_pink));
+        window.setStatusBarColor(ContextCompat.getColor(eregisterpage.this, R.color.hot_pink));
 
         // point members to respective design elements
-        email = (EditText)findViewById(R.id.RPemailTextView);
-        emailConfirm = (EditText)findViewById(R.id.RPconfirmEmail);
-        password = (EditText)findViewById(R.id.RPpasswordInitial);
-        passwordConfirm = (EditText)findViewById(R.id.RPpasswordConfirm);
-        submitButton = (Button)findViewById(R.id.RPsubmitButton);
+        email = (EditText)findViewById(R.id.ERPemailTextView);
+        emailConfirm = (EditText)findViewById(R.id.ERPconfirmEmail);
+        date = (EditText)findViewById(R.id.ERPDate);
+        age = (EditText)findViewById(R.id.ERPAge);
+        sex = (EditText)findViewById(R.id.ERPSex);
+        submitButton = (Button)findViewById(R.id.ERPsubmitButton);
 
         // grab preferences file to hold information
-        storage = getApplicationContext().getSharedPreferences("accountStorage", Context.MODE_PRIVATE);
+        storage = getApplicationContext().getSharedPreferences("employeeStorage", Context.MODE_PRIVATE);
 
         // the following 3 lines is to remove any test register's that you guys have done. (Since it will stay in memory forever)
-        // uncomment these 3 lines and make sure before you exit app you go to register page to wipe 
+        // uncomment these 3 lines and make sure before you exit app you go to register page to wipe
         //SharedPreferences.Editor editor = storage.edit();
         //editor.clear();
         //editor.commit();
     }
 
-
-    protected boolean confirmPassword(String initialPasswordText, String confirmPasswordText) {
-        return (initialPasswordText.equals(confirmPasswordText));
-    }
     // if email exists within the storage already return true
     protected boolean emailExist(String email) {
         return storage.contains(email);
@@ -77,25 +74,21 @@ public class registerpage extends AppCompatActivity {
         return emailText.toLowerCase().equals(emailTextConfirm);
     }
 
-    public void submitAction(View view){
-        // checks if passwords match, if emails match, if email input is valid, AND lastly
+    public void ERPsubmitAction(View view){
+        // checks if emails match, if email input is valid, AND lastly
         // if email doesn't already exist
-
-        if (confirmPassword(password.getText().toString(), passwordConfirm.getText().toString()) &&
-                confirmEmail(email.getText().toString().toLowerCase(), emailConfirm.getText().toString().toLowerCase()) &&
-        isEmailValid(emailConfirm.getText().toString()) ) {
-            // if it passes both checks, store information
-
             // need to create an editor in order to edit storage file
+        if (confirmEmail(email.getText().toString().toLowerCase(), emailConfirm.getText().toString().toLowerCase()) &&
+                isEmailValid(emailConfirm.getText().toString()) ) {
+
             if (emailExist(emailConfirm.getText().toString())) {
                 String existMessage = "ERROR: Email already exists. Please try again";
-                Toast.makeText(registerpage.this, existMessage, Toast.LENGTH_LONG).show();
+                Toast.makeText(eregisterpage.this, existMessage, Toast.LENGTH_LONG).show();
                 return;
             }
             SharedPreferences.Editor editor = storage.edit();
             //editor.clear();      // this line clears all the preferences within the sharedPreferences file it points to. LEAVE COMMENTED OUT
             // key --> value
-            editor.putString(emailConfirm.getText().toString().toLowerCase(), passwordConfirm.getText().toString());
             // after putting in email --> password, need to commit like git commit
             editor.commit();
 
@@ -108,16 +101,13 @@ public class registerpage extends AppCompatActivity {
         } else {
             Log.d("notMatch", "before toast");
             String errorMessage;
-            if (confirmPassword(password.getText().toString(), passwordConfirm.getText().toString()) != true) {
-                errorMessage = "Passwords does not match. Please try again";
-            }
-            else if (confirmEmail(email.getText().toString(), emailConfirm.getText().toString()) != true){
+            if (confirmEmail(email.getText().toString(), emailConfirm.getText().toString()) != true){
                 errorMessage = "Emails does not match. Please try again";
             }
             else {
                 errorMessage = "ERROR: Invalid Email input. Please make sure email is a valid email";
             }
-            Toast.makeText(registerpage.this, errorMessage, Toast.LENGTH_LONG).show();
+            Toast.makeText(eregisterpage.this, errorMessage, Toast.LENGTH_LONG).show();
             Log.d("notMatch1", "afterToast");
 
         }
