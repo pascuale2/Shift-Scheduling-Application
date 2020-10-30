@@ -71,6 +71,7 @@
         app:layout_constraintVertical_bias="0.973" />
 
     <ScrollView
+        android:id="@+id/EPScrollView"
         android:layout_width="409dp"
         android:layout_height="230dp"
         android:fillViewport="false"
