@@ -38,6 +38,7 @@ public class eregisterpage extends AppCompatActivity {
                     Did not work. Crashed the whole application for some reason and couldn't figure out why in time.
                  -  Also testing Employee Storage implementation.
      */
+    private final int maxYear = 2020;
     private EditText email;
     private EditText emailConfirm;
     private String date;
@@ -98,7 +99,8 @@ public class eregisterpage extends AppCompatActivity {
             public void beforeTextChanged(CharSequence s, int start, int count, int after) { }
 
             @Override
-            public void onTextChanged(CharSequence s, int start, int before, int count) { }
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+            }
 
             @Override
             public void afterTextChanged(Editable s) {
@@ -130,27 +132,59 @@ public class eregisterpage extends AppCompatActivity {
         return emailText.toLowerCase().equals(emailTextConfirm);
     }
 
+    protected boolean validYear(String yearText){
+
+        if ((dateYear.getText().toString().contains("."))){
+            return false;
+        }
+
+        int checkValue = Integer.parseInt(yearText);
+        return (checkValue <= maxYear);
+    }
+
     // checks if the month number is less than or equal to 12 (12 total months)
     protected boolean validMonth(String monthText) {
+        if ((dateMonth.getText().toString().contains("."))){
+            return false;
+        }
+
         int checkValue = Integer.parseInt(monthText);
         return (checkValue <= 12);
     }
 
     // checks if the day of the month is less than 31.
     protected boolean validDay(String dayText) {
+        if ((dateDay.getText().toString().contains("."))){
+            return false;
+        }
+
         int checkValue = Integer.parseInt(dayText);
         return (checkValue <= 31);
     }
+
+
 
     //checks if date is formatted properly, returns true if formatted yyyy/MM/d
     protected boolean confirmDateFormat(String dateText) {
         return dateText.matches("\\d{4}[/]\\d{2}[/]\\d{2}");
     }
     protected String prepareDate(String dayText, String monthText, String yearText) {
-        if (!validMonth(dateMonth.getText().toString()) ) {
-            Toast.makeText(eregisterpage.this, "ERROR: Month number is higher than 12. Please try again", Toast.LENGTH_LONG).show();
+
+
+
+        if ((!validMonth(dateMonth.getText().toString())) || (!validDay(dateDay.getText().toString()
+        )) || (!validYear(dateYear.getText().toString()))) {
+            Log.d("AHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH", "this is valid month " +  validMonth(dateMonth.getText().toString()) + "this is valid day " + validDay(dateDay.getText().toString()) + "this is valid year " + validYear(dateYear.getText().toString()));
+            Toast.makeText(eregisterpage.this, "ERROR: Date not formatted; must be of format YYYY/MM/DD", Toast.LENGTH_LONG).show();
             return "";
         }
+        else {
+            String formattedDate = yearText + "/" + monthText + "/" + dayText;
+            return formattedDate;
+        }
+
+
+        /*
         else if (!validDay(dateDay.getText().toString()) ) {
             Toast.makeText(eregisterpage.this, "ERROR: Day number is higher than 31. Please try again", Toast.LENGTH_LONG).show();
             return "";
@@ -159,6 +193,7 @@ public class eregisterpage extends AppCompatActivity {
             String formattedDate = yearText + "/" + monthText + "/" + dayText;
             return formattedDate;
         }
+        */
     }
 
     protected LocalDate convertToDate(String dateText) {

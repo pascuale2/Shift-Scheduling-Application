@@ -9,13 +9,17 @@
 
     <EditText
         android:id="@+id/ERPDay"
-        android:layout_width="64dp"
-        android:layout_height="34dp"
+        android:layout_width="81dp"
+        android:layout_height="36dp"
+        android:layout_marginStart="18dp"
+        android:layout_marginTop="17dp"
+
+        android:layout_marginBottom="60dp"
         android:background="@drawable/input_field_bg"
         android:backgroundTint="#FFFFFF"
-
         android:ellipsize="start"
         android:ems="10"
+        android:gravity="center|left"
         android:hint="Day"
         android:inputType="date"
         android:maxLength="2"
@@ -23,12 +27,11 @@
         android:singleLine="false"
         android:textColor="#000000"
         android:textColorHint="#B3000000"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toBottomOf="@+id/ERPAge"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.219"
+        app:layout_constraintHorizontal_bias="0.052"
         app:layout_constraintStart_toEndOf="@+id/ERPMonth"
-        app:layout_constraintTop_toBottomOf="@+id/ERPconfirmEmail"
-        app:layout_constraintVertical_bias="0.175" />
+        app:layout_constraintTop_toBottomOf="@+id/dateEmployedText" />
 
     <TextView
         android:id="@+id/eregisterPageTest"
@@ -132,8 +135,8 @@
 
     <EditText
         android:id="@+id/ERPSex"
-        android:layout_width="288dp"
-        android:layout_height="43dp"
+        android:layout_width="293dp"
+        android:layout_height="39dp"
         android:layout_marginTop="16dp"
         android:background="@drawable/input_field_bg"
         android:backgroundTint="#FFFFFF"
@@ -145,7 +148,6 @@
         android:textColor="#000000"
         android:textColorHint="#B3000000"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.547"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/ERPAge" />
 
