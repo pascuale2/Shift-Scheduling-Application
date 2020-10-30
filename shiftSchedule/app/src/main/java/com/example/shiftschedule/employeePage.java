@@ -6,13 +6,21 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.ScrollView;
 
 public class employeePage extends AppCompatActivity {
+
+    private ScrollView employeeList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_employee_page);
+        employeeList = (ScrollView)findViewById(R.id.EPScrollView);
+    }
+
+    public void fillList(ScrollView employees){
+
     }
 
     // onClick function for registerButton to take you to register Page/Activity
