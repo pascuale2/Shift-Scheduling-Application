@@ -12,6 +12,7 @@
         android:layout_width="81dp"
         android:layout_height="40dp"
 
+        android:layout_marginEnd="44dp"
         android:background="@drawable/input_field_bg"
         android:backgroundTint="#FFFFFF"
         android:ellipsize="start"
@@ -25,9 +26,9 @@
         android:textColor="#000000"
         android:textColorHint="#B3000000"
         app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/ERPconfirmEmail"
-        app:layout_constraintVertical_bias="0.182"
-        tools:layout_editor_absoluteX="259dp" />
+        app:layout_constraintVertical_bias="0.182" />
 
     <TextView
         android:id="@+id/eregisterPageTest"
@@ -95,7 +96,7 @@
         android:backgroundTint="#FFFFFF"
         android:ellipsize="start"
 
-        android:gravity=""
+        android:gravity="center|left"
         android:hint="Month"
         android:inputType="date"
         android:maxLength="2"
@@ -125,17 +126,20 @@
         android:textColor="#000000"
         android:textColorHint="#B3000000"
         app:layout_constraintBottom_toTopOf="@+id/ERPsubmitButton"
+        app:layout_constraintEnd_toStartOf="@+id/ERPSex"
+        app:layout_constraintHorizontal_bias="0.826"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/ERPDateYear"
-        app:layout_constraintVertical_bias="0.0"
-        tools:layout_editor_absoluteX="76dp" />
+        app:layout_constraintVertical_bias="0.0" />
 
     <EditText
         android:id="@+id/ERPSex"
         android:layout_width="79dp"
         android:layout_height="40dp"
         android:layout_marginTop="20dp"
-        android:background="@drawable/input_field_bg"
+        android:layout_marginEnd="76dp"
 
+        android:background="@drawable/input_field_bg"
         android:backgroundTint="#FFFFFF"
         android:ellipsize="start"
         android:ems="10"
@@ -144,9 +148,9 @@
         android:textColor="#000000"
         android:textColorHint="#B3000000"
         app:layout_constraintBottom_toTopOf="@+id/ERPsubmitButton"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/ERPMonth"
-        app:layout_constraintVertical_bias="0.0"
-        tools:layout_editor_absoluteX="229dp" />
+        app:layout_constraintVertical_bias="0.0" />
 
     <Button
         android:id="@+id/ERPsubmitButton"
