@@ -22,6 +22,8 @@ import java.util.Map;
 
 public class employeePage extends AppCompatActivity {
 
+    //TODO: Display message if employee list is empty
+
     // members for displaying the employee list
     private RecyclerView employeeList;
     private RecyclerView.LayoutManager layoutManager;

@@ -49,7 +49,6 @@ public class eregisterpage extends AppCompatActivity {
     private EditText sex;
     private Button submitButton;
     private SharedPreferences storage;
-    // TODO: Need to figure out a way to check LocalDate Validity, days <= 31, month <= 12
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

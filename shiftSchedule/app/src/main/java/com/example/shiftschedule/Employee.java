@@ -44,8 +44,18 @@ public class Employee {
     public String getSex() { return Sex; }
     public String getDateEmployed() { return dateEmployed; }
     public String getDateString() { return dateEmployed.toString(); }
-    public boolean isTrainedClosing() { return trainedClosing; }
-    public boolean isTrainedOpening() { return trainedOpening; }
+    public boolean isTrainedClosing() {
+        if (this.trainedClosing == false) {
+            return false;
+        }
+        return true;
+    }
+    public boolean isTrainedOpening() {
+        if (this.trainedOpening == false) {
+            return false;
+        }
+        return true;
+    }
     // SETTER FUNCTIONS
 
     public void setAge(int age) { Age = age; }
