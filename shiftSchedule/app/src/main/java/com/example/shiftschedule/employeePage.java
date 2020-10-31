@@ -64,8 +64,8 @@ public class employeePage extends AppCompatActivity {
             String json = storage.getString(entry.getKey(), "");
             viewEmployee = gson.fromJson(json, Employee.class);
             listItem item = new listItem (entry.getKey(), "Full Name: " + viewEmployee.getFullName() + "\n"  +
-                    "Can open: " + viewEmployee.isTrainedOpening() +
-                    "\nCan Close: " + viewEmployee.isTrainedClosing(), viewEmployee.trainedClosing, viewEmployee.trainedClosing);
+                    "Trained Opening: " + viewEmployee.isTrainedOpening() +
+                    "\nTrained Closing: " + viewEmployee.isTrainedClosing(), viewEmployee.trainedClosing, viewEmployee.trainedClosing);
             items.add(item);
             //this.employees.add(viewEmployee);
             //this.displayEmployees.add(viewEmployee.toString());

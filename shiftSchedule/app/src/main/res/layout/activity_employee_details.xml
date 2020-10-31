@@ -4,188 +4,201 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/register_background"
+    android:background="@drawable/register_employee"
     tools:context=".employeeDetails">
 
     <TextView
         android:id="@+id/EDEmail"
-        android:layout_width="250dp"
-        android:layout_height="29dp"
+        android:layout_width="257dp"
+        android:layout_height="41dp"
         android:gravity="center"
         android:text=":Email:"
         android:textColor="#FFFFFF"
-        android:textSize="18sp"
+        android:textSize="30dp"
         app:layout_constraintBottom_toTopOf="@+id/EDFullName"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.567"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/EPTitle"
-        app:layout_constraintVertical_bias="0.625" />
-
-    <TextView
-        android:id="@+id/EDSexLabel"
-        android:layout_width="100dp"
-        android:layout_height="28dp"
-        android:layout_marginBottom="36dp"
-        android:gravity="center"
-        android:text="Sex:"
-        android:textColor="#FFFFFF"
-        android:textSize="18sp"
-        android:textStyle="bold|italic"
-        app:layout_constraintBottom_toTopOf="@+id/EDOpening"
-        app:layout_constraintEnd_toStartOf="@+id/EDsex"
-        app:layout_constraintHorizontal_bias="0.797"
-        app:layout_constraintStart_toStartOf="parent" />
-
-    <TextView
-        android:id="@+id/EDAge"
-        android:layout_width="100dp"
-        android:layout_height="28dp"
-        android:layout_marginEnd="68dp"
-        android:layout_marginBottom="16dp"
-        android:gravity="center"
-        android:text=":?:"
-        android:textColor="#FFFFFF"
-        android:textSize="18sp"
-        app:layout_constraintBottom_toTopOf="@+id/EDsex"
-        app:layout_constraintEnd_toEndOf="parent" />
-
-    <TextView
-        android:id="@+id/EDDateEmployedLabel"
-        android:layout_width="141dp"
-        android:layout_height="29dp"
-        android:layout_marginTop="24dp"
-        android:gravity="center"
-        android:text="Date Employed:"
-        android:textColor="#FFFFFF"
-        android:textSize="18sp"
-        android:textStyle="bold|italic"
-        app:layout_constraintBottom_toTopOf="@+id/EDAgeLabel"
-        app:layout_constraintEnd_toStartOf="@+id/EDdateEmployed"
-        app:layout_constraintHorizontal_bias="0.64"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/EDFullName"
-        app:layout_constraintVertical_bias="0.327" />
+        app:layout_constraintVertical_bias="0.0" />
 
     <TextView
         android:id="@+id/EDAgeLabel"
         android:layout_width="100dp"
         android:layout_height="28dp"
-        android:layout_marginBottom="16dp"
+        android:layout_marginTop="32dp"
+        android:layout_marginEnd="40dp"
+        android:fontFamily="sans-serif-medium"
         android:gravity="center"
         android:text="Age:"
         android:textColor="#FFFFFF"
-        android:textSize="18sp"
-        android:textStyle="bold|italic"
-        app:layout_constraintBottom_toTopOf="@+id/EDSexLabel"
+        android:textSize="22sp"
+        android:textStyle="bold"
         app:layout_constraintEnd_toStartOf="@+id/EDAge"
-        app:layout_constraintHorizontal_bias="0.748"
-        app:layout_constraintStart_toStartOf="parent" />
-
-    <Switch
-        android:id="@+id/EDClosing"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="32dp"
-        android:text="Trained Closing"
-        android:textColor="#FFFFFF"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/EDsex"
-        app:layout_constraintVertical_bias="0.085" />
+        app:layout_constraintTop_toTopOf="@+id/EDDateEmployedLabel" />
 
     <TextView
         android:id="@+id/EDsex"
         android:layout_width="100dp"
         android:layout_height="28dp"
         android:layout_marginEnd="68dp"
-        android:layout_marginBottom="288dp"
+        android:layout_marginBottom="40dp"
+        android:fontFamily="sans-serif-medium"
         android:gravity="center"
         android:text=":?:"
         android:textColor="#FFFFFF"
-        android:textSize="18sp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:textSize="22sp"
+        app:layout_constraintBottom_toTopOf="@+id/EDOpening"
         app:layout_constraintEnd_toEndOf="parent" />
 
     <TextView
-        android:id="@+id/EDdateEmployed"
+        android:id="@+id/EDSexLabel"
         android:layout_width="100dp"
         android:layout_height="28dp"
-        android:layout_marginEnd="56dp"
+        android:layout_marginTop="28dp"
+        android:fontFamily="sans-serif-medium"
+        android:gravity="center"
+        android:text="Sex:"
+        android:textColor="#FFFFFF"
+        android:textSize="22sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/EDOpening"
+        app:layout_constraintEnd_toStartOf="@+id/EDsex"
+        app:layout_constraintHorizontal_bias="0.655"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/EDAgeLabel"
+        app:layout_constraintVertical_bias="0.083" />
+
+    <TextView
+        android:id="@+id/EDDateEmployedLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="29dp"
+        android:layout_marginTop="24dp"
+        android:fontFamily="sans-serif-medium"
+        android:gravity="center"
+        android:text="Date Employed:"
+        android:textColor="#FFFFFF"
+        android:textSize="22sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toStartOf="@+id/EDdateEmployed"
+        app:layout_constraintHorizontal_bias="0.934"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/EDFullName" />
+
+    <TextView
+        android:id="@+id/EDdateEmployed"
+        android:layout_width="130dp"
+        android:layout_height="28dp"
+        android:layout_marginEnd="52dp"
+        android:fontFamily="sans-serif-medium"
         android:gravity="center"
         android:text=":?:"
         android:textColor="#FFFFFF"
-        android:textSize="18sp"
+        android:textSize="22sp"
         app:layout_constraintBottom_toTopOf="@+id/EDAge"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/EDFullName" />
+        app:layout_constraintTop_toBottomOf="@+id/EDFullName"
+        app:layout_constraintVertical_bias="0.857" />
+
+    <TextView
+        android:id="@+id/EDAge"
+        android:layout_width="100dp"
+        android:layout_height="28dp"
+        android:layout_marginEnd="68dp"
+        android:layout_marginBottom="4dp"
+        android:fontFamily="sans-serif-medium"
+        android:gravity="center"
+        android:text=":?:"
+        android:textColor="#FFFFFF"
+        android:textSize="22sp"
+        app:layout_constraintBottom_toTopOf="@+id/EDsex"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <Switch
+        android:id="@+id/EDClosing"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="Trained Closing "
+        android:theme="@style/SwitchColourTheme"
+        android:textColor="#FFFFFF"
+        android:textSize="22dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/EDOpening" />
 
     <EditText
         android:id="@+id/EDFullName"
-        android:layout_width="232dp"
+        android:layout_width="257dp"
         android:layout_height="34dp"
         android:background="@drawable/white_corner"
-        android:ems="10"
+        android:fontFamily="sans-serif-medium"
         android:gravity="center"
         android:hint="Full Name"
         android:inputType="textPersonName"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintHorizontal_bias="0.503"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.241" />
+        app:layout_constraintVertical_bias="0.253" />
 
     <TextView
         android:id="@+id/EPTitle"
-        android:layout_width="190dp"
-        android:layout_height="44dp"
+        android:layout_width="297dp"
+        android:layout_height="74dp"
         android:fontFamily="sans-serif-light"
+        android:gravity="center"
         android:text="Employee Details"
         android:textColor="#EFEFEF"
-        android:textSize="22sp"
+        android:textSize="38dp"
+        android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/EDFullName"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.402"
+        app:layout_constraintHorizontal_bias="0.496"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.372" />
+        app:layout_constraintVertical_bias="0.16" />
 
     <Switch
         android:id="@+id/EDOpening"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="24dp"
-        android:layout_marginBottom="224dp"
-        android:text="Trained Opening"
+        android:layout_marginTop="156dp"
+        android:text="Trained Opening "
         android:textColor="#FFFFFF"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/EDClosing"
-        app:layout_constraintHorizontal_bias="0.731"
-        app:layout_constraintStart_toStartOf="parent" />
+        android:theme="@style/SwitchColourTheme"
+        android:textSize="22dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.482"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/EDFullName" />
 
     <Button
         android:id="@+id/EDAvailability"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="5dp"
+        android:layout_width="232dp"
+        android:layout_height="25dp"
+
+        android:background="#00FFFFFF"
         android:text="Go to Availability"
+        android:textColor="#FFFFFF"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/EDChanges"
-        app:layout_constraintVertical_bias="0.254" />
+        app:layout_constraintVertical_bias="0.09" />
 
     <Button
         android:id="@+id/EDChanges"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="284dp"
+        android:layout_width="232dp"
+        android:layout_height="38dp"
+        android:layout_marginTop="24dp"
+        android:background="@drawable/btn_bg_employee"
+        android:fontFamily="sans-serif-medium"
         android:onClick="EDsubmitChanges"
         android:text="Save Changes"
+        android:textColor="#FFFFFF"
+
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.452"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/EDFullName" />
+        app:layout_constraintTop_toBottomOf="@+id/EDClosing" />
 </androidx.constraintlayout.widget.ConstraintLayout>

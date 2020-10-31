@@ -10,26 +10,30 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/input_field_bg"
             android:orientation="vertical">
+
             <TextView
                 android:id="@+id/LRtitle"
-                android:paddingLeft="17dp"
-                android:paddingTop="10dp"
-                android:layout_weight="1"
-                android:textStyle="bold"
-                android:textSize="20sp"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Title"/>
+                android:fontFamily="sans-serif-light"
+                android:paddingLeft="10dp"
+                android:text="Title"
+                android:textSize="22dp"
+                android:textStyle="bold" />
+
             <TextView
                 android:id="@+id/LRdescription"
-                android:text="Description"
+                android:layout_width="match_parent"
+                android:layout_height="85dp"
+                android:fontFamily="sans-serif-light"
+                android:paddingLeft="30dp"
                 android:paddingTop="5dp"
-                android:paddingLeft="17dp"
-                android:layout_weight="1"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"/>
+                android:text="Description"
+                android:textSize="18dp"
+                android:textStyle="bold" />
         </LinearLayout>
     </androidx.cardview.widget.CardView>
 </RelativeLayout>

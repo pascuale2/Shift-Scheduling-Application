@@ -10,11 +10,8 @@
     <EditText
         android:id="@+id/ERPDay"
         android:layout_width="81dp"
-        android:layout_height="36dp"
-        android:layout_marginStart="18dp"
-        android:layout_marginTop="17dp"
+        android:layout_height="40dp"
 
-        android:layout_marginBottom="60dp"
         android:background="@drawable/input_field_bg"
         android:backgroundTint="#FFFFFF"
         android:ellipsize="start"
@@ -27,11 +24,10 @@
         android:singleLine="false"
         android:textColor="#000000"
         android:textColorHint="#B3000000"
-        app:layout_constraintBottom_toBottomOf="@+id/ERPAge"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.052"
-        app:layout_constraintStart_toEndOf="@+id/ERPMonth"
-        app:layout_constraintTop_toBottomOf="@+id/dateEmployedText" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ERPconfirmEmail"
+        app:layout_constraintVertical_bias="0.182"
+        tools:layout_editor_absoluteX="259dp" />
 
     <TextView
         android:id="@+id/eregisterPageTest"
@@ -71,7 +67,7 @@
     <EditText
         android:id="@+id/ERPDateYear"
         android:layout_width="91dp"
-        android:layout_height="36dp"
+        android:layout_height="40dp"
         android:background="@drawable/input_field_bg"
         android:backgroundTint="#FFFFFF"
         android:ellipsize="start"
@@ -86,20 +82,20 @@
         android:textColorHint="#B3000000"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.2"
+        app:layout_constraintHorizontal_bias="0.17"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/ERPconfirmEmail"
-        app:layout_constraintVertical_bias="0.176" />
+        app:layout_constraintVertical_bias="0.183" />
 
     <EditText
         android:id="@+id/ERPMonth"
-        android:layout_width="98dp"
-        android:layout_height="36dp"
+        android:layout_width="101dp"
+        android:layout_height="40dp"
         android:background="@drawable/input_field_bg"
         android:backgroundTint="#FFFFFF"
         android:ellipsize="start"
 
-        android:ems="10"
+        android:gravity=""
         android:hint="Month"
         android:inputType="date"
         android:maxLength="2"
@@ -108,69 +104,68 @@
         android:textColor="#000000"
         android:textColorHint="#B3000000"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.132"
+        app:layout_constraintEnd_toStartOf="@+id/ERPDay"
+        app:layout_constraintHorizontal_bias="0.588"
         app:layout_constraintStart_toEndOf="@+id/ERPDateYear"
         app:layout_constraintTop_toBottomOf="@+id/ERPconfirmEmail"
-        app:layout_constraintVertical_bias="0.176" />
+        app:layout_constraintVertical_bias="0.182" />
 
     <EditText
         android:id="@+id/ERPAge"
-        android:layout_width="292dp"
+        android:layout_width="137dp"
         android:layout_height="40dp"
         android:layout_marginTop="20dp"
         android:background="@drawable/input_field_bg"
         android:backgroundTint="#FFFFFF"
-        android:ellipsize="start"
 
+        android:ellipsize="start"
         android:ems="10"
         android:hint="Age"
         android:inputType="number"
         android:textColor="#000000"
         android:textColorHint="#B3000000"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.495"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/ERPDateYear" />
+        app:layout_constraintBottom_toTopOf="@+id/ERPsubmitButton"
+        app:layout_constraintTop_toBottomOf="@+id/ERPDateYear"
+        app:layout_constraintVertical_bias="0.0"
+        tools:layout_editor_absoluteX="76dp" />
 
     <EditText
         android:id="@+id/ERPSex"
-        android:layout_width="293dp"
-        android:layout_height="39dp"
-        android:layout_marginTop="16dp"
+        android:layout_width="79dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="20dp"
         android:background="@drawable/input_field_bg"
-        android:backgroundTint="#FFFFFF"
 
+        android:backgroundTint="#FFFFFF"
         android:ellipsize="start"
         android:ems="10"
         android:hint="Sex"
         android:inputType="text"
         android:textColor="#000000"
         android:textColorHint="#B3000000"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/ERPAge" />
+        app:layout_constraintBottom_toTopOf="@+id/ERPsubmitButton"
+        app:layout_constraintTop_toBottomOf="@+id/ERPMonth"
+        app:layout_constraintVertical_bias="0.0"
+        tools:layout_editor_absoluteX="229dp" />
 
     <Button
         android:id="@+id/ERPsubmitButton"
         android:layout_width="232dp"
         android:layout_height="38dp"
+        android:layout_marginBottom="108dp"
         android:background="@drawable/btn_bg_employee"
         android:onClick="ERPsubmitAction"
         android:text="Submit"
         android:textColor="#FBFBFB"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/ERPSex"
-        app:layout_constraintVertical_bias="0.226" />
+        app:layout_constraintStart_toStartOf="parent" />
 
     <EditText
         android:id="@+id/ERPconfirmEmail"
-        android:layout_width="294dp"
+        android:layout_width="290dp"
         android:layout_height="40dp"
-        android:layout_marginTop="28dp"
+        android:layout_marginTop="20dp"
         android:background="@drawable/input_field_bg"
         android:backgroundTint="#FFFFFF"
         android:ellipsize="start"
@@ -181,7 +176,7 @@
         android:textColor="#000000"
         android:textColorHint="#B3000000"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.547"
+        app:layout_constraintHorizontal_bias="0.531"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/ERPemailTextView" />
 
@@ -189,6 +184,7 @@
         android:id="@+id/dateEmployedText"
         android:layout_width="210dp"
         android:layout_height="34dp"
+        android:fontFamily="sans-serif-medium"
         android:text="Date Employed:"
         android:textColor="#FFFFFF"
         android:textSize="24sp"
