@@ -49,7 +49,6 @@ public class eregisterpage extends AppCompatActivity {
     private EditText sex;
     private Button submitButton;
     private SharedPreferences storage;
-    // TODO: Need to figure out a way to check LocalDate Validity, days <= 31, month <= 12
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -227,13 +226,14 @@ public class eregisterpage extends AppCompatActivity {
                 ageString = "0";
             }
 
-            boolean test = confirmDateFormat(date);
-            Log.d("booleanDate", "value of date: " + test);
+            //boolean test = confirmDateFormat(date);
+            //Log.d("booleanDate", "value of date: " + test);
 
-            LocalDate EmployedDate = convertToDate(date);
-            Log.d("afterDateCheck", "this is the formattedDate: " + EmployedDate);
-            Employee newEmployee = new Employee(emailConfirm.getText().toString(), "", Integer.parseInt(ageString), EmployedDate, false, false);
-
+            //LocalDate EmployedDate = convertToDate(this.date);
+            //Log.d("afterDateCheck", "this is the formattedDate: " + EmployedDate);
+            Employee newEmployee = new Employee(emailConfirm.getText().toString(), "", Integer.parseInt(ageString), this.date, false, false);
+            newEmployee.setSex(sex.getText().toString());
+            Log.d("storing Date: ","This is the stored date : " + newEmployee.getDateString());
             SharedPreferences.Editor editor = storage.edit();
 
             // Storing an object to the sharedPreferences File.
@@ -242,10 +242,11 @@ public class eregisterpage extends AppCompatActivity {
             // Email will be the key to access the object related to the email (in this case Employee information)
             Gson gson = new Gson();
             String employeeString = gson.toJson(newEmployee);
+            Log.d("Gson Employee: ", "This is the Gson representation of Employee: " + employeeString);
             editor.putString(emailConfirm.getText().toString(), employeeString);
             editor.commit();
-
             // showing success popup notification
+
             String success = "Register was successful";
             Toast toast = Toast.makeText(getApplicationContext(), success, Toast.LENGTH_LONG);
             toast.show();
