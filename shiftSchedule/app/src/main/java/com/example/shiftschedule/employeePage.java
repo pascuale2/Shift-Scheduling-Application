@@ -47,7 +47,6 @@ public class employeePage extends AppCompatActivity {
         items = new ArrayList<listItem>();
         // grabbing elements from the storage
         fillList(employeeList);
-
     }
 
     public void fillList(RecyclerView employees){
@@ -73,7 +72,6 @@ public class employeePage extends AppCompatActivity {
         this.adapter = new employeeAdapter(this, items);
         employees.setAdapter(adapter);
     }
-
 
     // onClick function for registerButton to take you to register Page/Activity
     public void goToAddEmployee(View view) {
