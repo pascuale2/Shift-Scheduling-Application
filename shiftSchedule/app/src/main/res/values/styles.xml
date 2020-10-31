@@ -6,6 +6,9 @@
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@android:color/holo_purple</item>
     </style>
+    <style name="SwitchColourTheme" >
+        <item name="colorControlActivated">@color/icon_orange</item>
+    </style>
 
     <style name="AppTheme.NoActionBar">
         <item name="windowActionBar">false</item>

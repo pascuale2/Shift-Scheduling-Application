@@ -9,7 +9,7 @@
         android:id="@+id/toolbar"
         android:layout_width="430dp"
         android:layout_height="56dp"
-        android:background="@color/colorAccent"
+        android:background="@drawable/gradient"
         android:minHeight="?attr/actionBarSize"
         android:theme="?attr/actionBarTheme"
         app:layout_constraintEnd_toEndOf="parent"
@@ -18,10 +18,10 @@
 
     <TextView
         android:id="@+id/textView"
-        android:layout_width="166dp"
-        android:layout_height="48dp"
-        android:text="Employees"
-        android:textColor="#000000"
+        android:layout_width="244dp"
+        android:layout_height="45dp"
+        android:text="View Employees"
+        android:textColor="#FFFFFF"
         android:textColorHighlight="#FFFFFF"
         app:autoSizeTextType="uniform"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -39,14 +39,14 @@
         android:text="Button"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.455"
+        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.882" />
+        app:layout_constraintVertical_bias="0.893" />
 
     <Button
         android:id="@+id/button"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:onClick="goToAddEmployee"
         android:text="Add Employee"
@@ -59,12 +59,8 @@
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/EPemployeeView"
-        android:layout_width="285dp"
-        android:layout_height="315dp"
-        android:layout_marginTop="68dp"
-        app:layout_constraintBottom_toTopOf="@+id/button5"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+        android:layout_width="match_parent"
+        android:layout_height="489dp"
         app:layout_constraintTop_toBottomOf="@+id/textView" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

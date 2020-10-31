@@ -1,12 +1,15 @@
 package com.example.shiftschedule;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
 
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.view.Window;
+import android.view.WindowManager;
 import android.widget.EditText;
 import android.widget.Switch;
 import android.widget.TextView;
@@ -37,6 +40,11 @@ public class employeeDetails extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_employee_details);
+
+        Window window = employeeDetails.this.getWindow();
+        window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
+        window.setStatusBarColor(ContextCompat.getColor(employeeDetails.this, R.color.hot_pink));
+
         storage = getApplicationContext().getSharedPreferences("employeeStorage", Context.MODE_PRIVATE);
         extras = getIntent().getExtras();
 
