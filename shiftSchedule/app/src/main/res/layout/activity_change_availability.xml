@@ -17,7 +17,8 @@
         app:layout_constraintHorizontal_bias="0.701"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/CA_title"
-        app:layout_constraintVertical_bias="0.058" />
+        app:layout_constraintVertical_bias="0.058"
+        android:onClick="onThursdayClick"/>
 
     <Button
         android:id="@+id/CA_wednesdayButton"
@@ -30,7 +31,8 @@
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/CA_title"
-        app:layout_constraintVertical_bias="0.057" />
+        app:layout_constraintVertical_bias="0.057"
+        android:onClick="onWednesdayClick"/>
 
     <Button
         android:id="@+id/CA_mondayButton"
@@ -44,7 +46,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/CA_title"
         app:layout_constraintVertical_bias="0.055"
-        android:onClick="changeMondayAvailability"/>
+        android:onClick="onMondayClick"/>
 
     <Button
         android:id="@+id/CA_tuesdayButton"
@@ -58,7 +60,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/CA_title"
         app:layout_constraintVertical_bias="0.055"
-        android:onClick="changeTuesdayAvailability"/>
+        android:onClick="onTuesdayClick"/>
 
     <TextView
         android:id="@+id/CA_title"
@@ -83,7 +85,8 @@
         app:layout_constraintHorizontal_bias="0.377"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/CA_title"
-        app:layout_constraintVertical_bias="0.241" />
+        app:layout_constraintVertical_bias="0.241"
+        android:onClick="onSundayClick"/>
 
     <Button
         android:id="@+id/CA_holidayButton"
@@ -95,7 +98,8 @@
         app:layout_constraintHorizontal_bias="0.484"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/holidayText"
-        app:layout_constraintVertical_bias="0.034" />
+        app:layout_constraintVertical_bias="0.034"
+        android:onClick="onHolidayClick"/>
 
     <Button
         android:id="@+id/CA_saturdayButton"
@@ -108,7 +112,8 @@
         app:layout_constraintHorizontal_bias="0.622"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/CA_title"
-        app:layout_constraintVertical_bias="0.241" />
+        app:layout_constraintVertical_bias="0.241"
+        android:onClick="onSaturdayClick"/>
 
     <Button
         android:id="@+id/CA_fridayButton"
@@ -121,7 +126,8 @@
         app:layout_constraintHorizontal_bias="0.904"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/CA_title"
-        app:layout_constraintVertical_bias="0.058" />
+        app:layout_constraintVertical_bias="0.058"
+        android:onClick="onFridayClick"/>
 
     <TextView
         android:id="@+id/weekdayText"
@@ -163,4 +169,18 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/CA_SundayButton"
         app:layout_constraintVertical_bias="0.0" />
+
+    <Button
+        android:id="@+id/CA_saveChanges"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="196dp"
+        android:text="Save Changes"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.944"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/CA_fridayButton"
+        app:layout_constraintVertical_bias="0.011"
+        android:onClick="onSaveAvailabilityClick"/>
 </androidx.constraintlayout.widget.ConstraintLayout>

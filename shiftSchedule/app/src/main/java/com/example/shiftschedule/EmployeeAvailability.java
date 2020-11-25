@@ -28,17 +28,26 @@ public class EmployeeAvailability {
     protected Available Friday;                // Employee's Availability Friday
     protected Available Saturday;              // Employee's Availability Saturday
     protected Available Sunday;                // Employee's Availability Sunday
+    protected Available Holiday;               // Employee's Availability On Holidays/Special Days
 
     // Caller Function to create/instance an EmployeeAvailability Object
     // Their availability will be set through buttons or drop downs, so we don't need all the information at once
     public EmployeeAvailability(String employeeEmail) {
         this.email = employeeEmail;
+        this.Monday = Available.CANNOT;
+        this.Tuesday = Available.CANNOT;
+        this.Wednesday = Available.CANNOT;
+        this.Thursday = Available.CANNOT;
+        this.Friday = Available.CANNOT;
+        this.Saturday = Available.CANNOT;
+        this.Sunday = Available.CANNOT;
+        this.Holiday = Available.CANNOT;
     }
 
     // bool checkWork function will be put in once wamiq is done creating shifts
 
     // SETTER FUNCTIONS
-    // TODO: if an email suddenly changes, we need to change all info linked to that email to the new email, which isn't that simple. WIP
+    // TODO: if an email suddenly changes, we need to change all info linked to that email to the new email, which isn't that simple. WIP. Might not implement/allow
     // This will only change the email in this object, in order to change the linking, we have to do it in another screen
     public void setEmail(String email) {
         this.email = email;
@@ -71,6 +80,8 @@ public class EmployeeAvailability {
     public void setSunday(Available sunday) {
         Sunday = sunday;
     }
+
+    public void setHoliday(Available holiday) { Holiday = holiday; }
 
     // GETTER FUNCTIONS
 
@@ -105,6 +116,8 @@ public class EmployeeAvailability {
     public Available getSunday() {
         return Sunday;
     }
+
+    public Available getHoliday() { return Holiday; }
 
 }
 

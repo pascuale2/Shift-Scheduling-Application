@@ -11,6 +11,7 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
+import com.example.shiftschedule.Available;
 import com.example.shiftschedule.R;
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment;
 
@@ -22,18 +23,18 @@ public class availabilityBottomSheetDialog extends BottomSheetDialogFragment {
         View view = inflater.inflate(R.layout.bottom_sheet_layout, container, false);
 
         Bundle mArgs = getArguments();
-        String day = mArgs.getString("day");
-        Toast.makeText(getContext(), day, Toast.LENGTH_LONG).show();
+        final String day = mArgs.getString("day");
+        //Toast.makeText(getContext(), day, Toast.LENGTH_LONG).show();
         RadioButton canOpen = view.findViewById(R.id.openRadioButton);
         RadioButton canClose = view.findViewById(R.id.closingRadioButton);
         RadioButton canAllday = view.findViewById(R.id.alldayRadioButton);
         RadioButton cannot = view.findViewById(R.id.cannotRadioButton);
-        final Toast toast = Toast.makeText(getContext(), "Availability Saved", Toast.LENGTH_SHORT);
+        //final Toast toast = Toast.makeText(getContext(), "Availability Saved", Toast.LENGTH_SHORT);
         canOpen.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View v) {
-                mListener.onRadioButtonClicked("Open");
+                mListener.onRadioButtonClicked(Available.OPENING, day);
                 //toast.show();
                 dismiss();
             }
@@ -41,15 +42,30 @@ public class availabilityBottomSheetDialog extends BottomSheetDialogFragment {
         canClose.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                mListener.onRadioButtonClicked("Close");
+                mListener.onRadioButtonClicked(Available.CLOSING, day);
                 //toast.show();
+                dismiss();
+            }
+        });
+        canAllday.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mListener.onRadioButtonClicked(Available.ALLDAY, day);
+                dismiss();
+            }
+        });
+        cannot.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+                mListener.onRadioButtonClicked(Available.CANNOT, day);
                 dismiss();
             }
         });
         return view;
     }
     public interface BottomSheetListener {
-        void onRadioButtonClicked(String text);
+        void onRadioButtonClicked(Available available, String day);
     }
 
     @Override
