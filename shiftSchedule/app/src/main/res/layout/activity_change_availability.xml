@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".changeAvailability">
+
+    <Button
+        android:id="@+id/CA_thursdayButton"
+        android:layout_width="56dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="27dp"
+        android:text="Thu"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.701"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/CA_title"
+        app:layout_constraintVertical_bias="0.058" />
+
+    <Button
+        android:id="@+id/CA_wednesdayButton"
+        android:layout_width="56dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="27dp"
+        android:text="Wed"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/CA_title"
+        app:layout_constraintVertical_bias="0.057" />
+
+    <Button
+        android:id="@+id/CA_mondayButton"
+        android:layout_width="56dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="27dp"
+        android:text="Mon"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.123"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/CA_title"
+        app:layout_constraintVertical_bias="0.055"
+        android:onClick="changeMondayAvailability"/>
+
+    <Button
+        android:id="@+id/CA_tuesdayButton"
+        android:layout_width="56dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="27dp"
+        android:text="Tue"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.318"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/CA_title"
+        app:layout_constraintVertical_bias="0.055"
+        android:onClick="changeTuesdayAvailability"/>
+
+    <TextView
+        android:id="@+id/CA_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Availability"
+        android:textSize="28dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.043" />
+
+    <Button
+        android:id="@+id/CA_SundayButton"
+        android:layout_width="56dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="27dp"
+        android:text="Sun"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.377"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/CA_title"
+        app:layout_constraintVertical_bias="0.241" />
+
+    <Button
+        android:id="@+id/CA_holidayButton"
+        android:layout_width="97dp"
+        android:layout_height="36dp"
+        android:text="Holidays"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.484"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/holidayText"
+        app:layout_constraintVertical_bias="0.034" />
+
+    <Button
+        android:id="@+id/CA_saturdayButton"
+        android:layout_width="56dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="27dp"
+        android:text="Sat"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.622"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/CA_title"
+        app:layout_constraintVertical_bias="0.241" />
+
+    <Button
+        android:id="@+id/CA_fridayButton"
+        android:layout_width="56dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="27dp"
+        android:text="Fri"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.904"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/CA_title"
+        app:layout_constraintVertical_bias="0.058" />
+
+    <TextView
+        android:id="@+id/weekdayText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="Weekdays:"
+        android:textSize="20dp"
+        app:layout_constraintBottom_toTopOf="@+id/CA_wednesdayButton"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.485"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/CA_title"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <TextView
+        android:id="@+id/weekendText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
+        android:text="Weekends:"
+        android:textSize="20dp"
+        app:layout_constraintBottom_toTopOf="@+id/CA_SundayButton"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/CA_wednesdayButton"
+        app:layout_constraintVertical_bias="0.923" />
+
+    <TextView
+        android:id="@+id/holidayText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:text="Holidays:"
+        android:textSize="20dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.478"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/CA_SundayButton"
+        app:layout_constraintVertical_bias="0.0" />
+</androidx.constraintlayout.widget.ConstraintLayout>
