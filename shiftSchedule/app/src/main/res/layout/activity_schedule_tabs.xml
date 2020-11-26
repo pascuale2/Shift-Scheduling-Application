@@ -25,7 +25,7 @@
             android:textSize="27dp" />
 
         <com.google.android.material.tabs.TabLayout
-            android:id="@+id/tabs"
+            android:id="@+id/EA_tabs"
             android:layout_width="match_parent"
             android:layout_height="34dp"
             android:background="@drawable/gradient"

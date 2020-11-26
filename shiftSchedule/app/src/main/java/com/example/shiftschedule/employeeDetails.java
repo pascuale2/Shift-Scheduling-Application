@@ -4,12 +4,14 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Switch;
 import android.widget.TextView;
@@ -36,6 +38,7 @@ public class employeeDetails extends AppCompatActivity {
     private Employee employee;
     private Switch trainedClosing, trainedOpening;
     private EditText fullName;
+    private Button availabilityButton;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -56,6 +59,7 @@ public class employeeDetails extends AppCompatActivity {
         trainedClosing = (Switch)findViewById(R.id.EDClosing);
         trainedOpening = (Switch)findViewById(R.id.EDOpening);
         fullName = (EditText)findViewById(R.id.EDFullName);
+        availabilityButton = (Button)findViewById(R.id.EDAvailability);
         Log.d("Inside EmployeeDetails", "Made it inside employeeDetails");
 
         // following if block fills the TextView with the information we already have
@@ -81,7 +85,7 @@ public class employeeDetails extends AppCompatActivity {
             }
             if (this.employee.isTrainedOpening()) {
                 trainedOpening.setChecked(true);
-            }
+        }
         }
 
     }
@@ -92,6 +96,13 @@ public class employeeDetails extends AppCompatActivity {
         if (nameBox.getText().toString().equals("")) {
             nameBox.setText("Full Name");
         }
+    }
+
+    public void EDonAvailableClick(View view) {
+        // go to new activity
+        Intent intent = new Intent(employeeDetails.this, changeAvailability.class);
+        intent.putExtra("email", emailString);
+        startActivity(intent);
     }
 
     public void EDsubmitChanges(View view) {

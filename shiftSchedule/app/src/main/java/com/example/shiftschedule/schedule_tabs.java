@@ -9,8 +9,6 @@ import com.google.android.material.tabs.TabLayout;
 import androidx.viewpager.widget.ViewPager;
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
 
 import com.example.shiftschedule.ui.main.SectionsPagerAdapter;
@@ -30,7 +28,7 @@ public class schedule_tabs extends AppCompatActivity {
         // Disable Side-swiping by called setPagingEnabled method in CustomViewPager class
         ViewPagerObj.setPagingEnabled(false);
 
-        TabLayout tabs = findViewById(R.id.tabs);
+        TabLayout tabs = findViewById(R.id.EA_tabs);
         tabs.setupWithViewPager(viewPager);
         FloatingActionButton fab = findViewById(R.id.fab);
 
