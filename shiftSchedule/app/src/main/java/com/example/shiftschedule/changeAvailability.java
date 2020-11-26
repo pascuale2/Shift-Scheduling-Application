@@ -202,7 +202,6 @@ public class changeAvailability extends AppCompatActivity implements availabilit
         editor.commit();
         //Toast.makeText(changeAvailability.this, availability.toString(), Toast.LENGTH_LONG).show();
         initializeButtonColor(availability);
-
     }
     // This is the override function which allows us to control what happens when the bottom screen buttons are clicked
     @Override
