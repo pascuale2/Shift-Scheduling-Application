@@ -85,7 +85,7 @@ public class changeAvailability extends AppCompatActivity implements availabilit
                 availability = gson.fromJson(json, EmployeeAvailability.class);
 
                 // call this helper function which changes color of each button depending on the availability of that day if email exists in this availability file
-                //initializeButtonColor(availability);
+                initializeButtonColor(availability);
             }
             else {
                 // intializes a new availability object if employee doesn't exist/already have one. NOTE: All days are default set to CANNOT work on all days
@@ -109,17 +109,20 @@ public class changeAvailability extends AppCompatActivity implements availabilit
         switch (time)
         {
             case OPENING:
-                //change.setBackgroundColor(Color.RED);  or whatever color you want
+                change.setBackground(getDrawable(R.drawable.hot_pink_corner));
+                change.setTextColor(Color.rgb(255,255,255));
                 break;
             case CLOSING:
-                //change.......
+                change.setBackground(getDrawable(R.drawable.orange_corner));
+                change.setTextColor(Color.rgb(255,255,255));
                 break;
             case ALLDAY:
-                //change.....
+                change.setBackground(getDrawable(R.drawable.gray_corner));
+                change.setTextColor(Color.rgb(255,255,255));
                 break;
             default:
-                //case for cannot work
-                //change....
+                change.setBackground(getDrawable(R.drawable.white_corner));
+                change.setTextColor(Color.rgb(0,0,0));
         }
     }
 
@@ -198,7 +201,7 @@ public class changeAvailability extends AppCompatActivity implements availabilit
         editor.putString(this.email, json);
         editor.commit();
         //Toast.makeText(changeAvailability.this, availability.toString(), Toast.LENGTH_LONG).show();
-
+        initializeButtonColor(availability);
     }
     // This is the override function which allows us to control what happens when the bottom screen buttons are clicked
     @Override
