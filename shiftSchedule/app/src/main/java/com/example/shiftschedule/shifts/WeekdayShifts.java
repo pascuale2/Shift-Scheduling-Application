@@ -1,0 +1,95 @@
+package com.example.shiftschedule.shifts;
+
+import android.content.Context;
+import android.widget.Toast;
+
+import com.example.shiftschedule.Available;
+import com.example.shiftschedule.Employee;
+import com.example.shiftschedule.EmployeeAvailability;
+import com.google.gson.Gson;
+
+public class WeekdayShifts extends Shift {
+    /*
+    WeekdayShifts Class created by Alex Creencia
+    The Weekday version of the basic Shift Class
+    DIFFERENCES OF THIS WeekdayShift Class
+    - Maximum Number of Employees is only 2.
+    - There can be a maximum of 2 shifts per day of this shift type (an Opening shift and a Closing Shift)
+     */
+    protected int numOfEmployees = 2;
+    public WeekdayShifts(String dateOfShift, Available timeOfShift, Context context, String dayOfWeek) {
+        super(dateOfShift, timeOfShift, context, dayOfWeek);
+    }
+
+    public boolean checkIfAvailabilitySet(Employee employee) {
+        if (this.availabilityStorage.contains(employee.getEmail())) {
+            return true;
+        }
+        return false;
+    }
+    @Override
+    public void addEmployee(Employee employee, Context context) {
+        if (this.employeeList.contains(employee)) {
+            Toast.makeText(context, "WORKING ERROR: Employee already working this shift", Toast.LENGTH_SHORT).show();
+            return;
+        }
+        else if (this.employeeList.size() >= numOfEmployees) {
+            Toast.makeText(context, "MAXIMUM EMPLOYEE ERROR: cannot add employee: Maximum Number of employees already reached", Toast.LENGTH_SHORT).show();
+        }
+        else if (!checkIfAvailabilitySet(employee)) {
+            Toast.makeText(context, "NO AVAILABILITY ERROR: This employees availability is not set. Please set this employees availability", Toast.LENGTH_SHORT).show();
+        }
+        else {
+            EmployeeAvailability availability = getAvailability(employee);
+            if (checkAvailability(availability)) {
+                this.employeeList.add(employee);
+                Toast.makeText(context, "Need " + (numOfEmployees - this.employeeList.size()) + " more employees to fill shift", Toast.LENGTH_SHORT).show();
+            }
+            else {
+                Toast.makeText(context, "AVAILABILITY ERROR: This employee cannot work on " + this.day + "at this specific time", Toast.LENGTH_SHORT).show();
+            }
+        }
+    }
+
+
+    public boolean checkAvailability(EmployeeAvailability availability) {
+        switch(day) {
+            case "monday":
+                return (this.time == availability.getMonday());
+            case "tuesday":
+                return (this.time == availability.getTuesday());
+            case "wednesday":
+                return (this.time == availability.getWednesday());
+            case "thursday":
+                return (this.time == availability.getThursday());
+            case "friday":
+                return (this.time == availability.getFriday());
+        }
+        return false;
+    }
+
+
+    @Override
+    public boolean checkIfShiftCovered() {
+        int shiftOkay = 0; //counter variable which increments if someone is trained to work the time of the shift.
+        for (Employee employee : this.employeeList) {
+            // get the employees availability from the file
+            //EmployeeAvailability availability = getAvailability(employee);
+            switch(this.time)
+            {
+                case OPENING:
+                    if (employee.isTrainedOpening())
+                        shiftOkay++;
+                    break;
+                default:
+                    if (employee.isTrainedClosing())
+                        shiftOkay++;
+            }
+        }
+        if (shiftOkay >= 1)
+            return true;
+        else
+            return false;
+    }
+
+}

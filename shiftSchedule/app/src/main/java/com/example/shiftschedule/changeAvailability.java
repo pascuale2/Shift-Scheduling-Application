@@ -73,7 +73,6 @@ public class changeAvailability extends AppCompatActivity implements availabilit
         sunday = (Button)findViewById(R.id.CA_SundayButton);
         holiday = (Button)findViewById(R.id.CA_holidayButton);
         saveChanges = (Button)findViewById(R.id.CA_saveChanges);
-
         extras = getIntent().getExtras();
         if (extras != null) {
             email = extras.getString("email");

@@ -31,6 +31,7 @@ public class SectionsPagerAdapter extends FragmentPagerAdapter {
 
     @Override
     // To switch between tabs
+
     public Fragment getItem(int position) {
         Fragment fragment = null;
         switch (position){
