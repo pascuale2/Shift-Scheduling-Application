@@ -73,7 +73,6 @@ public class changeAvailability extends AppCompatActivity implements availabilit
         sunday = (Button)findViewById(R.id.CA_SundayButton);
         holiday = (Button)findViewById(R.id.CA_holidayButton);
         saveChanges = (Button)findViewById(R.id.CA_saveChanges);
-
         extras = getIntent().getExtras();
         if (extras != null) {
             email = extras.getString("email");
@@ -200,9 +199,7 @@ public class changeAvailability extends AppCompatActivity implements availabilit
         String json = gson.toJson(this.availability);
         editor.putString(this.email, json);
         editor.commit();
-        //Toast.makeText(changeAvailability.this, availability.toString(), Toast.LENGTH_LONG).show();
-        initializeButtonColor(availability);
-
+        Toast.makeText(changeAvailability.this, "Changes Saved to File", Toast.LENGTH_LONG).show();
     }
     // This is the override function which allows us to control what happens when the bottom screen buttons are clicked
     @Override
@@ -215,38 +212,38 @@ public class changeAvailability extends AppCompatActivity implements availabilit
             case "monday":
                 Log.i("monday", "monday was entered");
                 availability.setMonday(available);
-
+                buttonColorChange(monday, available);
                 break;
             case "tuesday":
                 Log.i("tuesday", "tuesday was entered");
                 availability.setTuesday(available);
-
+                buttonColorChange(tuesday, available);
                 break;
             case "wednesday":
                 availability.setWednesday(available);
-
+                buttonColorChange(wednesday, available);
                 break;
             case "thursday":
                 availability.setThursday(available);
-
+                buttonColorChange(thursday, available);
                 break;
             case "friday":
                 availability.setFriday(available);
-
+                buttonColorChange(friday, available);
                 break;
             case "saturday":
                 availability.setSaturday(available);
-
+                buttonColorChange(saturday, available);
                 break;
             case "sunday":
                 availability.setSunday(available);
-
+                buttonColorChange(sunday, available);
                 break;
             default:
                 // this is technically case for holiday
                 Log.i("day", "this button was pressed: " + day);
                 availability.setHoliday(available);
-
+                buttonColorChange(holiday, available);
         }
     }
 }

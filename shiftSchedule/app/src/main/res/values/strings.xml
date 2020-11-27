@@ -15,4 +15,5 @@
     <string name="tab_text_1">Month</string>
     <string name="tab_text_2">Week</string>
     <string name="tab_text_3">Day</string>
+    <string name="title_activity_schedule_month_view">schedule_month_view</string>
 </resources>
