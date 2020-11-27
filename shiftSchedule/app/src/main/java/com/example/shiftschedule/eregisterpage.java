@@ -175,7 +175,7 @@ public class eregisterpage extends AppCompatActivity {
         )) || (!validYear(dateYear.getText().toString()))) {
             Log.d("AHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH", "this is valid month " +  validMonth(dateMonth.getText().toString()) + "this is valid day " + validDay(dateDay.getText().toString()) + "this is valid year " + validYear(dateYear.getText().toString()));
             Toast.makeText(eregisterpage.this, "ERROR: Date not formatted; must be of format YYYY/MM/DD", Toast.LENGTH_LONG).show();
-            return "";
+            return ""   ;
         }
         else {
             String formattedDate = yearText + "/" + monthText + "/" + dayText;
@@ -203,6 +203,10 @@ public class eregisterpage extends AppCompatActivity {
     }
     public void ERPsubmitAction(View view){
         // need to create LocalDate string first
+        if (dateDay.getText().toString().equals("") || dateMonth.getText().toString().equals("") || dateYear.getText().toString().equals("")) {
+            Toast.makeText(eregisterpage.this, "ERROR: Empty fields, please make sure date fields are filled of the form YYYY MM DD", Toast.LENGTH_SHORT).show();
+            return;
+        }
         String formattedDate = prepareDate(dateDay.getText().toString(), dateMonth.getText().toString(), dateYear.getText().toString());
         if (formattedDate.equals("")) {
             return;
