@@ -21,6 +21,7 @@ import android.util.EventLog;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -89,20 +90,24 @@ public class schedule_month_view extends AppCompatActivity {
                 //builder.setTitle(formatted_date);
                 //builder.setMessage(formatted_date);
                 builder.setView(view);
-
                 final AlertDialog alertDialog = builder.create();
                 alertDialog.show();
                 TextView displayDate = (TextView) view.findViewById(R.id.text_date);
                 Button createShift = (Button) view.findViewById(R.id.create_button);
-                Button cancelAlert = (Button) view.findViewById(R.id.CAL_cancel_button);
+                Button holidayShift = (Button) view.findViewById(R.id.holiday_button);
+                ImageButton cancelAlert = (ImageButton) view.findViewById(R.id.CAL_cancel_button);
 
                 if (Calendar.getInstance().after(clickedDayCalendar)) {
                     Toast.makeText(schedule_month_view.this, "WARNING: Cannot create a Shift on a past date or current date", Toast.LENGTH_SHORT).show();
                     createShift.setEnabled(false);
                     createShift.setClickable(false);
-                    //TODO: Erwin I need you to select a color for the disabled button (this is so they cannot create shifts in the past. They can VIEW shifts if there were shifts on that day, but cannot create them).
+                    createShift.setBackgroundResource(R.drawable.disabled_corner);
+
+                    holidayShift.setEnabled(false);
+                    holidayShift.setClickable(false);
+                    holidayShift.setBackgroundResource(R.drawable.disabled_corner);
+                    //TODO: ALEX PEEP THESE CHANGES
                     // Also needs a drawable for it because the following line makes it a square
-                    //createShift.setBackgroundColor(Color.GRAY);
                 }
 
                 cancelAlert.setOnClickListener(new View.OnClickListener() {
