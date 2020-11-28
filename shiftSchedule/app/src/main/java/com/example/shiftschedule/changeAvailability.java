@@ -56,7 +56,6 @@ public class changeAvailability extends AppCompatActivity implements availabilit
     private String email;                                               // the email of the employee
     private EmployeeAvailability availability;                          // The availability object that holds the availability of this specific employee
 
-    // TODO: Implement Availability changes for Tuesday - Friday, and save it to employee information
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
