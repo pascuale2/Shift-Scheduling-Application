@@ -36,7 +36,7 @@ public class Employee {
         this.trainedClosing = trainedClosing;
         this.trainedOpening = trainedOpening;
     }
-    // TODO: Fix setEmail Once employee Availaibility is done and stored (if email changes, the availability should update to new email also)
+
     // GETTER FUNCTIONS
     public int getAge() { return Age; }
     public String getEmail() { return email; }

@@ -30,7 +30,6 @@ public class employeeDetails extends AppCompatActivity {
      MEMBERS
 
      */
-    // TODO: Change Full Name and add Availability
     private TextView employeeEmail, employeeAge, employeeSex, employeeEmployed;
     private Bundle extras;
     private String emailString;

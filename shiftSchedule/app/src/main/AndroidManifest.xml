@@ -9,10 +9,11 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <activity android:name=".createShiftWeekday"></activity>
         <activity
             android:name=".schedule_month_view"
             android:label="@string/title_activity_schedule_month_view"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".changeAvailability" />
         <activity android:name=".employeeDetails" />
         <activity

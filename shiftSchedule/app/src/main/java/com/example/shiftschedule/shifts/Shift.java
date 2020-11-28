@@ -9,6 +9,7 @@ import com.example.shiftschedule.EmployeeAvailability;
 import com.google.gson.Gson;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
 import java.util.UUID;
 public abstract class Shift {
@@ -17,12 +18,13 @@ public abstract class Shift {
      All different types of shifts will extend/implement their own version of this Shift class
 
      MEMBER VARIABLES
-     shiftID                      A ID of the form ( yyyy/MM/dd-TimeOfShift ). This is formatted this way for easy checking for duplicates. (e.g. 2020/11/29-OPENING)
+     shiftID                      A ID of the form ( yyyy/Mon/dd-TimeOfShift ). This is formatted this way for easy checking for duplicates. (e.g. 2020/Nov/29-OPENING)
      Time                         The time of the shift. Re-uses the EmployeeAvailability
      Date                         The Date of the shift (a string formatted like a date-time format)
      Employee                     An array of Employee's that represent which employee's are working the shift.
      availabilityStorage          The file containing the availabilities of all employees registered in the app
      Day                          The day of the week of the shift (Monday, Tuesday, Wednesday, Friday, etc etc)
+     Calendar calendar            The calendar representation of the shift Date. Only for visual purposes on custom Calendar objects.
      */
      protected String shiftID;
      public Available time;
@@ -30,12 +32,14 @@ public abstract class Shift {
      protected SharedPreferences availabilityStorage;
      protected String day;
      protected List<Employee> employeeList = new ArrayList<>();
-     public Shift(String dateOfShift, Available timeOfShift, Context context, String dayOfWeek) {
+     protected Calendar calendar;
+     public Shift(String dateOfShift, Available timeOfShift, Context context, String dayOfWeek, Calendar calendarDate) {
          this.shiftID = dateOfShift + "-" + timeOfShift;
          this.time = timeOfShift;
          this.date = dateOfShift;
          this.availabilityStorage = context.getSharedPreferences("availability", Context.MODE_PRIVATE);
          this.day = dayOfWeek;
+         this.calendar = calendarDate;
      }
 
 

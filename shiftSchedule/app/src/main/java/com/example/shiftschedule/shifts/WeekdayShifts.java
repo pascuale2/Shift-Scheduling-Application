@@ -8,6 +8,8 @@ import com.example.shiftschedule.Employee;
 import com.example.shiftschedule.EmployeeAvailability;
 import com.google.gson.Gson;
 
+import java.util.Calendar;
+
 public class WeekdayShifts extends Shift {
     /*
     WeekdayShifts Class created by Alex Creencia
@@ -17,9 +19,12 @@ public class WeekdayShifts extends Shift {
     - There can be a maximum of 2 shifts per day of this shift type (an Opening shift and a Closing Shift)
      */
     protected int numOfEmployees = 2;
-    public WeekdayShifts(String dateOfShift, Available timeOfShift, Context context, String dayOfWeek) {
-        super(dateOfShift, timeOfShift, context, dayOfWeek);
+    protected Calendar calendar;
+
+    public WeekdayShifts(String dateOfShift, Available timeOfShift, Context context, String dayOfWeek, Calendar calendarDate) {
+        super(dateOfShift, timeOfShift, context, dayOfWeek, calendarDate);
     }
+
 
     public boolean checkIfAvailabilitySet(Employee employee) {
         if (this.availabilityStorage.contains(employee.getEmail())) {
