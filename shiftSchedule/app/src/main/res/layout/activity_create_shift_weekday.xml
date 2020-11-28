@@ -56,13 +56,13 @@
         app:layout_constraintVertical_bias="0.069">
 
         <RadioButton
-            android:id="@+id/CS_openingRadio"
+            android:id="@+id/CSWeek_openingRadio"
             android:layout_width="match_parent"
             android:layout_height="49dp"
             android:text="OPENING SHIFT" />
 
         <RadioButton
-            android:id="@+id/CS_closingRadio"
+            android:id="@+id/CSWeek_closingRadio"
             android:layout_width="match_parent"
             android:layout_height="49dp"
             android:text="CLOSING SHIFT" />
@@ -83,7 +83,7 @@
         app:layout_constraintVertical_bias="0.079" />
 
     <TextView
-        android:id="@+id/dateLabel"
+        android:id="@+id/CSWeek_dateLabel"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="SAMPLE DATE"
@@ -105,5 +105,18 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/radioGroup"
         app:layout_constraintVertical_bias="0.145"
-        android:onClick="onCreateShiftClick"/>
+        android:onClick="onCreateShiftClickWeek"/>
+
+    <Button
+        android:id="@+id/CSWeek_cancelButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="cancel"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.467"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/createShiftButton"
+        app:layout_constraintVertical_bias="0.104"
+        android:onClick="onCancelShiftButtonClickWeek"/>
 </androidx.constraintlayout.widget.ConstraintLayout>
