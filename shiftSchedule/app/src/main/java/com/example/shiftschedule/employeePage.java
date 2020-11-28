@@ -39,7 +39,6 @@ public class employeePage extends AppCompatActivity {
         setContentView(R.layout.activity_employee_page);
         storage = getApplicationContext().getSharedPreferences("employeeStorage", Context.MODE_PRIVATE);
         employeeList = (RecyclerView) findViewById(R.id.EPemployeeView);
-
         // setting the Display format of the employeeList
         layoutManager = new LinearLayoutManager(this);
         employeeList.setLayoutManager(layoutManager);
@@ -55,7 +54,7 @@ public class employeePage extends AppCompatActivity {
         Gson gson = new Gson();
         Map<String, ?> allEmployees = storage.getAll();
         if (allEmployees.isEmpty()) {
-            // display text saying theres no employees.
+            Toast.makeText(employeePage.this, "No Employees to Display", Toast.LENGTH_SHORT).show();
         }
         for (Map.Entry<String, ?> entry: allEmployees.entrySet()) {
 
@@ -79,6 +78,7 @@ public class employeePage extends AppCompatActivity {
         Intent intent = new Intent(employeePage.this, eregisterpage.class);
         startActivity(intent);
         Log.d("open attempt2", "after opening");
+        finish();
     }
 
     public void LPgoBack (View view){
