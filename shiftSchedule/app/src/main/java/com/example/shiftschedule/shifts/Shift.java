@@ -33,11 +33,10 @@ public abstract class Shift {
      protected String day;
      protected List<Employee> employeeList = new ArrayList<>();
      protected Calendar calendar;
-     public Shift(String dateOfShift, Available timeOfShift, Context context, String dayOfWeek, Calendar calendarDate) {
+     public Shift(String dateOfShift, Available timeOfShift, String dayOfWeek, Calendar calendarDate) {
          this.shiftID = dateOfShift + "-" + timeOfShift;
          this.time = timeOfShift;
          this.date = dateOfShift;
-         this.availabilityStorage = context.getSharedPreferences("availability", Context.MODE_PRIVATE);
          this.day = dayOfWeek;
          this.calendar = calendarDate;
      }
@@ -60,8 +59,9 @@ public abstract class Shift {
         return this.date;
     }
 
-    public EmployeeAvailability getAvailability(Employee employee) {
+    public EmployeeAvailability getAvailability(Employee employee, Context context) {
         Gson gson = new Gson();
+        availabilityStorage = context.getSharedPreferences("availability", Context.MODE_PRIVATE);
         String json = this.availabilityStorage.getString(employee.getEmail(), "");
         EmployeeAvailability availability = gson.fromJson(json, EmployeeAvailability.class);
         return availability;

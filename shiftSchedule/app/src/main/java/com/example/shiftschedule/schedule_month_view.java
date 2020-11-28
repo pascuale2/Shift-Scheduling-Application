@@ -68,7 +68,7 @@ public class schedule_month_view extends AppCompatActivity {
 
                 String unformatted_date = clickedDayCalendar.getTime().toString();
                 String split_string[] = unformatted_date.split(" ");
-                String formatted_date = split_string[5] + "/" + split_string[1] + "/" + split_string[2];
+                final String formatted_date = split_string[5] + "/" + split_string[1] + "/" + split_string[2];
                 final String dayOfWeek = split_string[0];
 
 
@@ -100,7 +100,7 @@ public class schedule_month_view extends AppCompatActivity {
                     Toast.makeText(schedule_month_view.this, "WARNING: Cannot create a Shift on a past date or current date", Toast.LENGTH_SHORT).show();
                     createShift.setEnabled(false);
                     createShift.setClickable(false);
-                    //TODO: Erwin I need you to select a color for the disabled button (this is so they cannot create shifts in the past. They can VIEW shifts if there were shifts on that day, but cannot create them.
+                    //TODO: Erwin I need you to select a color for the disabled button (this is so they cannot create shifts in the past. They can VIEW shifts if there were shifts on that day, but cannot create them).
                     // Also needs a drawable for it because the following line makes it a square
                     //createShift.setBackgroundColor(Color.GRAY);
                 }
@@ -122,9 +122,18 @@ public class schedule_month_view extends AppCompatActivity {
                         Bundle bundle = new Bundle();
                         bundle.putString("dayOfWeek", dayOfWeek);
                         bundle.putString("calendar", selectedCalendarString);
-                        Intent intent = new Intent(schedule_month_view.this, createShiftWeekday.class);
-                        intent.putExtras(bundle);
-                        startActivityForResult(intent, 1);
+                        bundle.putString("date", formatted_date);
+                        switch(dayOfWeek)
+                        {
+                            case "Sun":
+                            case "Sat":
+                                Toast.makeText(schedule_month_view.this, "Creating a weekend Shift", Toast.LENGTH_SHORT).show();
+                                break;
+                                default:
+                                    Intent intent = new Intent(schedule_month_view.this, createShiftWeekday.class);
+                                    intent.putExtras(bundle);
+                                    startActivityForResult(intent, 1);
+                        }
 
 
                         // Think about what information needs to be passed first. Calendar, dayOfWeek,

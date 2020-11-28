@@ -1,6 +1,7 @@
 package com.example.shiftschedule.shifts;
 
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.widget.Toast;
 
 import com.example.shiftschedule.Available;
@@ -21,13 +22,14 @@ public class WeekdayShifts extends Shift {
     protected int numOfEmployees = 2;
     protected Calendar calendar;
 
-    public WeekdayShifts(String dateOfShift, Available timeOfShift, Context context, String dayOfWeek, Calendar calendarDate) {
-        super(dateOfShift, timeOfShift, context, dayOfWeek, calendarDate);
+    public WeekdayShifts(String dateOfShift, Available timeOfShift,String dayOfWeek, Calendar calendarDate) {
+        super(dateOfShift, timeOfShift, dayOfWeek, calendarDate);
     }
 
 
-    public boolean checkIfAvailabilitySet(Employee employee) {
-        if (this.availabilityStorage.contains(employee.getEmail())) {
+    public boolean checkIfAvailabilitySet(Employee employee, Context context) {
+        SharedPreferences storage = context.getSharedPreferences("availability", Context.MODE_PRIVATE);
+        if (storage.contains(employee.getEmail())) {
             return true;
         }
         return false;
@@ -41,11 +43,11 @@ public class WeekdayShifts extends Shift {
         else if (this.employeeList.size() >= numOfEmployees) {
             Toast.makeText(context, "MAXIMUM EMPLOYEE ERROR: cannot add employee: Maximum Number of employees already reached", Toast.LENGTH_SHORT).show();
         }
-        else if (!checkIfAvailabilitySet(employee)) {
+        else if (!checkIfAvailabilitySet(employee, context)) {
             Toast.makeText(context, "NO AVAILABILITY ERROR: This employees availability is not set. Please set this employees availability", Toast.LENGTH_SHORT).show();
         }
         else {
-            EmployeeAvailability availability = getAvailability(employee);
+            EmployeeAvailability availability = getAvailability(employee, context);
             if (checkAvailability(availability)) {
                 this.employeeList.add(employee);
                 Toast.makeText(context, "Need " + (numOfEmployees - this.employeeList.size()) + " more employees to fill shift", Toast.LENGTH_SHORT).show();
