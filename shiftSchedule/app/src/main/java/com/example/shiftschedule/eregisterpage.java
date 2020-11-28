@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.text.Editable;
@@ -254,6 +255,8 @@ public class eregisterpage extends AppCompatActivity {
             String success = "Register was successful";
             Toast toast = Toast.makeText(getApplicationContext(), success, Toast.LENGTH_LONG);
             toast.show();
+            Intent intent = new Intent(eregisterpage.this, employeePage.class);
+            startActivity(intent);
             finish();
 
         } else {

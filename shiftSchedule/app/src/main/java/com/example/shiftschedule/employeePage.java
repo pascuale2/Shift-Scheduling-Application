@@ -79,6 +79,7 @@ public class employeePage extends AppCompatActivity {
         Intent intent = new Intent(employeePage.this, eregisterpage.class);
         startActivity(intent);
         Log.d("open attempt2", "after opening");
+        finish();
     }
 
     public void LPgoBack (View view){
