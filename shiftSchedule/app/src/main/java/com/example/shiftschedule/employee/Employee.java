@@ -1,11 +1,10 @@
-package com.example.shiftschedule;
+package com.example.shiftschedule.employee;
 
 import android.content.Context;
 import android.content.SharedPreferences;
 
+import com.example.shiftschedule.Available.Available;
 import com.google.gson.Gson;
-
-import java.time.LocalDate;
 
 /*
   Employee class created by Alex Creencia
@@ -23,10 +22,10 @@ public class Employee {
      trainedClosing, bool               - Flag whether the employee is trained for closing
      */
     protected String email;
-    private String fullName;
-    private int Age;
-    private String Sex;
-    private String dateEmployed;
+    protected String fullName;
+    protected int Age;
+    protected String Sex;
+    protected String dateEmployed;
     protected boolean trainedOpening;
     protected boolean trainedClosing;
     // Create a new screen
@@ -90,6 +89,7 @@ public class Employee {
         EmployeeAvailability availability = getEmployeeAvailability(context);
         return availability.getMonday();
     }
+
 
 
     @Override

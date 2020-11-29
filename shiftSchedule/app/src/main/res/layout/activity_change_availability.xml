@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/register_background"
-    tools:context=".changeAvailability">
+    tools:context=".employee.screens.changeAvailability">
 
     <TextView
         android:id="@+id/availability_legend_text"

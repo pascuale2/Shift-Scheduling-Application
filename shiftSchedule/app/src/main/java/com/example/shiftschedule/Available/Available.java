@@ -1,4 +1,4 @@
-package com.example.shiftschedule;
+package com.example.shiftschedule.Available;
 
 public enum Available {
     OPENING,

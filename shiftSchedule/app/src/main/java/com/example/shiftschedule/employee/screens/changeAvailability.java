@@ -1,4 +1,4 @@
-package com.example.shiftschedule;
+package com.example.shiftschedule.employee.screens;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -9,9 +9,12 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
-import android.widget.RadioButton;
 import android.widget.Toast;
+
+import com.example.shiftschedule.Available.Available;
+import com.example.shiftschedule.R;
 import com.example.shiftschedule.bottomLayouts.availabilityBottomSheetDialog;
+import com.example.shiftschedule.employee.EmployeeAvailability;
 import com.google.gson.Gson;
 
 public class changeAvailability extends AppCompatActivity implements availabilityBottomSheetDialog.BottomSheetListener {

@@ -1,4 +1,4 @@
-package com.example.shiftschedule;
+package com.example.shiftschedule.employee.screens;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
@@ -18,12 +18,13 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.example.shiftschedule.R;
+import com.example.shiftschedule.employee.Employee;
+import com.example.shiftschedule.employee.EmployeeAvailability;
 import com.google.gson.Gson;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
 public class eregisterpage extends AppCompatActivity {
 

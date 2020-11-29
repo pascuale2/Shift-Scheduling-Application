@@ -3,15 +3,15 @@ package com.example.shiftschedule.shifts;
 import android.content.Context;
 import android.content.SharedPreferences;
 
-import com.example.shiftschedule.Available;
-import com.example.shiftschedule.Employee;
-import com.example.shiftschedule.EmployeeAvailability;
+import com.example.shiftschedule.Available.Available;
+import com.example.shiftschedule.employee.Employee;
+import com.example.shiftschedule.employee.EmployeeAvailability;
 import com.google.gson.Gson;
 
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
-import java.util.UUID;
+
 public abstract class Shift {
     /*
      Abstract Class created By Alex Creencia

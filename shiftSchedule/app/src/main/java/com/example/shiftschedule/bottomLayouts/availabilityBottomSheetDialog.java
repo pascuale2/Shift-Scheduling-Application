@@ -6,12 +6,11 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.RadioButton;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
-import com.example.shiftschedule.Available;
+import com.example.shiftschedule.Available.Available;
 import com.example.shiftschedule.R;
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment;
 

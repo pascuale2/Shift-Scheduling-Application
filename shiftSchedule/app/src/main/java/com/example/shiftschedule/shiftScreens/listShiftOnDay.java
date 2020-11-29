@@ -1,4 +1,4 @@
-package com.example.shiftschedule;
+package com.example.shiftschedule.shiftScreens;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -9,7 +9,9 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.widget.TextView;
 
+import com.example.shiftschedule.R;
 import com.example.shiftschedule.adapters.shiftAdapter;
+import com.example.shiftschedule.listItem;
 
 import java.util.ArrayList;
 import java.util.List;

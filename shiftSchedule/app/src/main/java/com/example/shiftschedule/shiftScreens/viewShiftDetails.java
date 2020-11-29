@@ -1,4 +1,4 @@
-package com.example.shiftschedule;
+package com.example.shiftschedule.shiftScreens;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.RecyclerView;
@@ -10,6 +10,8 @@ import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.shiftschedule.R;
+import com.example.shiftschedule.listItem;
 import com.example.shiftschedule.shifts.Shift;
 import com.example.shiftschedule.shifts.WeekdayShifts;
 import com.example.shiftschedule.shifts.WeekendShifts;

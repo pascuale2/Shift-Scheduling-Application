@@ -1,7 +1,6 @@
-package com.example.shiftschedule;
+package com.example.shiftschedule.employee;
 
-import android.content.Context;
-import android.content.SharedPreferences;
+import com.example.shiftschedule.Available.Available;
 
 /*
   Employee Availability class Created by Alex Creencia, based on Design notes created

@@ -2,9 +2,9 @@ package com.example.shiftschedule.shifts;
 
 import android.content.Context;
 
-import com.example.shiftschedule.Available;
-import com.example.shiftschedule.Employee;
-import com.example.shiftschedule.EmployeeAvailability;
+import com.example.shiftschedule.Available.Available;
+import com.example.shiftschedule.employee.Employee;
+import com.example.shiftschedule.employee.EmployeeAvailability;
 
 import java.util.Calendar;
 

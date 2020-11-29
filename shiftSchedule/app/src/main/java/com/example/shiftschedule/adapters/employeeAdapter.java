@@ -1,4 +1,4 @@
-package com.example.shiftschedule;
+package com.example.shiftschedule.adapters;
 
 import android.content.Context;
 import android.content.Intent;
@@ -11,6 +11,11 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.example.shiftschedule.R;
+import com.example.shiftschedule.employee.screens.employeeDetails;
+import com.example.shiftschedule.employee.screens.employeePage;
+import com.example.shiftschedule.listItem;
 
 import java.util.List;
 

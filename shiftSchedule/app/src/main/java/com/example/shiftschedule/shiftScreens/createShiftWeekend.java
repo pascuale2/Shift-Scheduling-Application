@@ -1,4 +1,4 @@
-package com.example.shiftschedule;
+package com.example.shiftschedule.shiftScreens;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -13,6 +13,8 @@ import android.widget.RadioButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.shiftschedule.Available.Available;
+import com.example.shiftschedule.R;
 import com.example.shiftschedule.shifts.WeekendShifts;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;

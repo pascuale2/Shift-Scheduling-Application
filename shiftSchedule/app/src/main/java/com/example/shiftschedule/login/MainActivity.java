@@ -1,4 +1,4 @@
-package com.example.shiftschedule;
+package com.example.shiftschedule.login;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
@@ -6,10 +6,8 @@ import androidx.core.content.ContextCompat;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.Gravity;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
@@ -17,6 +15,9 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.example.shiftschedule.R;
+import com.example.shiftschedule.landingPage.landingPage;
 
 public class MainActivity extends AppCompatActivity {
 

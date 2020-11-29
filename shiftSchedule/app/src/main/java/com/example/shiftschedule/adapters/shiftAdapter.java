@@ -11,9 +11,8 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.shiftschedule.R;
-import com.example.shiftschedule.employeeDetails;
 import com.example.shiftschedule.listItem;
-import com.example.shiftschedule.viewShiftDetails;
+import com.example.shiftschedule.shiftScreens.viewShiftDetails;
 
 import java.util.List;
 
