@@ -1,4 +1,4 @@
-package com.example.shiftschedule;
+package com.example.shiftschedule.employee.screens;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
@@ -17,6 +17,8 @@ import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.shiftschedule.R;
+import com.example.shiftschedule.employee.Employee;
 import com.google.gson.Gson;
 
 public class employeeDetails extends AppCompatActivity {
@@ -114,7 +116,7 @@ public class employeeDetails extends AppCompatActivity {
 
         this.employee.setTrainedClosing(trainedClosing.isChecked());
         this.employee.setTrainedOpening(trainedOpening.isChecked());
-        Log.d("setting Training: ", "This is Closing " + this.employee.trainedClosing + " And this is Opening: " + this.employee.trainedOpening);
+        Log.d("setting Training: ", "This is Closing " + this.employee.isTrainedClosing() + " And this is Opening: " + this.employee.isTrainedOpening());
         SharedPreferences.Editor editor = storage.edit();
         Gson gson = new Gson();
         String json = gson.toJson(this.employee);

@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/register_employee"
-    tools:context=".employeeDetails">
+    tools:context=".employee.screens.employeeDetails">
 
     <TextView
         android:id="@+id/EDEmail"

@@ -9,22 +9,25 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".createShiftWeekday"></activity>
+        <activity android:name=".shiftScreens.listShiftOnDay"></activity>
+        <activity android:name=".shiftScreens.viewShiftDetails" />
+        <activity android:name=".shiftScreens.createShiftWeekend" />
+        <activity android:name=".shiftScreens.createShiftWeekday" />
         <activity
-            android:name=".schedule_month_view"
+            android:name=".calendar.schedule_month_view"
             android:label="@string/title_activity_schedule_month_view"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".changeAvailability" />
-        <activity android:name=".employeeDetails" />
+        <activity android:name=".employee.screens.changeAvailability" />
+        <activity android:name=".employee.screens.employeeDetails" />
         <activity
             android:name=".schedule_tabs"
             android:label="@string/title_activity_schedule_tabs"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".registerpage" />
-        <activity android:name=".eregisterpage" />
-        <activity android:name=".landingPage" />
-        <activity android:name=".employeePage" />
-        <activity android:name=".MainActivity">
+        <activity android:name=".login.registerpage" />
+        <activity android:name=".employee.screens.eregisterpage" />
+        <activity android:name=".landingPage.landingPage" />
+        <activity android:name=".employee.screens.employeePage" />
+        <activity android:name=".login.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

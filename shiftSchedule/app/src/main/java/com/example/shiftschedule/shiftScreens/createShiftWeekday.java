@@ -1,4 +1,4 @@
-package com.example.shiftschedule;
+package com.example.shiftschedule.shiftScreens;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -6,14 +6,18 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.RadioButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.shiftschedule.Available.Available;
+import com.example.shiftschedule.R;
 import com.example.shiftschedule.shifts.WeekdayShifts;
 import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 
 import java.util.Calendar;
 
@@ -91,18 +95,24 @@ public class createShiftWeekday extends AppCompatActivity {
             Toast.makeText(createShiftWeekday.this, "ERROR: MUST select a time for shift on " + this.dateOfShift, Toast.LENGTH_SHORT).show();
             return;
         }
-        String shift_id = this.dateOfShift +"-" + this.timeOfShift;
+        String shift_id = this.dateOfShift + "-" + this.timeOfShift;
         if (this.shiftStorage.contains(shift_id)) {
             Toast.makeText(createShiftWeekday.this, "ERROR: Shift at selected time and date already exists", Toast.LENGTH_SHORT).show();
             return;
         }
-        Toast.makeText(createShiftWeekday.this, shift_id, Toast.LENGTH_SHORT).show();
+        //Toast.makeText(createShiftWeekday.this, shift_id, Toast.LENGTH_SHORT).show();
 
         // create Shift object.
         WeekdayShifts weekDayShift = new WeekdayShifts(this.dateOfShift, this.timeOfShift, this.dayOfWeek, this.selectedCalendarDate);
-
-        // Returning the calendar to display onto the Calendar. Also need to store it
+        Toast.makeText(createShiftWeekday.this, "This is shift ID for weekdayShift Object: " + weekDayShift.getShiftID(), Toast.LENGTH_SHORT).show();
         Gson gson = new Gson();
+        SharedPreferences.Editor editor = shiftStorage.edit();
+        GsonBuilder builder = new GsonBuilder();
+        String shiftToString = gson.toJson(weekDayShift);
+        Log.i("shift Object", "this is the shift object: " + shiftToString);
+        editor.putString(weekDayShift.getShiftID(), shiftToString);
+        editor.commit();
+        // Returning the calendar to display onto the Calendar. Also need to store it
         String returnedCalendarDateString = gson.toJson(this.selectedCalendarDate);
         Intent resultIntent = new Intent();
         resultIntent.putExtra("result", returnedCalendarDateString);

@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".shiftScreens.createShiftWeekend">
+
+    <Button
+        android:id="@+id/CS_WeekendCancel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Cancel"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/CS_WeekendCreateShift"
+        app:layout_constraintVertical_bias="0.147"
+        android:onClick="onCancelShiftButtonClickWeekend"/>
+
+    <TextView
+        android:id="@+id/CS_WeekendTimeLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Time of Shift:"
+        android:textColor="#3E3C3C"
+        android:textSize="21sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/CS_WeekendDate"
+        app:layout_constraintVertical_bias="0.047" />
+
+    <TextView
+        android:id="@+id/CS_WeekendDate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="SAMPLE DATE"
+        android:textColor="#3E3C3C"
+        android:textSize="21sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/CS_WeekendDateTitle"
+        app:layout_constraintVertical_bias="0.034" />
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/CS_WeekendToolbar"
+        android:layout_width="409dp"
+        android:layout_height="wrap_content"
+        android:background="?attr/colorPrimary"
+        android:minHeight="?attr/actionBarSize"
+        android:theme="?attr/actionBarTheme"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/CS_WeekendTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Create Weekend Shift"
+        android:textColor="#FFFFFF"
+        android:textSize="21sp"
+        app:layout_constraintBottom_toBottomOf="@+id/CS_WeekendToolbar"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/CS_WeekendDateTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Date of Shift:"
+        android:textColor="#3E3C3C"
+        android:textSize="21sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/CS_WeekendToolbar"
+        app:layout_constraintVertical_bias="0.035" />
+
+    <RadioGroup
+        android:id="@+id/radioGroup2"
+        android:layout_width="181dp"
+        android:layout_height="55dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.585"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/CS_WeekendTimeLabel"
+        app:layout_constraintVertical_bias="0.071">
+
+        <RadioButton
+            android:id="@+id/CS_WeekendAllDay"
+            android:layout_width="171dp"
+            android:layout_height="match_parent"
+            android:text="All day Shift"
+            android:textSize="21sp" />
+    </RadioGroup>
+
+    <Button
+        android:id="@+id/CS_WeekendCreateShift"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Create Shift"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.538"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/radioGroup2"
+        app:layout_constraintVertical_bias="0.064"
+        android:onClick="onCreateShiftClickWeekend"/>
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,4 +1,4 @@
-package com.example.shiftschedule;
+package com.example.shiftschedule.landingPage;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -7,7 +7,10 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Toast;
+
+import com.example.shiftschedule.R;
+import com.example.shiftschedule.employee.screens.employeePage;
+import com.example.shiftschedule.calendar.schedule_month_view;
 
 public class landingPage extends AppCompatActivity {
 

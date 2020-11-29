@@ -4,10 +4,9 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.widget.Toast;
 
-import com.example.shiftschedule.Available;
-import com.example.shiftschedule.Employee;
-import com.example.shiftschedule.EmployeeAvailability;
-import com.google.gson.Gson;
+import com.example.shiftschedule.Available.Available;
+import com.example.shiftschedule.employee.Employee;
+import com.example.shiftschedule.employee.EmployeeAvailability;
 
 import java.util.Calendar;
 
@@ -19,9 +18,8 @@ public class WeekdayShifts extends Shift {
     - Maximum Number of Employees is only 2.
     - There can be a maximum of 2 shifts per day of this shift type (an Opening shift and a Closing Shift)
      */
-    protected int numOfEmployees = 2;
-    protected Calendar calendar;
-
+    public int numOfEmployees = 2;
+    protected String type = "Weekday";
     public WeekdayShifts(String dateOfShift, Available timeOfShift,String dayOfWeek, Calendar calendarDate) {
         super(dateOfShift, timeOfShift, dayOfWeek, calendarDate);
     }

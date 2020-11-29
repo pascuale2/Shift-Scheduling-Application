@@ -1,4 +1,4 @@
-package com.example.shiftschedule;
+package com.example.shiftschedule.employee.screens;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -10,10 +10,12 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
-import android.widget.LinearLayout;
-import android.widget.ScrollView;
 import android.widget.Toast;
 
+import com.example.shiftschedule.R;
+import com.example.shiftschedule.adapters.employeeAdapter;
+import com.example.shiftschedule.employee.Employee;
+import com.example.shiftschedule.listItem;
 import com.google.gson.Gson;
 
 import java.util.ArrayList;
@@ -63,7 +65,7 @@ public class employeePage extends AppCompatActivity {
             viewEmployee = gson.fromJson(json, Employee.class);
             listItem item = new listItem (entry.getKey(), "Full Name: " + viewEmployee.getFullName() + "\n"  +
                     "Trained Opening: " + viewEmployee.isTrainedOpening() +
-                    "\nTrained Closing: " + viewEmployee.isTrainedClosing(), viewEmployee.trainedClosing, viewEmployee.trainedClosing);
+                    "\nTrained Closing: " + viewEmployee.isTrainedClosing(), viewEmployee.isTrainedClosing(), viewEmployee.isTrainedOpening());
             items.add(item);
             //this.employees.add(viewEmployee);
             //this.displayEmployees.add(viewEmployee.toString());

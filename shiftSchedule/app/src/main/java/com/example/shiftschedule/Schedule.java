@@ -1,7 +1,9 @@
 package com.example.shiftschedule;
+import com.example.shiftschedule.Available.Available;
+import com.example.shiftschedule.employee.EmployeeAvailability;
+
 import java.util.ArrayList;
 import java.time.*;
-import java.util.Calendar;
 
 public class Schedule {
 
@@ -95,94 +97,94 @@ public class Schedule {
             for (EmployeeAvailability ea: assignEmpl) {
 
                 if(nameDow.compareTo("Sunday") == 0){
-                    if(ea.Sunday == Available.OPENING && ea.Sunday == Available.CLOSING && ea.Sunday == Available.ALLDAY){
+                    if(ea.getSunday() == Available.OPENING && ea.getSunday() == Available.CLOSING && ea.getSunday() == Available.ALLDAY){
                         assignBusyDay.add(new BusyDaySchedule(ea.email,i));
                     } else {
-                    if (ea.Sunday == Available.OPENING){
+                    if (ea.getSunday() == Available.OPENING){
                         assignDay.add(new DaySchedule(ea.email,"",i));
-                    } else if (ea.Sunday == Available.CLOSING){
+                    } else if (ea.getSunday() == Available.CLOSING){
                         assignDay.add(new DaySchedule("",ea.email,i));
-                    } else if (ea.Sunday == Available.CANNOT){
+                    } else if (ea.getSunday() == Available.CANNOT){
                         assignDay.add(new DaySchedule("","",i));
                     }
                     }
                 }
 
                 else if(nameDow.compareTo("Monday") == 1){
-                    if(ea.Monday == Available.OPENING && ea.Monday == Available.CLOSING && ea.Monday == Available.ALLDAY){
+                    if(ea.getMonday() == Available.OPENING && ea.getMonday() == Available.CLOSING && ea.getMonday() == Available.ALLDAY){
                         assignBusyDay.add(new BusyDaySchedule(ea.email,i));
                     } else {
-                        if (ea.Monday == Available.OPENING){
+                        if (ea.getMonday() == Available.OPENING){
                             assignDay.add(new DaySchedule(ea.email,"",i));
-                        } else if (ea.Monday == Available.CLOSING){
+                        } else if (ea.getMonday() == Available.CLOSING){
                             assignDay.add(new DaySchedule("",ea.email,i));
-                        } else if (ea.Monday == Available.CANNOT){
+                        } else if (ea.getMonday() == Available.CANNOT){
                             assignDay.add(new DaySchedule("","",i));
                         }
                     }
 
                 } else if(nameDow.compareTo("Tuesday") == 2){
-                    if(ea.Tuesday == Available.OPENING && ea.Tuesday == Available.CLOSING && ea.Tuesday == Available.ALLDAY){
+                    if(ea.getTuesday() == Available.OPENING && ea.getTuesday() == Available.CLOSING && ea.getTuesday() == Available.ALLDAY){
                         assignBusyDay.add(new BusyDaySchedule(ea.email,i));
                     } else {
-                        if (ea.Tuesday == Available.OPENING){
+                        if (ea.getTuesday() == Available.OPENING){
                             assignDay.add(new DaySchedule(ea.email,"",i));
-                        } else if (ea.Tuesday == Available.CLOSING){
+                        } else if (ea.getTuesday() == Available.CLOSING){
                             assignDay.add(new DaySchedule("",ea.email,i));
-                        } else if (ea.Tuesday == Available.CANNOT){
+                        } else if (ea.getTuesday() == Available.CANNOT){
                             assignDay.add(new DaySchedule("","",i));
                         }
                     }
 
                 }
                 else if(nameDow.compareTo("Wednesday") == 3){
-                    if(ea.Wednesday == Available.OPENING && ea.Wednesday == Available.CLOSING && ea.Wednesday == Available.ALLDAY){
+                    if(ea.getWednesday() == Available.OPENING && ea.getWednesday() == Available.CLOSING && ea.getWednesday() == Available.ALLDAY){
                         assignBusyDay.add(new BusyDaySchedule(ea.email,i));
                     } else {
-                        if (ea.Wednesday == Available.OPENING){
+                        if (ea.getWednesday() == Available.OPENING){
                             assignDay.add(new DaySchedule(ea.email,"",i));
-                        } else if (ea.Wednesday == Available.CLOSING){
+                        } else if (ea.getWednesday() == Available.CLOSING){
                             assignDay.add(new DaySchedule("",ea.email,i));
-                        } else if (ea.Wednesday == Available.CANNOT){
+                        } else if (ea.getWednesday() == Available.CANNOT){
                             assignDay.add(new DaySchedule("","",i));
                         }
                     }
 
                 } else if(nameDow.compareTo("Thursday") == 4){
-                    if(ea.Thursday == Available.OPENING && ea.Thursday == Available.CLOSING && ea.Thursday == Available.ALLDAY){
+                    if(ea.getThursday() == Available.OPENING && ea.getThursday() == Available.CLOSING && ea.getThursday() == Available.ALLDAY){
                         assignBusyDay.add(new BusyDaySchedule(ea.email,i));
                     } else {
-                        if (ea.Thursday == Available.OPENING){
+                        if (ea.getThursday() == Available.OPENING){
                             assignDay.add(new DaySchedule(ea.email,"",i));
-                        } else if (ea.Thursday == Available.CLOSING){
+                        } else if (ea.getThursday() == Available.CLOSING){
                             assignDay.add(new DaySchedule("",ea.email,i));
-                        } else if (ea.Thursday == Available.CANNOT){
+                        } else if (ea.getThursday() == Available.CANNOT){
                             assignDay.add(new DaySchedule("","",i));
                         }
                     }
 
                 } else if(nameDow.compareTo("Friday") == 5){
-                    if(ea.Friday == Available.OPENING && ea.Friday == Available.CLOSING && ea.Friday == Available.ALLDAY){
+                    if(ea.getFriday() == Available.OPENING && ea.getFriday() == Available.CLOSING && ea.getFriday() == Available.ALLDAY){
                         assignBusyDay.add(new BusyDaySchedule(ea.email,i));
                     } else {
-                        if (ea.Friday == Available.OPENING){
+                        if (ea.getFriday() == Available.OPENING){
                             assignDay.add(new DaySchedule(ea.email,"",i));
-                        } else if (ea.Friday == Available.CLOSING){
+                        } else if (ea.getFriday() == Available.CLOSING){
                             assignDay.add(new DaySchedule("",ea.email,i));
-                        } else if (ea.Friday == Available.CANNOT){
+                        } else if (ea.getFriday() == Available.CANNOT){
                             assignDay.add(new DaySchedule("","",i));
                         }
                     }
 
                 } else if(nameDow.compareTo("Saturday") == 6){
-                    if(ea.Saturday == Available.OPENING && ea.Saturday == Available.CLOSING && ea.Saturday == Available.ALLDAY){
+                    if(ea.getSaturday() == Available.OPENING && ea.getSaturday() == Available.CLOSING && ea.getSaturday() == Available.ALLDAY){
                         assignBusyDay.add(new BusyDaySchedule(ea.email,i));
                     } else {
-                        if (ea.Saturday == Available.OPENING){
+                        if (ea.getSaturday() == Available.OPENING){
                             assignDay.add(new DaySchedule(ea.email,"",i));
-                        } else if (ea.Saturday == Available.CLOSING){
+                        } else if (ea.getSaturday() == Available.CLOSING){
                             assignDay.add(new DaySchedule("",ea.email,i));
-                        } else if (ea.Saturday == Available.CANNOT){
+                        } else if (ea.getSaturday() == Available.CANNOT){
                             assignDay.add(new DaySchedule("","",i));
                         }
                     }

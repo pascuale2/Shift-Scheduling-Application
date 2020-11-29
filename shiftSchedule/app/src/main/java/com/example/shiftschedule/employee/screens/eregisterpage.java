@@ -1,4 +1,4 @@
-package com.example.shiftschedule;
+package com.example.shiftschedule.employee.screens;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
@@ -18,12 +18,13 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.example.shiftschedule.R;
+import com.example.shiftschedule.employee.Employee;
+import com.example.shiftschedule.employee.EmployeeAvailability;
 import com.google.gson.Gson;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
 public class eregisterpage extends AppCompatActivity {
 
@@ -39,6 +40,8 @@ public class eregisterpage extends AppCompatActivity {
                     Did not work. Crashed the whole application for some reason and couldn't figure out why in time.
                  -  Also testing Employee Storage implementation.
      */
+    // TODO: Can initialize their availability to default values here. That way can call check availability functions straight from this class.
+    // If I do this, then I need to pass the context everytime to helper function, (I am NOT passing context as a hard pass to create an Employee class).
     private final int maxYear = 2020;
     private EditText email;
     private EditText emailConfirm;
@@ -50,6 +53,8 @@ public class eregisterpage extends AppCompatActivity {
     private EditText sex;
     private Button submitButton;
     private SharedPreferences storage;
+    private SharedPreferences employeeAvailabilityStorage;                     // variable holding the sharedPreferences storage file
+    private EmployeeAvailability availability;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -110,7 +115,7 @@ public class eregisterpage extends AppCompatActivity {
 
         // grab preferences file to hold information
         storage = getApplicationContext().getSharedPreferences("employeeStorage", Context.MODE_PRIVATE);
-
+        employeeAvailabilityStorage = getApplicationContext().getSharedPreferences("availability", Context.MODE_PRIVATE);
         // the following 3 lines is to remove any test register's that you guys have done. (Since it will stay in memory forever)
         // uncomment these 3 lines and make sure before you exit app you go to register page to wipe
         //SharedPreferences.Editor editor = storage.edit();
@@ -252,9 +257,19 @@ public class eregisterpage extends AppCompatActivity {
             editor.commit();
             // showing success popup notification
 
+            // Create the employees basic availability upon employee creation -->
+            if (!employeeAvailabilityStorage.contains(newEmployee.getEmail())) {
+                availability = new EmployeeAvailability(newEmployee.getEmail());
+                // save changes to Availability storage
+                SharedPreferences.Editor availabilityEditor = employeeAvailabilityStorage.edit();
+                String availabilityString = gson.toJson(this.availability);
+                availabilityEditor.putString(newEmployee.getEmail(), availabilityString);
+                editor.commit();
+            }
             String success = "Register was successful";
             Toast toast = Toast.makeText(getApplicationContext(), success, Toast.LENGTH_LONG);
             toast.show();
+
             Intent intent = new Intent(eregisterpage.this, employeePage.class);
             startActivity(intent);
             finish();

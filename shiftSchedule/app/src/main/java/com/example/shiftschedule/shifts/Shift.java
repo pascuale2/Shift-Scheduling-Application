@@ -3,15 +3,15 @@ package com.example.shiftschedule.shifts;
 import android.content.Context;
 import android.content.SharedPreferences;
 
-import com.example.shiftschedule.Available;
-import com.example.shiftschedule.Employee;
-import com.example.shiftschedule.EmployeeAvailability;
+import com.example.shiftschedule.Available.Available;
+import com.example.shiftschedule.employee.Employee;
+import com.example.shiftschedule.employee.EmployeeAvailability;
 import com.google.gson.Gson;
 
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
-import java.util.UUID;
+
 public abstract class Shift {
     /*
      Abstract Class created By Alex Creencia
@@ -59,6 +59,8 @@ public abstract class Shift {
         return this.date;
     }
 
+    public String getDay() { return day; }
+
     public EmployeeAvailability getAvailability(Employee employee, Context context) {
         Gson gson = new Gson();
         availabilityStorage = context.getSharedPreferences("availability", Context.MODE_PRIVATE);
@@ -67,6 +69,9 @@ public abstract class Shift {
         return availability;
     }
 
+    public Calendar getCalendar() {
+         return this.calendar;
+    }
     // function which checks the availability of an employee attached to shift.
     public abstract boolean checkAvailability(EmployeeAvailability availability);
      // function which checks if at least 1 employee is trained to work that shift.

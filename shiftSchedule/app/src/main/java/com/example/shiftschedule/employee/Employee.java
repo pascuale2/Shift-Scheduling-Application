@@ -1,6 +1,10 @@
-package com.example.shiftschedule;
+package com.example.shiftschedule.employee;
 
-import java.time.LocalDate;
+import android.content.Context;
+import android.content.SharedPreferences;
+
+import com.example.shiftschedule.Available.Available;
+import com.google.gson.Gson;
 
 /*
   Employee class created by Alex Creencia
@@ -18,10 +22,10 @@ public class Employee {
      trainedClosing, bool               - Flag whether the employee is trained for closing
      */
     protected String email;
-    private String fullName;
-    private int Age;
-    private String Sex;
-    private String dateEmployed;
+    protected String fullName;
+    protected int Age;
+    protected String Sex;
+    protected String dateEmployed;
     protected boolean trainedOpening;
     protected boolean trainedClosing;
     // Create a new screen
@@ -71,6 +75,22 @@ public class Employee {
     public void setTrainedClosing(boolean trainedClosing) { this.trainedClosing = trainedClosing; }
 
     public void setTrainedOpening(boolean trainedOpening) { this.trainedOpening = trainedOpening; }
+
+
+    public EmployeeAvailability getEmployeeAvailability(Context context) {
+        SharedPreferences availabilityStorage = context.getSharedPreferences("availability", Context.MODE_PRIVATE);
+        String availabilityString = availabilityStorage.getString(getEmail(), "");
+        Gson gson = new Gson();
+        EmployeeAvailability availability = gson.fromJson(availabilityString, EmployeeAvailability.class);
+        return availability;
+    }
+
+    public Available getAvailabilityMonday(Context context) {
+        EmployeeAvailability availability = getEmployeeAvailability(context);
+        return availability.getMonday();
+    }
+
+
 
     @Override
     public String toString() {
