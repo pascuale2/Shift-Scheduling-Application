@@ -19,9 +19,8 @@ public class WeekdayShifts extends Shift {
     - Maximum Number of Employees is only 2.
     - There can be a maximum of 2 shifts per day of this shift type (an Opening shift and a Closing Shift)
      */
-    protected int numOfEmployees = 2;
-    protected Calendar calendar;
-
+    public int numOfEmployees = 2;
+    protected String type = "Weekday";
     public WeekdayShifts(String dateOfShift, Available timeOfShift,String dayOfWeek, Calendar calendarDate) {
         super(dateOfShift, timeOfShift, dayOfWeek, calendarDate);
     }

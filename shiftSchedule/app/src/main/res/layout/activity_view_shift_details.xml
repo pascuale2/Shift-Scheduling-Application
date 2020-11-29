@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".viewShiftDetails">
+
+    <TextView
+        android:id="@+id/VS_employeesLabel"
+        android:layout_width="290dp"
+        android:layout_height="29dp"
+        android:text="Employees working this shift:"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.438"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/VS_dayText"
+        app:layout_constraintVertical_bias="0.041" />
+
+    <TextView
+        android:id="@+id/VS_Date"
+        android:layout_width="153dp"
+        android:layout_height="29dp"
+        android:text="SAMPLE DATE"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.276"
+        app:layout_constraintStart_toEndOf="@+id/VS_DateLabel"
+        app:layout_constraintTop_toBottomOf="@+id/VSDetails_toolbar"
+        app:layout_constraintVertical_bias="0.026" />
+
+    <TextView
+        android:id="@+id/VS_dayText"
+        android:layout_width="153dp"
+        android:layout_height="29dp"
+        android:layout_marginTop="17dp"
+        android:text="SAMPLE DAY"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.276"
+        app:layout_constraintStart_toEndOf="@+id/VS_dayOfWeekLabel"
+        app:layout_constraintTop_toBottomOf="@+id/VS_Date"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/VSDetails_toolbar"
+        android:layout_width="409dp"
+        android:layout_height="wrap_content"
+        android:background="?attr/colorPrimary"
+        android:minHeight="?attr/actionBarSize"
+        android:theme="?attr/actionBarTheme"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/VSD_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Shift Details"
+        android:textColor="#FFFFFF"
+        android:textSize="21sp"
+        app:layout_constraintBottom_toBottomOf="@+id/VSDetails_toolbar"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/VS_DateLabel"
+        android:layout_width="131dp"
+        android:layout_height="29dp"
+        android:text="Date of Shift:"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.117"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/VSDetails_toolbar"
+        app:layout_constraintVertical_bias="0.026" />
+
+    <TextView
+        android:id="@+id/VS_dayOfWeekLabel"
+        android:layout_width="165dp"
+        android:layout_height="28dp"
+        android:text="Day of the week:"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.117"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/VS_DateLabel"
+        app:layout_constraintVertical_bias="0.032" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/VS_RecyclerView"
+        android:layout_width="353dp"
+        android:layout_height="292dp"
+        android:layout_marginBottom="156dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/VS_employeesLabel"
+        app:layout_constraintVertical_bias="0.588" />
+
+    <Button
+        android:id="@+id/VS_addEmployees"
+        android:layout_width="151dp"
+        android:layout_height="40dp"
+        android:text="Add Employee(s)"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.681"
+        app:layout_constraintStart_toEndOf="@+id/VS_goBack"
+        app:layout_constraintTop_toBottomOf="@+id/VS_RecyclerView"
+        app:layout_constraintVertical_bias="0.089" />
+
+    <Button
+        android:id="@+id/VS_goBack"
+        android:layout_width="109dp"
+        android:layout_height="46dp"
+        android:layout_marginStart="60dp"
+        android:text="Go back"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/VS_RecyclerView"
+        app:layout_constraintVertical_bias="0.099" />
+
+    <Button
+        android:id="@+id/VS_deleteShift"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Delete Shift"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/VS_RecyclerView"
+        app:layout_constraintVertical_bias="0.688" />
+</androidx.constraintlayout.widget.ConstraintLayout>

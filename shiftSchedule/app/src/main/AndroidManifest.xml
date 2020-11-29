@@ -9,7 +9,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".createShiftWeekday"></activity>
+        <activity android:name=".listShiftOnDay"></activity>
+        <activity android:name=".viewShiftDetails" />
+        <activity android:name=".createShiftWeekend" />
+        <activity android:name=".createShiftWeekday" />
         <activity
             android:name=".schedule_month_view"
             android:label="@string/title_activity_schedule_month_view"

@@ -66,6 +66,9 @@ public class employeeAdapter extends RecyclerView.Adapter<employeeAdapter.ViewHo
             // Get position of the row/item clicked to know which one was clicked.
             int position = getAdapterPosition();
             listItem item = itemList.get(position);
+            if (context instanceof employeePage) {
+                Toast.makeText(context, "This is selected from employeePage", Toast.LENGTH_SHORT).show();
+            }
             Intent intent = new Intent((context), employeeDetails.class);
             intent.putExtra("email", item.getName());
             intent.putExtra("closing", item.getClosing());

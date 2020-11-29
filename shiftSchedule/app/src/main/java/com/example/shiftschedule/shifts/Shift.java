@@ -59,6 +59,8 @@ public abstract class Shift {
         return this.date;
     }
 
+    public String getDay() { return day; }
+
     public EmployeeAvailability getAvailability(Employee employee, Context context) {
         Gson gson = new Gson();
         availabilityStorage = context.getSharedPreferences("availability", Context.MODE_PRIVATE);
@@ -67,6 +69,9 @@ public abstract class Shift {
         return availability;
     }
 
+    public Calendar getCalendar() {
+         return this.calendar;
+    }
     // function which checks the availability of an employee attached to shift.
     public abstract boolean checkAvailability(EmployeeAvailability availability);
      // function which checks if at least 1 employee is trained to work that shift.

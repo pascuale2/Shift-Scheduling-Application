@@ -13,15 +13,14 @@ import android.widget.RadioButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.shiftschedule.shifts.WeekdayShifts;
+import com.example.shiftschedule.shifts.WeekendShifts;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
 import java.util.Calendar;
 
-public class createShiftWeekday extends AppCompatActivity {
-
-    /*
+public class createShiftWeekend extends AppCompatActivity {
+/*
     MEMBER VARIABLES                                                        Description
     String Day of week:
     Possible values for Day of the Week:
@@ -41,22 +40,20 @@ public class createShiftWeekday extends AppCompatActivity {
     protected String dayOfWeek;
     protected String dateOfShift;
     protected Available timeOfShift;
-    protected RadioButton openingRadioButton;
-    protected RadioButton closingRadioButton;
     protected SharedPreferences shiftStorage;
     protected TextView displayDate;
-    //TODO: Create rest of member
-    // variables, and physically create a weekday Shift Object. Only testing on calendar has been done in regards to this (User cannot create a shift on a date in the past. Need to return Calendar in resultIntent if done.
+    protected RadioButton allday;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_create_shift_weekday);
-        this.submitShiftButton = (Button) findViewById(R.id.createShiftButton);
-        this.openingRadioButton = (RadioButton) findViewById(R.id.CSWeek_openingRadio);
-        this.closingRadioButton = (RadioButton) findViewById(R.id.CSWeek_closingRadio);
+        setContentView(R.layout.activity_create_shift_weekend);
+        // Point member variables/attributes to elements within the xml file
+        this.timeOfShift = Available.ALLDAY;
+        this.displayDate = (TextView)findViewById(R.id.CS_WeekendDate);
         this.shiftStorage = getApplicationContext().getSharedPreferences("shifts", Context.MODE_PRIVATE);
-        this.displayDate = (TextView) findViewById(R.id.CSWeek_dateLabel);
-        this.cancelShiftButton = (Button) findViewById(R.id.CSWeek_cancelButton);
+        this.allday = (RadioButton) findViewById(R.id.CS_WeekendAllDay);
+        this.submitShiftButton = (Button) findViewById(R.id.CS_WeekendCreateShift);
+        this.cancelShiftButton = (Button) findViewById(R.id.CS_WeekendCancel);
         Bundle bundle = getIntent().getExtras();
         if (bundle != null) {
             this.dateOfShift = bundle.getString("date");
@@ -71,52 +68,44 @@ public class createShiftWeekday extends AppCompatActivity {
             //Toast.makeText(createShiftWeekday.this, selectedCalendarAsString, Toast.LENGTH_SHORT).show();
             //Toast.makeText(createShiftWeekday.this, this.dateOfShift, Toast.LENGTH_SHORT).show();
         }
+
+    }
+    public void onCancelShiftButtonClickWeekend(View view) {
+        setResult(RESULT_CANCELED);
+        finish();
     }
 
-    public Available selectTimeOfShift() {
-        if (this.openingRadioButton.isChecked())
-            return Available.OPENING;
-        else if (this.closingRadioButton.isChecked())
-            return Available.CLOSING;
+
+    public Available getTimeSelected() {
+        if (this.allday.isChecked())
+            return Available.ALLDAY;
         else
             return Available.CANNOT;
     }
 
-    public void onCancelShiftButtonClickWeek(View view) {
-        setResult(RESULT_CANCELED);
-        finish();
-    }
-    public void onCreateShiftClickWeek(View view) {
-        // Create necessary parameters to create Shift Object
-        this.timeOfShift = selectTimeOfShift();
+    public void onCreateShiftClickWeekend(View view) {
+        this.timeOfShift = getTimeSelected();
         if (this.timeOfShift.equals(Available.CANNOT)) {
-            Toast.makeText(createShiftWeekday.this, "ERROR: MUST select a time for shift on " + this.dateOfShift, Toast.LENGTH_SHORT).show();
+            Toast.makeText(createShiftWeekend.this, "ERROR: MUST select a time for shift on " + this.dateOfShift, Toast.LENGTH_SHORT).show();
             return;
         }
         String shift_id = this.dateOfShift + "-" + this.timeOfShift;
         if (this.shiftStorage.contains(shift_id)) {
-            Toast.makeText(createShiftWeekday.this, "ERROR: Shift at selected time and date already exists", Toast.LENGTH_SHORT).show();
+            Toast.makeText(createShiftWeekend.this, "ERROR: Shift at selected time and date already exists", Toast.LENGTH_SHORT).show();
             return;
         }
-        //Toast.makeText(createShiftWeekday.this, shift_id, Toast.LENGTH_SHORT).show();
-
-        // create Shift object.
-        WeekdayShifts weekDayShift = new WeekdayShifts(this.dateOfShift, this.timeOfShift, this.dayOfWeek, this.selectedCalendarDate);
-        Toast.makeText(createShiftWeekday.this, "This is shift ID for weekdayShift Object: " + weekDayShift.getShiftID(), Toast.LENGTH_SHORT).show();
+        WeekendShifts weekendShift = new WeekendShifts(this.dateOfShift, this.timeOfShift, this.dayOfWeek, this.selectedCalendarDate);
         Gson gson = new Gson();
         SharedPreferences.Editor editor = shiftStorage.edit();
         GsonBuilder builder = new GsonBuilder();
-        String shiftToString = gson.toJson(weekDayShift);
+        String shiftToString = gson.toJson(weekendShift);
         Log.i("shift Object", "this is the shift object: " + shiftToString);
-        editor.putString(weekDayShift.getShiftID(), shiftToString);
+        editor.putString(weekendShift.getShiftID(), shiftToString);
         editor.commit();
-        // Returning the calendar to display onto the Calendar. Also need to store it
         String returnedCalendarDateString = gson.toJson(this.selectedCalendarDate);
         Intent resultIntent = new Intent();
         resultIntent.putExtra("result", returnedCalendarDateString);
         setResult(RESULT_OK, resultIntent);
         finish();
     }
-
-
 }
