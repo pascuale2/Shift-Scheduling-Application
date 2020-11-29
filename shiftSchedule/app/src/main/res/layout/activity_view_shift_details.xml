@@ -17,7 +17,7 @@
         app:layout_constraintHorizontal_bias="0.438"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/VS_dayText"
-        app:layout_constraintVertical_bias="0.041" />
+        app:layout_constraintVertical_bias="0.115" />
 
     <TextView
         android:id="@+id/VS_Date"
@@ -97,8 +97,8 @@
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/VS_RecyclerView"
-        android:layout_width="353dp"
-        android:layout_height="292dp"
+        android:layout_width="349dp"
+        android:layout_height="245dp"
         android:layout_marginBottom="156dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -127,7 +127,8 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/VS_RecyclerView"
-        app:layout_constraintVertical_bias="0.099" />
+        app:layout_constraintVertical_bias="0.099"
+        android:onClick="VSOnBackClick"/>
 
     <Button
         android:id="@+id/VS_deleteShift"
@@ -139,5 +140,18 @@
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/VS_RecyclerView"
-        app:layout_constraintVertical_bias="0.688" />
+        app:layout_constraintVertical_bias="0.688"
+        android:onClick="VSOnDeleteShiftClick"/>
+
+    <TextView
+        android:id="@+id/VS_TimeShift"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="SAMPLE TIME OF SHIFT"
+        app:layout_constraintBottom_toTopOf="@+id/VS_employeesLabel"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.478"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/VSDetails_toolbar"
+        app:layout_constraintVertical_bias="0.793" />
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,5 +1,10 @@
 package com.example.shiftschedule;
 
+import android.content.Context;
+import android.content.SharedPreferences;
+
+import com.google.gson.Gson;
+
 import java.time.LocalDate;
 
 /*
@@ -71,6 +76,21 @@ public class Employee {
     public void setTrainedClosing(boolean trainedClosing) { this.trainedClosing = trainedClosing; }
 
     public void setTrainedOpening(boolean trainedOpening) { this.trainedOpening = trainedOpening; }
+
+
+    public EmployeeAvailability getEmployeeAvailability(Context context) {
+        SharedPreferences availabilityStorage = context.getSharedPreferences("availability", Context.MODE_PRIVATE);
+        String availabilityString = availabilityStorage.getString(getEmail(), "");
+        Gson gson = new Gson();
+        EmployeeAvailability availability = gson.fromJson(availabilityString, EmployeeAvailability.class);
+        return availability;
+    }
+
+    public Available getAvailabilityMonday(Context context) {
+        EmployeeAvailability availability = getEmployeeAvailability(context);
+        return availability.getMonday();
+    }
+
 
     @Override
     public String toString() {

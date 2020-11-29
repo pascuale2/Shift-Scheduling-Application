@@ -6,6 +6,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -38,11 +39,16 @@ public class viewShiftDetails extends AppCompatActivity {
 
     protected TextView dateText;
     protected TextView dayOfWeekText;
+    protected TextView timeOfShift;
     private RecyclerView employeeList;
     private RecyclerView.LayoutManager layoutManager;
     private RecyclerView.Adapter adapter;
     private List<listItem> items;
 
+
+    //TODO: I need to use employee adapter to list employees, and also add employees to the shift.
+    // 1) Add functionality to add employees button to add employees to shift based on their availability.
+    // 2) List employees in a Recycler view. ==> Probably reuse employee adapter code. However, I Need to find a way to disable the change availability functionality.
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -52,6 +58,7 @@ public class viewShiftDetails extends AppCompatActivity {
         this.employeeAvailabilityStorage = getApplicationContext().getSharedPreferences("availability", Context.MODE_PRIVATE);
         this.dateText = (TextView) findViewById(R.id.VS_Date);
         this.dayOfWeekText = (TextView) findViewById(R.id.VS_dayText);
+        this.timeOfShift = (TextView) findViewById(R.id.VS_TimeShift);
         Bundle bundle = getIntent().getExtras();
         if (bundle != null) {
             this.shift_id = bundle.getString("shift_id");
@@ -105,5 +112,19 @@ public class viewShiftDetails extends AppCompatActivity {
             default:
                 return 2;
         }
+    }
+    public void OnAddEmployeeShiftClick(View view) {
+        // Start Intent for adding employees.
+
+    }
+    public void VSOnBackClick(View view) {
+        finish();
+    }
+    public void VSOnDeleteShiftClick(View view) {
+        SharedPreferences.Editor editor = this.shiftStorage.edit();
+        editor.remove(this.shift_id);
+        editor.apply();
+        finish();
+        //TODO: Jaxon: I need you to update the calendar so that the event icon is removed from the day the shift used to be on.
     }
 }
