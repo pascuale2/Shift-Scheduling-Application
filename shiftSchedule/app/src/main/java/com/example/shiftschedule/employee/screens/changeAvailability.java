@@ -1,6 +1,7 @@
 package com.example.shiftschedule.employee.screens;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
 
 import android.content.Context;
 import android.content.SharedPreferences;
@@ -8,6 +9,8 @@ import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.view.Window;
+import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.Toast;
 
@@ -15,6 +18,7 @@ import com.example.shiftschedule.Available.Available;
 import com.example.shiftschedule.R;
 import com.example.shiftschedule.bottomLayouts.availabilityBottomSheetDialog;
 import com.example.shiftschedule.employee.EmployeeAvailability;
+import com.example.shiftschedule.login.MainActivity;
 import com.google.gson.Gson;
 
 public class changeAvailability extends AppCompatActivity implements availabilityBottomSheetDialog.BottomSheetListener {
@@ -93,6 +97,10 @@ public class changeAvailability extends AppCompatActivity implements availabilit
                 availability = new EmployeeAvailability(email);
             }
         }
+        // Changes the taskbar color to match the background
+        Window window = changeAvailability.this.getWindow();
+        window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
+        window.setStatusBarColor(ContextCompat.getColor(changeAvailability.this, R.color.hot_pink));
     }
 
     public void initializeButtonColor(EmployeeAvailability availability) {
