@@ -46,6 +46,8 @@ public class employeePage extends AppCompatActivity {
         employeeList.setLayoutManager(layoutManager);
         employeeList.setHasFixedSize(true);
         items = new ArrayList<listItem>();
+        // uncomment following line to clear employee cache
+        //clearEmployeeList();
         // grabbing elements from the storage
         fillList(employeeList);
     }
@@ -65,7 +67,7 @@ public class employeePage extends AppCompatActivity {
             viewEmployee = gson.fromJson(json, Employee.class);
             listItem item = new listItem (entry.getKey(), "Full Name: " + viewEmployee.getFullName() + "\n"  +
                     "Trained Opening: " + viewEmployee.isTrainedOpening() +
-                    "\nTrained Closing: " + viewEmployee.isTrainedClosing(), viewEmployee.isTrainedClosing(), viewEmployee.isTrainedOpening());
+                    "\nTrained Closing: " + viewEmployee.isTrainedClosing(), viewEmployee.isTrainedClosing(), viewEmployee.isTrainedOpening(), "");
             items.add(item);
             //this.employees.add(viewEmployee);
             //this.displayEmployees.add(viewEmployee.toString());
@@ -83,6 +85,11 @@ public class employeePage extends AppCompatActivity {
         finish();
     }
 
+    public void clearEmployeeList() {
+        SharedPreferences.Editor editor = storage.edit();
+        editor.clear();
+        editor.commit();
+    }
     public void LPgoBack (View view){
         finish();
     }

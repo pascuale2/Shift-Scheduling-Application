@@ -110,38 +110,38 @@
         android:id="@+id/VS_addEmployees"
         android:layout_width="151dp"
         android:layout_height="40dp"
+        android:onClick="OnAddEmployeeShiftClick"
         android:text="Add Employee(s)"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.681"
-        app:layout_constraintStart_toEndOf="@+id/VS_goBack"
+        app:layout_constraintHorizontal_bias="0.111"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/VS_RecyclerView"
-        app:layout_constraintVertical_bias="0.089" />
+        app:layout_constraintVertical_bias="0.187" />
 
     <Button
         android:id="@+id/VS_goBack"
         android:layout_width="109dp"
         android:layout_height="46dp"
-        android:layout_marginStart="60dp"
+        android:onClick="VSOnBackClick"
         android:text="Go back"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toBottomOf="@+id/VSDetails_toolbar"
+        app:layout_constraintEnd_toStartOf="@+id/VSD_title"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/VS_RecyclerView"
-        app:layout_constraintVertical_bias="0.099"
-        android:onClick="VSOnBackClick"/>
+        app:layout_constraintTop_toTopOf="parent" />
 
     <Button
         android:id="@+id/VS_deleteShift"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:onClick="VSOnDeleteShiftClick"
         android:text="Delete Shift"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintHorizontal_bias="0.202"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/VS_RecyclerView"
-        app:layout_constraintVertical_bias="0.688"
-        android:onClick="VSOnDeleteShiftClick"/>
+        app:layout_constraintVertical_bias="0.725" />
 
     <TextView
         android:id="@+id/VS_TimeShift"
@@ -154,4 +154,32 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/VSDetails_toolbar"
         app:layout_constraintVertical_bias="0.793" />
+
+    <Button
+        android:id="@+id/SD_setHoliday"
+        android:layout_width="161dp"
+        android:layout_height="46dp"
+        android:layout_marginStart="44dp"
+        android:layout_marginTop="24dp"
+        android:onClick="VSOnHolidayClick"
+        android:text="Designate Holiday"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toEndOf="@+id/VS_addEmployees"
+        app:layout_constraintTop_toBottomOf="@+id/VS_RecyclerView"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <Button
+        android:id="@+id/VS_confirmChanges"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Confirm Changes"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.63"
+        app:layout_constraintStart_toEndOf="@+id/VS_deleteShift"
+        app:layout_constraintTop_toBottomOf="@+id/SD_setHoliday"
+        app:layout_constraintVertical_bias="0.23"
+        android:onClick="VSOnConfirmChanges"/>
 </androidx.constraintlayout.widget.ConstraintLayout>

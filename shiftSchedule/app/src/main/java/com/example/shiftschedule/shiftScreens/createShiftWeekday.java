@@ -104,7 +104,7 @@ public class createShiftWeekday extends AppCompatActivity {
 
         // create Shift object.
         WeekdayShifts weekDayShift = new WeekdayShifts(this.dateOfShift, this.timeOfShift, this.dayOfWeek, this.selectedCalendarDate);
-        Toast.makeText(createShiftWeekday.this, "This is shift ID for weekdayShift Object: " + weekDayShift.getShiftID(), Toast.LENGTH_SHORT).show();
+        //Toast.makeText(createShiftWeekday.this, "This is shift ID for weekdayShift Object: " + weekDayShift.getShiftID(), Toast.LENGTH_SHORT).show();
         Gson gson = new Gson();
         SharedPreferences.Editor editor = shiftStorage.edit();
         GsonBuilder builder = new GsonBuilder();

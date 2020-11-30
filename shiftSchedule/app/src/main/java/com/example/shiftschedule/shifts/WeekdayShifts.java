@@ -18,10 +18,10 @@ public class WeekdayShifts extends Shift {
     - Maximum Number of Employees is only 2.
     - There can be a maximum of 2 shifts per day of this shift type (an Opening shift and a Closing Shift)
      */
-    public int numOfEmployees = 2;
-    protected String type = "Weekday";
+    //protected String type = "Weekday";
     public WeekdayShifts(String dateOfShift, Available timeOfShift,String dayOfWeek, Calendar calendarDate) {
         super(dateOfShift, timeOfShift, dayOfWeek, calendarDate);
+        this.type = "Weekday";
     }
 
 
@@ -35,24 +35,20 @@ public class WeekdayShifts extends Shift {
     @Override
     public void addEmployee(Employee employee, Context context) {
         if (this.employeeList.contains(employee)) {
-            Toast.makeText(context, "WORKING ERROR: Employee already working this shift", Toast.LENGTH_SHORT).show();
+            Toast.makeText(context, "WORKING ERROR: Employee already working this shift. Employee cannot be added.", Toast.LENGTH_SHORT).show();
             return;
         }
         else if (this.employeeList.size() >= numOfEmployees) {
             Toast.makeText(context, "MAXIMUM EMPLOYEE ERROR: cannot add employee: Maximum Number of employees already reached", Toast.LENGTH_SHORT).show();
+            return;
         }
         else if (!checkIfAvailabilitySet(employee, context)) {
             Toast.makeText(context, "NO AVAILABILITY ERROR: This employees availability is not set. Please set this employees availability", Toast.LENGTH_SHORT).show();
+            return;
         }
         else {
-            EmployeeAvailability availability = getAvailability(employee, context);
-            if (checkAvailability(availability)) {
-                this.employeeList.add(employee);
-                Toast.makeText(context, "Need " + (numOfEmployees - this.employeeList.size()) + " more employees to fill shift", Toast.LENGTH_SHORT).show();
-            }
-            else {
-                Toast.makeText(context, "AVAILABILITY ERROR: This employee cannot work on " + this.day + "at this specific time", Toast.LENGTH_SHORT).show();
-            }
+            this.employeeList.add(employee);
+            Toast.makeText(context, "Need " + (numOfEmployees - this.employeeList.size()) + " more employees to fill shift", Toast.LENGTH_SHORT).show();
         }
     }
 

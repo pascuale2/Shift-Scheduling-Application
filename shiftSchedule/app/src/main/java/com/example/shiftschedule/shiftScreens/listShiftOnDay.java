@@ -58,7 +58,7 @@ public class listShiftOnDay extends AppCompatActivity {
     }
     public void fillList(RecyclerView shifts){
         for (String elem: shift_ids) {
-            listItem item = new listItem(elem, this.dayOfWeek, true, true);
+            listItem item = new listItem(elem, this.dayOfWeek, true, true, "");
             items.add(item);
         }
         this.adapter = new shiftAdapter(this, items);
