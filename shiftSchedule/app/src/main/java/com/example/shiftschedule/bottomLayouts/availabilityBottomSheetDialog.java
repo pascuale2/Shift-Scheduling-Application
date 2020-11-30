@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.RadioButton;
 
 import androidx.annotation.NonNull;
@@ -24,10 +25,10 @@ public class availabilityBottomSheetDialog extends BottomSheetDialogFragment {
         Bundle mArgs = getArguments();
         final String day = mArgs.getString("day");
         //Toast.makeText(getContext(), day, Toast.LENGTH_LONG).show();
-        RadioButton canOpen = view.findViewById(R.id.openRadioButton);
-        RadioButton canClose = view.findViewById(R.id.closingRadioButton);
-        RadioButton canAllday = view.findViewById(R.id.alldayRadioButton);
-        RadioButton cannot = view.findViewById(R.id.cannotRadioButton);
+        Button canOpen = view.findViewById(R.id.openRadioButton);
+        Button canClose = view.findViewById(R.id.closingRadioButton);
+        Button canAllday = view.findViewById(R.id.alldayRadioButton);
+        Button cannot = view.findViewById(R.id.cannotRadioButton);
         //final Toast toast = Toast.makeText(getContext(), "Availability Saved", Toast.LENGTH_SHORT);
         canOpen.setOnClickListener(new View.OnClickListener() {
 

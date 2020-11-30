@@ -325,6 +325,7 @@ public class schedule_month_view extends AppCompatActivity {
                 String selectedCalendarDateString = data.getStringExtra("result");
                 Gson gson = new Gson();
                 Calendar selectedCalendarDate = gson.fromJson(selectedCalendarDateString, Calendar.class);
+                //TODO: Make Cases for displaying # of shifts
                 mEventDays.add(new EventDay(selectedCalendarDate, R.drawable.schedule));
                 final com.applandeo.materialcalendarview.CalendarView calendarView = (CalendarView) findViewById(R.id.calendar_month_view);
                 calendarView.setEvents(mEventDays);

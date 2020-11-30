@@ -1,6 +1,7 @@
 package com.example.shiftschedule.shiftScreens;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
 
 import android.content.Context;
 import android.content.Intent;
@@ -8,6 +9,8 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.view.Window;
+import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.RadioButton;
 import android.widget.TextView;
@@ -70,7 +73,10 @@ public class createShiftWeekend extends AppCompatActivity {
             //Toast.makeText(createShiftWeekday.this, selectedCalendarAsString, Toast.LENGTH_SHORT).show();
             //Toast.makeText(createShiftWeekday.this, this.dateOfShift, Toast.LENGTH_SHORT).show();
         }
-
+        // Changes the taskbar color to match the background
+        Window window = createShiftWeekend.this.getWindow();
+        window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
+        window.setStatusBarColor(ContextCompat.getColor(createShiftWeekend.this, R.color.hot_pink));
     }
     public void onCancelShiftButtonClickWeekend(View view) {
         setResult(RESULT_CANCELED);

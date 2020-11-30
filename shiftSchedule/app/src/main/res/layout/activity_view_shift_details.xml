@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/register_employee"
     tools:context=".shiftScreens.viewShiftDetails">
 
     <TextView
@@ -11,46 +12,51 @@
         android:layout_width="290dp"
         android:layout_height="29dp"
         android:text="Employees working this shift:"
+        android:textColor="#FFFFFF"
         android:textSize="18sp"
+        android:gravity="center"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.438"
+        app:layout_constraintHorizontal_bias="0.436"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/VS_dayText"
-        app:layout_constraintVertical_bias="0.115" />
+        app:layout_constraintVertical_bias="0.065" />
 
     <TextView
         android:id="@+id/VS_Date"
-        android:layout_width="153dp"
-        android:layout_height="29dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:text="SAMPLE DATE"
+        android:textColor="#FFFFFF"
         android:textSize="18sp"
+        android:gravity="center"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.276"
+        app:layout_constraintHorizontal_bias="0.585"
         app:layout_constraintStart_toEndOf="@+id/VS_DateLabel"
         app:layout_constraintTop_toBottomOf="@+id/VSDetails_toolbar"
         app:layout_constraintVertical_bias="0.026" />
 
     <TextView
         android:id="@+id/VS_dayText"
-        android:layout_width="153dp"
-        android:layout_height="29dp"
-        android:layout_marginTop="17dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
         android:text="SAMPLE DAY"
+        android:textColor="#FFFFFF"
         android:textSize="18sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.276"
+        app:layout_constraintHorizontal_bias="0.541"
         app:layout_constraintStart_toEndOf="@+id/VS_dayOfWeekLabel"
         app:layout_constraintTop_toBottomOf="@+id/VS_Date"
         app:layout_constraintVertical_bias="0.0" />
 
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/VSDetails_toolbar"
-        android:layout_width="409dp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="?attr/colorPrimary"
+        android:background="@drawable/gradient"
         android:minHeight="?attr/actionBarSize"
         android:theme="?attr/actionBarTheme"
         app:layout_constraintEnd_toEndOf="parent"
@@ -62,8 +68,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Shift Details"
+        android:fontFamily="sans-serif-medium"
         android:textColor="#FFFFFF"
-        android:textSize="21sp"
+        android:textSize="32sp"
         app:layout_constraintBottom_toBottomOf="@+id/VSDetails_toolbar"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -72,8 +79,9 @@
     <TextView
         android:id="@+id/VS_DateLabel"
         android:layout_width="131dp"
-        android:layout_height="29dp"
+        android:layout_height="wrap_content"
         android:text="Date of Shift:"
+        android:textColor="#FFFFFF"
         android:textSize="18sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -85,101 +93,110 @@
     <TextView
         android:id="@+id/VS_dayOfWeekLabel"
         android:layout_width="165dp"
-        android:layout_height="28dp"
+        android:layout_height="wrap_content"
         android:text="Day of the week:"
+        android:textColor="#FFFFFF"
         android:textSize="18sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.117"
+        app:layout_constraintHorizontal_bias="0.073"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/VS_DateLabel"
-        app:layout_constraintVertical_bias="0.032" />
+        app:layout_constraintVertical_bias="0.015" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/VS_RecyclerView"
-        android:layout_width="349dp"
-        android:layout_height="245dp"
+        android:layout_width="367dp"
+        android:layout_height="251dp"
         android:layout_marginBottom="156dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.514"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/VS_employeesLabel"
-        app:layout_constraintVertical_bias="0.588" />
+        app:layout_constraintVertical_bias="0.0" />
 
-    <Button
-        android:id="@+id/VS_addEmployees"
-        android:layout_width="151dp"
-        android:layout_height="40dp"
-        android:onClick="OnAddEmployeeShiftClick"
-        android:text="Add Employee(s)"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.111"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/VS_RecyclerView"
-        app:layout_constraintVertical_bias="0.187" />
-
-    <Button
+    <ImageButton
         android:id="@+id/VS_goBack"
-        android:layout_width="109dp"
-        android:layout_height="46dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="#00FFFFFF"
         android:onClick="VSOnBackClick"
-        android:text="Go back"
+        android:src="@drawable/back_btn"
         app:layout_constraintBottom_toBottomOf="@+id/VSDetails_toolbar"
         app:layout_constraintEnd_toStartOf="@+id/VSD_title"
+        app:layout_constraintHorizontal_bias="0.086"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.458" />
 
     <Button
         android:id="@+id/VS_deleteShift"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:background="#00FFFFFF"
+        android:fontFamily="sans-serif-medium"
         android:onClick="VSOnDeleteShiftClick"
         android:text="Delete Shift"
+        android:textColor="#FFFFFF"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.202"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/VS_RecyclerView"
-        app:layout_constraintVertical_bias="0.725" />
+        app:layout_constraintVertical_bias="1.0" />
 
     <TextView
         android:id="@+id/VS_TimeShift"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="SAMPLE TIME OF SHIFT"
+        android:textColor="#FFFFFF"
+        android:fontFamily="sans-serif-medium"
         app:layout_constraintBottom_toTopOf="@+id/VS_employeesLabel"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.478"
+        app:layout_constraintHorizontal_bias="0.502"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/VSDetails_toolbar"
-        app:layout_constraintVertical_bias="0.793" />
-
-    <Button
-        android:id="@+id/SD_setHoliday"
-        android:layout_width="161dp"
-        android:layout_height="46dp"
-        android:layout_marginStart="44dp"
-        android:layout_marginTop="24dp"
-        android:onClick="VSOnHolidayClick"
-        android:text="Designate Holiday"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toEndOf="@+id/VS_addEmployees"
-        app:layout_constraintTop_toBottomOf="@+id/VS_RecyclerView"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintVertical_bias="1.0" />
 
     <Button
         android:id="@+id/VS_confirmChanges"
-        android:layout_width="wrap_content"
+        android:layout_width="120dp"
         android:layout_height="wrap_content"
-        android:text="Confirm Changes"
+        android:background="@drawable/hot_pink_corner"
+        android:onClick="VSOnConfirmChanges"
+        android:text="Confirm\nChanges"
+        android:textColor="#FFFFFF"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.488"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/VS_addEmployees" />
+
+    <Button
+        android:id="@+id/VS_addEmployees"
+        android:layout_width="120dp"
+        android:layout_height="wrap_content"
+        android:background="@drawable/btn_bg_employee"
+        android:fontFamily="sans-serif-medium"
+        android:onClick="OnAddEmployeeShiftClick"
+        android:text="Add\nEmployee(s)"
+        android:textColor="#FFFFFF"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/VS_confirmChanges"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/VS_RecyclerView" />
+
+    <Button
+        android:id="@+id/SD_setHoliday"
+        android:layout_width="120dp"
+        android:layout_height="wrap_content"
+        android:background="@drawable/orange_corner"
+        android:fontFamily="sans-serif-medium"
+        android:onClick="VSOnHolidayClick"
+        android:text="Designate\nHoliday"
+        android:textColor="#FFFFFF"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.63"
-        app:layout_constraintStart_toEndOf="@+id/VS_deleteShift"
-        app:layout_constraintTop_toBottomOf="@+id/SD_setHoliday"
-        app:layout_constraintVertical_bias="0.23"
-        android:onClick="VSOnConfirmChanges"/>
+        app:layout_constraintStart_toEndOf="@+id/VS_confirmChanges"
+        app:layout_constraintTop_toBottomOf="@+id/VS_RecyclerView" />
 </androidx.constraintlayout.widget.ConstraintLayout>

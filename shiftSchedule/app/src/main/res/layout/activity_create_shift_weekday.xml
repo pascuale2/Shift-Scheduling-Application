@@ -4,13 +4,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/login_background"
     tools:context=".shiftScreens.createShiftWeekday">
 
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar2"
-        android:layout_width="409dp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="?attr/colorPrimary"
+        android:background="@color/hot_pink"
         android:minHeight="?attr/actionBarSize"
         android:theme="?attr/actionBarTheme"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -24,99 +25,134 @@
         android:id="@+id/createShiftLabel"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Create Shift"
+        android:fontFamily="sans-serif-medium"
+        android:text="Create Weekday Shift"
         android:textColor="#F3F3F3"
-        android:textSize="21sp"
+        android:textSize="36sp"
         app:layout_constraintBottom_toBottomOf="@+id/toolbar2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
+        android:id="@+id/dateShiftTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="sans-serif-medium"
+        android:text="Date of Shift: "
+        android:textColor="#FFFFFF"
+        android:textSize="21sp"
+        app:layout_constraintBottom_toTopOf="@+id/timeShiftLabel"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/toolbar2"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <TextView
         android:id="@+id/timeShiftLabel"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Time of the Shift:"
-        android:textSize="22sp"
+        android:fontFamily="sans-serif-medium"
+        android:text="Time of Shift:"
+        android:textColor="#FFFFFF"
+        android:textSize="36sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.489"
+        app:layout_constraintHorizontal_bias="0.503"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/toolbar2"
-        app:layout_constraintVertical_bias="0.226" />
+        app:layout_constraintVertical_bias="0.179" />
+
+    <Button
+        android:id="@+id/CSWeek_cancelButton"
+        android:layout_width="84dp"
+        android:layout_height="37dp"
+        android:background="#00FFFFFF"
+        android:onClick="onCancelShiftButtonClickWeek"
+        android:text="cancel"
+        android:textColor="#FFFFFF"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/createShiftButton"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <Button
+        android:id="@+id/createShiftButton"
+        android:layout_width="223dp"
+        android:layout_height="34dp"
+        android:background="@drawable/btn_bg_employee"
+        android:fontFamily="sans-serif-medium"
+        android:onClick="onCreateShiftClickWeek"
+        android:text="Create Shift"
+        android:textColor="#FFFFFF"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/radioGroup"
+        app:layout_constraintVertical_bias="0.23000002" />
 
     <RadioGroup
         android:id="@+id/radioGroup"
-        android:layout_width="178dp"
-        android:layout_height="92dp"
+        android:layout_width="180dp"
+        android:layout_height="wrap_content"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.502"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/timeShiftLabel"
-        app:layout_constraintVertical_bias="0.069">
+        app:layout_constraintVertical_bias="0.081">
 
         <RadioButton
             android:id="@+id/CSWeek_openingRadio"
             android:layout_width="match_parent"
             android:layout_height="49dp"
-            android:text="OPENING SHIFT" />
+            android:layout_margin="2dp"
+            android:background="@drawable/hot_pink_corner"
+            android:buttonTint="#FFFFFF"
+            android:fontFamily="sans-serif-medium"
+            android:gravity="center"
+            android:shadowColor="#BD9D9D"
+            android:text="OPENING SHIFT"
+            android:textColor="#FFFFFF"
+            android:textColorHighlight="#FFFFFF"
+            android:textColorHint="#FFFFFF"
+            android:textColorLink="#FFFFFF"
+            android:textCursorDrawable="@drawable/input_field_bg"
+            android:textSize="18sp" />
 
         <RadioButton
             android:id="@+id/CSWeek_closingRadio"
             android:layout_width="match_parent"
             android:layout_height="49dp"
-            android:text="CLOSING SHIFT" />
+            android:layout_margin="2dp"
+            android:background="@drawable/orange_corner"
+            android:buttonTint="#FFFFFF"
+            android:fontFamily="sans-serif-medium"
+            android:gravity="center"
+            android:text="CLOSING SHIFT"
+            android:textColor="#FFFFFF"
+            android:textColorHighlight="#FFFFFF"
+            android:textColorHint="#FFFFFF"
+            android:textColorLink="#FFFFFF"
+            android:textCursorDrawable="@drawable/input_field_bg"
+            android:textSize="18sp" />
 
     </RadioGroup>
-
-    <TextView
-        android:id="@+id/dateShiftTitle"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Date of Shift: "
-        android:textSize="21sp"
-        app:layout_constraintBottom_toTopOf="@+id/timeShiftLabel"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/toolbar2"
-        app:layout_constraintVertical_bias="0.079" />
 
     <TextView
         android:id="@+id/CSWeek_dateLabel"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:fontFamily="sans-serif-medium"
         android:text="SAMPLE DATE"
+        android:textColor="#FFFFFF"
         android:textSize="21sp"
         app:layout_constraintBottom_toTopOf="@+id/timeShiftLabel"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.502"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/dateShiftTitle"
-        app:layout_constraintVertical_bias="0.369" />
+        app:layout_constraintVertical_bias="0.0" />
 
-    <Button
-        android:id="@+id/createShiftButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Create Shift"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.481"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/radioGroup"
-        app:layout_constraintVertical_bias="0.145"
-        android:onClick="onCreateShiftClickWeek"/>
-
-    <Button
-        android:id="@+id/CSWeek_cancelButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="cancel"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.467"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/createShiftButton"
-        app:layout_constraintVertical_bias="0.104"
-        android:onClick="onCancelShiftButtonClickWeek"/>
 </androidx.constraintlayout.widget.ConstraintLayout>
