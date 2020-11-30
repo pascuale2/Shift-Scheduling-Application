@@ -9,7 +9,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".shiftScreens.listShiftOnDay"></activity>
+        <activity android:name=".shiftScreens.shiftAddEmployees"></activity>
+        <activity android:name=".shiftScreens.listShiftOnDay" />
         <activity android:name=".shiftScreens.viewShiftDetails" />
         <activity android:name=".shiftScreens.createShiftWeekend" />
         <activity android:name=".shiftScreens.createShiftWeekday" />

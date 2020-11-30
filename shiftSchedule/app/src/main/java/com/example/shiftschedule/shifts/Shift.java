@@ -25,6 +25,7 @@ public abstract class Shift {
      availabilityStorage          The file containing the availabilities of all employees registered in the app
      Day                          The day of the week of the shift (Monday, Tuesday, Wednesday, Friday, etc etc)
      Calendar calendar            The calendar representation of the shift Date. Only for visual purposes on custom Calendar objects.
+     special                      Determines whether shift is special (like a holiday) or not.
      */
      protected String shiftID;
      public Available time;
@@ -33,12 +34,16 @@ public abstract class Shift {
      protected String day;
      protected List<Employee> employeeList = new ArrayList<>();
      protected Calendar calendar;
+     protected boolean special;
+    public int numOfEmployees = 2;
+    protected String type;
      public Shift(String dateOfShift, Available timeOfShift, String dayOfWeek, Calendar calendarDate) {
          this.shiftID = dateOfShift + "-" + timeOfShift;
          this.time = timeOfShift;
          this.date = dateOfShift;
          this.day = dayOfWeek;
          this.calendar = calendarDate;
+         this.special = false;
      }
 
 
@@ -61,6 +66,13 @@ public abstract class Shift {
 
     public String getDay() { return day; }
 
+    public boolean checkIfEmployeeAlreadyWorks(Employee employee) {
+         if (this.employeeList.contains(employee))
+             return true;
+         else
+             return false;
+    }
+
     public EmployeeAvailability getAvailability(Employee employee, Context context) {
         Gson gson = new Gson();
         availabilityStorage = context.getSharedPreferences("availability", Context.MODE_PRIVATE);
@@ -72,9 +84,17 @@ public abstract class Shift {
     public Calendar getCalendar() {
          return this.calendar;
     }
+    public boolean getSpecial() {
+         return this.special;
+    }
     // function which checks the availability of an employee attached to shift.
     public abstract boolean checkAvailability(EmployeeAvailability availability);
      // function which checks if at least 1 employee is trained to work that shift.
     public abstract boolean checkIfShiftCovered();
+    public void setSpecial() {
+        this.special = true;
+        this.numOfEmployees = 3;
+    }
+
 
 }

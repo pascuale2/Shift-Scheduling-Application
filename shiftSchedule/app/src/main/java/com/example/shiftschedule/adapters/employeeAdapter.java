@@ -2,6 +2,7 @@ package com.example.shiftschedule.adapters;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -13,9 +14,14 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.shiftschedule.R;
+import com.example.shiftschedule.employee.Employee;
 import com.example.shiftschedule.employee.screens.employeeDetails;
 import com.example.shiftschedule.employee.screens.employeePage;
 import com.example.shiftschedule.listItem;
+import com.example.shiftschedule.shiftScreens.viewShiftDetails;
+import com.example.shiftschedule.shifts.WeekdayShifts;
+import com.example.shiftschedule.shifts.WeekendShifts;
+import com.google.gson.Gson;
 
 import java.util.List;
 
@@ -57,7 +63,6 @@ public class employeeAdapter extends RecyclerView.Adapter<employeeAdapter.ViewHo
         public TextView name;
         public TextView description;
 
-
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
 
@@ -66,20 +71,116 @@ public class employeeAdapter extends RecyclerView.Adapter<employeeAdapter.ViewHo
             description = itemView.findViewById(R.id.LRdescription);
         }
 
+        protected int checkShiftType(String json) {
+            String[] types = {"Holiday", "Weekend", "Weekday"};
+            int i;
+            for (i = 0; i < types.length; i++) {
+                if (json.contains(types[i])) break;
+            }
+            switch (i) {
+                case 0:
+                    return 0;
+                case 1:
+                    return 1;
+                default:
+                    return 2;
+            }
+        }
+
+        // Function method for handling adding employees.
+
         @Override
         public void onClick(View v) {
             // Get position of the row/item clicked to know which one was clicked.
             int position = getAdapterPosition();
             listItem item = itemList.get(position);
             if (context instanceof employeePage) {
-                Toast.makeText(context, "This is selected from employeePage", Toast.LENGTH_SHORT).show();
+                //Toast.makeText(context, "This is selected from employeePage", Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent((context), employeeDetails.class);
+                intent.putExtra("email", item.getName());
+                intent.putExtra("closing", item.getClosing());
+                intent.putExtra("opening", item.getOpening());
+                Log.d("Before Details", "before Starting Details");
+                context.startActivity(intent);
             }
-            Intent intent = new Intent((context), employeeDetails.class);
-            intent.putExtra("email", item.getName());
-            intent.putExtra("closing", item.getClosing());
-            intent.putExtra("opening", item.getOpening());
-            Log.d("Before Details", "before Starting Details");
-            context.startActivity(intent);
+            else if (context instanceof viewShiftDetails){
+                //notifyDataSetChanged();
+                // Perhaps delete employee if they click on it from the shift.
+                SharedPreferences shiftStorage = context.getSharedPreferences("shifts", Context.MODE_PRIVATE);;
+                SharedPreferences employeeStorage = context.getSharedPreferences("employeeStorage", Context.MODE_PRIVATE);
+                String employeeJson = employeeStorage.getString(item.getName(), "");
+                SharedPreferences.Editor shiftEditor = shiftStorage.edit();
+                Gson gson = new Gson();
+                Employee employee = gson.fromJson(employeeJson, Employee.class);
+                String shiftJson = shiftStorage.getString(item.getHiddenInfo(), "");
+                int checkFlag = checkShiftType(shiftJson);
+                if (checkFlag == 2) {
+                    //TODO: The
+                    WeekdayShifts weekday = gson.fromJson(shiftJson, WeekdayShifts.class);
+                    weekday.getEmployeeList().remove(employee);
+                    shiftJson = gson.toJson(weekday);
+                    shiftEditor.putString(item.getHiddenInfo(), shiftJson);
+                    shiftEditor.commit();
+                    itemList.remove(getAdapterPosition());
+                    notifyItemRemoved(position);
+                    notifyItemRangeChanged(position,getItemCount());
+                }
+                else {
+                    WeekendShifts weekend = gson.fromJson(shiftJson, WeekendShifts.class);
+                    weekend.getEmployeeList().remove(employee);
+                    shiftJson = gson.toJson(weekend);
+                    shiftEditor.putString(item.getHiddenInfo(), shiftJson);
+                    shiftEditor.commit();
+                    itemList.remove(getAdapterPosition());
+                    notifyItemRemoved(position);
+                    notifyItemRangeChanged(position,getItemCount());
+                    //notifyDataSetChanged();
+                }
+            }
+            else {
+                // this is for shiftAddEmployees
+
+                SharedPreferences shiftStorage = context.getSharedPreferences("shifts", Context.MODE_PRIVATE);;
+                SharedPreferences employeeStorage = context.getSharedPreferences("employeeStorage", Context.MODE_PRIVATE);
+                SharedPreferences.Editor employeeEditor = employeeStorage.edit();
+                SharedPreferences.Editor shiftEditor = shiftStorage.edit();
+                Gson gson = new Gson();
+                // I don't ahve the shift_id in this context.
+                String shiftJson = shiftStorage.getString(item.getHiddenInfo(), "");
+                String employeeJson = employeeStorage.getString(item.getName(), "");
+                Employee employee = gson.fromJson(employeeJson, Employee.class);
+                int checkFlag = checkShiftType(shiftJson);
+                //TODO: Need to verify whether there are enough people ( I set a toast message, you can decide whether thats enough or not.
+                // Also need to check if at least one person is trained to work that shift (if AllDay then we need someone trained for both opening and closing)
+                if (checkFlag == 2) {
+                    WeekdayShifts weekday = gson.fromJson(shiftJson, WeekdayShifts.class);
+                    Log.i("ShiftDuplicate", "This is the EmployeeList before adding again" + weekday.getEmployeeList().toString());
+                    Log.i("containsCheck", String.valueOf(weekday.getEmployeeList().contains(employee)));
+                    weekday.addEmployee(employee, context);
+                    // also need to save shift changes.
+                    //Toast.makeText(context, "Adding " + item.getName() + " to work this shift.", Toast.LENGTH_SHORT).show();
+                    Log.i("ShiftEmployee", "This is the shift employeeList: " + weekday.getEmployeeList().toString());
+                    // saving changes to file
+                    shiftJson = gson.toJson(weekday);
+                    shiftEditor.putString(item.getHiddenInfo(), shiftJson);
+                    shiftEditor.commit();
+                    itemList.remove(getAdapterPosition());
+                    notifyDataSetChanged();
+                } else {
+                    WeekendShifts weekend = gson.fromJson(shiftJson, WeekendShifts.class);
+                    weekend.addEmployee(employee, context);
+                    // also need to save shift changes.
+                    //Toast.makeText(context, "Adding " + item.getName() + " to work this shift.", Toast.LENGTH_SHORT).show();
+                    Log.i("ShiftEmployee", "This is the shift employeeList: " + weekend.getEmployeeList().toString());
+                    // saving changes to file
+                    shiftJson = gson.toJson(weekend);
+                    shiftEditor.putString(item.getHiddenInfo(), shiftJson);
+                    shiftEditor.commit();
+                    itemList.remove(getAdapterPosition());
+                    notifyDataSetChanged();
+                }
+                //Toast.makeText(context, "You selected an employee to add to shift", Toast.LENGTH_SHORT).show();
+            }
             //Toast.makeText(context, item.getName(), Toast.LENGTH_LONG).show();
 
         }

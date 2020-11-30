@@ -46,7 +46,8 @@ public class schedule_month_view extends AppCompatActivity {
     protected List<EventDay> mEventDays = new ArrayList<>();
     protected EventDay test;
     protected SharedPreferences shiftStorage;
-
+    public static final int DRAW_SHIFT = 1;
+    public static final int VIEW_SHIFT = 2;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -111,7 +112,6 @@ public class schedule_month_view extends AppCompatActivity {
                 Button holidayShift = (Button) view.findViewById(R.id.holiday_button);
                 Button viewShiftButton = (Button) view.findViewById(R.id.view_button);
                 ImageButton cancelAlert = (ImageButton) view.findViewById(R.id.CAL_cancel_button);
-
                 if (Calendar.getInstance().after(clickedDayCalendar)) {
                     Toast.makeText(schedule_month_view.this, "WARNING: Cannot create a Shift on a past date or current date", Toast.LENGTH_SHORT).show();
                     createShift.setEnabled(false);
@@ -311,8 +311,15 @@ public class schedule_month_view extends AppCompatActivity {
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == VIEW_SHIFT) {
+            if (resultCode == RESULT_OK) {
 
-        if (requestCode == 1) {
+            }
+            if (resultCode == RESULT_CANCELED) {
+                Toast.makeText(schedule_month_view.this, "Failed to save changes to shift", Toast.LENGTH_SHORT).show();
+            }
+        }
+        if (requestCode == DRAW_SHIFT) {
             if (resultCode == RESULT_OK) {
                 // Ideally in here we will be getting back the Calendar if they chose to create a shift
                 String selectedCalendarDateString = data.getStringExtra("result");

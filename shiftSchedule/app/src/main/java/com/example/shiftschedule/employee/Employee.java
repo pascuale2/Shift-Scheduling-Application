@@ -6,6 +6,8 @@ import android.content.SharedPreferences;
 import com.example.shiftschedule.Available.Available;
 import com.google.gson.Gson;
 
+import java.util.Objects;
+
 /*
   Employee class created by Alex Creencia
   October 16, 2020
@@ -90,7 +92,19 @@ public class Employee {
         return availability.getMonday();
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Employee employee = (Employee) o;
+        return email.equals(employee.email) &&
+                Objects.equals(dateEmployed, employee.dateEmployed);
+    }
 
+    @Override
+    public int hashCode() {
+        return Objects.hash(email, dateEmployed);
+    }
 
     @Override
     public String toString() {
@@ -115,4 +129,5 @@ public class Employee {
 
          */
     }
+
 }

@@ -273,7 +273,6 @@ public class eregisterpage extends AppCompatActivity {
             Intent intent = new Intent(eregisterpage.this, employeePage.class);
             startActivity(intent);
             finish();
-
         } else {
             Log.d("notMatch", "before toast");
             String errorMessage;
