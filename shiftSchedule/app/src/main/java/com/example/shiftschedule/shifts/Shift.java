@@ -35,8 +35,8 @@ public abstract class Shift {
      protected List<Employee> employeeList = new ArrayList<>();
      protected Calendar calendar;
      protected boolean special;
-    public int numOfEmployees = 2;
-    protected String type;
+     public int numOfEmployees = 2;
+     protected String type;
      public Shift(String dateOfShift, Available timeOfShift, String dayOfWeek, Calendar calendarDate) {
          this.shiftID = dateOfShift + "-" + timeOfShift;
          this.time = timeOfShift;

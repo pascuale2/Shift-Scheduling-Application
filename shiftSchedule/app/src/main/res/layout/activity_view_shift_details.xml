@@ -11,13 +11,12 @@
         android:id="@+id/VS_employeesLabel"
         android:layout_width="290dp"
         android:layout_height="29dp"
+        android:gravity="center"
         android:text="Employees working this shift:"
         android:textColor="#FFFFFF"
         android:textSize="18sp"
-        android:gravity="center"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.436"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/VS_dayText"
         app:layout_constraintVertical_bias="0.065" />
@@ -26,10 +25,10 @@
         android:id="@+id/VS_Date"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:gravity="center"
         android:text="SAMPLE DATE"
         android:textColor="#FFFFFF"
         android:textSize="18sp"
-        android:gravity="center"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.585"
@@ -67,8 +66,8 @@
         android:id="@+id/VSD_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Shift Details"
         android:fontFamily="sans-serif-medium"
+        android:text="Shift Details"
         android:textColor="#FFFFFF"
         android:textSize="32sp"
         app:layout_constraintBottom_toBottomOf="@+id/VSDetails_toolbar"
@@ -130,31 +129,16 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.458" />
 
-    <Button
-        android:id="@+id/VS_deleteShift"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:background="#00FFFFFF"
-        android:fontFamily="sans-serif-medium"
-        android:onClick="VSOnDeleteShiftClick"
-        android:text="Delete Shift"
-        android:textColor="#FFFFFF"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/VS_RecyclerView"
-        app:layout_constraintVertical_bias="1.0" />
-
     <TextView
         android:id="@+id/VS_TimeShift"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:fontFamily="sans-serif-medium"
         android:text="SAMPLE TIME OF SHIFT"
         android:textColor="#FFFFFF"
-        android:fontFamily="sans-serif-medium"
+        android:textSize="22dp"
         app:layout_constraintBottom_toTopOf="@+id/VS_employeesLabel"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.502"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/VSDetails_toolbar"
         app:layout_constraintVertical_bias="1.0" />
@@ -168,23 +152,8 @@
         android:text="Confirm\nChanges"
         android:textColor="#FFFFFF"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.488"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/VS_addEmployees" />
-
-    <Button
-        android:id="@+id/VS_addEmployees"
-        android:layout_width="120dp"
-        android:layout_height="wrap_content"
-        android:background="@drawable/btn_bg_employee"
-        android:fontFamily="sans-serif-medium"
-        android:onClick="OnAddEmployeeShiftClick"
-        android:text="Add\nEmployee(s)"
-        android:textColor="#FFFFFF"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/VS_confirmChanges"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/VS_RecyclerView" />
 
     <Button
         android:id="@+id/SD_setHoliday"
@@ -198,5 +167,45 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/VS_confirmChanges"
-        app:layout_constraintTop_toBottomOf="@+id/VS_RecyclerView" />
+        app:layout_constraintTop_toBottomOf="@+id/VS_RecyclerView"
+        app:layout_constraintVertical_bias="0.162" />
+
+    <Button
+        android:id="@+id/VS_deleteShift"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="#00FFFFFF"
+        android:fontFamily="sans-serif-medium"
+        android:onClick="VSOnDeleteShiftClick"
+        android:text="Delete Shift"
+        android:textColor="#FFFFFF"
+        android:textSize="16dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.501"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/VS_RecyclerView"
+        app:layout_constraintVertical_bias="0.662" />
+
+    <Button
+        android:id="@+id/VS_addEmployees"
+        android:layout_width="120dp"
+        android:layout_height="wrap_content"
+        android:background="@drawable/btn_bg_employee"
+        android:fontFamily="sans-serif-medium"
+        android:onClick="OnAddEmployeeShiftClick"
+        android:text="Add\nEmployee(s)"
+        android:textColor="#FFFFFF"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/VS_confirmChanges"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/VS_RecyclerView"
+        app:layout_constraintVertical_bias="0.162" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_begin="192dp" />
 </androidx.constraintlayout.widget.ConstraintLayout>

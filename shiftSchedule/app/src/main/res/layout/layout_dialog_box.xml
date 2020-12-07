@@ -8,7 +8,7 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="409dp"
-        android:layout_height="237dp"
+        android:layout_height="190dp"
         android:background="@drawable/white_corner"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -18,7 +18,7 @@
             android:id="@+id/text_date"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="#894f62"
+            android:background="@color/colorPrimaryDark"
             android:fontFamily="sans-serif-medium"
             android:gravity="center"
             android:padding="10dp"
@@ -53,7 +53,7 @@
             app:layout_constraintHorizontal_bias="0.145"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.038" />
+            app:layout_constraintVertical_bias="0.050000012" />
 
         <Button
             android:id="@+id/view_button"
@@ -72,7 +72,7 @@
             android:layout_width="188dp"
             android:layout_height="38dp"
             android:layout_marginTop="8dp"
-            android:background="@drawable/btn_bg_schedule"
+            android:background="@drawable/orange_corner"
             android:fontFamily="sans-serif-medium"
             android:text="CREATE SHIFT"
             android:textColor="#FFFFFF"
@@ -81,20 +81,6 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/view_button" />
 
-        <Button
-            android:id="@+id/holiday_button"
-            android:layout_width="188dp"
-            android:layout_height="38dp"
-            android:layout_marginTop="8dp"
-            android:background="@drawable/orange_corner"
-            android:fontFamily="sans-serif-medium"
-            android:gravity="center"
-            android:text="CREATE HOLIDAY SHIFT"
-            android:textColor="#FFFFFF"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.502"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/create_button" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 

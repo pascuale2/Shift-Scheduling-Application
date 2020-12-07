@@ -13,15 +13,18 @@
 
     </com.google.android.material.appbar.AppBarLayout>
 
-    <include layout="@layout/content_schedule_month_view" />
+    <include
+        android:id="@+id/include"
+        layout="@layout/content_schedule_month_view" />
 
     <com.applandeo.materialcalendarview.CalendarView
         android:id="@+id/calendar_month_view"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         app:anotherMonthsDaysLabelsColor="#66000000"
         app:datePicker="false"
-        app:headerColor="@color/icon_orange"
+        app:headerColor="@color/colorPrimaryDark"
+        app:headerLabelColor="#FFFFFF"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.0"
@@ -35,6 +38,9 @@
         android:layout_height="wrap_content"
         android:layout_gravity="bottom|end"
         android:layout_margin="@dimen/fab_margin"
-        app:srcCompat="@android:drawable/ic_dialog_email" />
+        app:backgroundTint="@color/icon_orange"
+        app:srcCompat="@drawable/help" />
+
+
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
