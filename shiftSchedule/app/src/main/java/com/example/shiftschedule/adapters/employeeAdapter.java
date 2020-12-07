@@ -115,27 +115,21 @@ public class employeeAdapter extends RecyclerView.Adapter<employeeAdapter.ViewHo
                 String shiftJson = shiftStorage.getString(item.getHiddenInfo(), "");
                 int checkFlag = checkShiftType(shiftJson);
                 if (checkFlag == 2) {
-                    //TODO: The
                     WeekdayShifts weekday = gson.fromJson(shiftJson, WeekdayShifts.class);
                     weekday.getEmployeeList().remove(employee);
                     shiftJson = gson.toJson(weekday);
-                    shiftEditor.putString(item.getHiddenInfo(), shiftJson);
-                    shiftEditor.commit();
-                    itemList.remove(getAdapterPosition());
-                    notifyItemRemoved(position);
-                    notifyItemRangeChanged(position,getItemCount());
                 }
                 else {
                     WeekendShifts weekend = gson.fromJson(shiftJson, WeekendShifts.class);
                     weekend.getEmployeeList().remove(employee);
                     shiftJson = gson.toJson(weekend);
-                    shiftEditor.putString(item.getHiddenInfo(), shiftJson);
-                    shiftEditor.commit();
-                    itemList.remove(getAdapterPosition());
-                    notifyItemRemoved(position);
-                    notifyItemRangeChanged(position,getItemCount());
                     //notifyDataSetChanged();
                 }
+                shiftEditor.putString(item.getHiddenInfo(), shiftJson);
+                shiftEditor.commit();
+                itemList.remove(getAdapterPosition());
+                notifyItemRemoved(position);
+                notifyItemRangeChanged(position,getItemCount());
             }
             else {
                 // this is for shiftAddEmployees
@@ -145,10 +139,11 @@ public class employeeAdapter extends RecyclerView.Adapter<employeeAdapter.ViewHo
                 SharedPreferences.Editor employeeEditor = employeeStorage.edit();
                 SharedPreferences.Editor shiftEditor = shiftStorage.edit();
                 Gson gson = new Gson();
-                // I don't ahve the shift_id in this context.
+                // I don't have the shift_id in this context.
                 String shiftJson = shiftStorage.getString(item.getHiddenInfo(), "");
                 String employeeJson = employeeStorage.getString(item.getName(), "");
                 Employee employee = gson.fromJson(employeeJson, Employee.class);
+
                 int checkFlag = checkShiftType(shiftJson);
                 //TODO: Need to verify whether there are enough people ( I set a toast message, you can decide whether thats enough or not.
                 // Also need to check if at least one person is trained to work that shift (if AllDay then we need someone trained for both opening and closing)
@@ -157,7 +152,9 @@ public class employeeAdapter extends RecyclerView.Adapter<employeeAdapter.ViewHo
                     Log.i("ShiftDuplicate", "This is the EmployeeList before adding again" + weekday.getEmployeeList().toString());
                     Log.i("containsCheck", String.valueOf(weekday.getEmployeeList().contains(employee)));
                     weekday.addEmployee(employee, context);
+
                     // also need to save shift changes.
+
                     //Toast.makeText(context, "Adding " + item.getName() + " to work this shift.", Toast.LENGTH_SHORT).show();
                     Log.i("ShiftEmployee", "This is the shift employeeList: " + weekday.getEmployeeList().toString());
                     // saving changes to file
@@ -179,10 +176,7 @@ public class employeeAdapter extends RecyclerView.Adapter<employeeAdapter.ViewHo
                     itemList.remove(getAdapterPosition());
                     notifyDataSetChanged();
                 }
-                //Toast.makeText(context, "You selected an employee to add to shift", Toast.LENGTH_SHORT).show();
             }
-            //Toast.makeText(context, item.getName(), Toast.LENGTH_LONG).show();
-
         }
     }
 }

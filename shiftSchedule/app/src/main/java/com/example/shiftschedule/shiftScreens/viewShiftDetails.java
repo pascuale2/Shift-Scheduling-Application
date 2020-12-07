@@ -94,7 +94,6 @@ public class viewShiftDetails extends AppCompatActivity {
                 this.viewShift = gson.fromJson(json, WeekdayShifts.class);
                 // some methods are locked out of the abstract shift class, thus need to create a duplicate of child Data type.
                 WeekdayShifts detailed = gson.fromJson(json, WeekdayShifts.class);
-
             }
             else {
                 // Holiday shift
@@ -106,15 +105,14 @@ public class viewShiftDetails extends AppCompatActivity {
         }
         fillList(employeeList);
         if (this.viewShift.getEmployeeList().isEmpty()) {
-            Toast.makeText(viewShiftDetails.this, "WARNING: No employees working this shift", Toast.LENGTH_SHORT).show();
+            Toast.makeText(viewShiftDetails.this, "WARNING: NO EMPLOYEES WORKING SHIFT", Toast.LENGTH_SHORT).show();
         }
         else if (this.shiftType == 2 && (this.viewShift.getEmployeeList().size() < 2) ) {
-            Toast.makeText(viewShiftDetails.this, "WARNING: Not enough employees working this weekday shift", Toast.LENGTH_SHORT).show();
+            Toast.makeText(viewShiftDetails.this, "WARNING: NOT ENOUGH EMPLOYEES WORKING WEEKDAY SHIFT", Toast.LENGTH_SHORT).show();
         }
         else if ( (this.shiftType == 1 || this.shiftType == 0) && (this.viewShift.getEmployeeList().size() < 3)) {
-            Toast.makeText(viewShiftDetails.this, "WARNING: Not enough employees working weekend/or holiday shift", Toast.LENGTH_SHORT).show();
+            Toast.makeText(viewShiftDetails.this, "WARNING: NOT ENOUGH EMPLOYEES WORKING WEEKEND/HOLIDAY SHIFT", Toast.LENGTH_SHORT).show();
         }
-
     }
 
     protected int checkShiftType(String json) {

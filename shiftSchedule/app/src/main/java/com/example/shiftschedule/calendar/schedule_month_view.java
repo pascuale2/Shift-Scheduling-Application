@@ -67,7 +67,6 @@ public class schedule_month_view extends AppCompatActivity {
                         .setAction("Action", null).show();
             }
         });
-        //Calendar min = new GregorianCalendar();
         this.shiftStorage = getApplicationContext().getSharedPreferences("shifts", Context.MODE_PRIVATE);
         final Calendar calendar = Calendar.getInstance();
         final com.applandeo.materialcalendarview.CalendarView calendarView = (CalendarView) findViewById(R.id.calendar_month_view);
@@ -78,8 +77,6 @@ public class schedule_month_view extends AppCompatActivity {
                 final Calendar clickedDayCalendar = eventDay.getCalendar();
                 SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
 
-
-
                 String getCurrentDateTime = sdf.format(calendar.getTime());
 
                 String unformatted_date = clickedDayCalendar.getTime().toString();
@@ -87,29 +84,19 @@ public class schedule_month_view extends AppCompatActivity {
                 final String formatted_date = split_string[5] + "/" + split_string[1] + "/" + split_string[2];
                 final String dayOfWeek = split_string[0];
 
-
-
                 //Toast.makeText(schedule_month_view.this, "This is the day of the week: " + split_string[0], Toast.LENGTH_SHORT).show();
                 // split_string[0] is the day.
 
-//                Toast.makeText(test.this, m.group(), Toast.LENGTH_SHORT).show();
-
-
-//                View view = LayoutInflater.from(schedule_month_view.this).inflate(
-//                        R.layout.layout_dialog_box,
-//                        (ConstraintLayout) findViewById(R.)
                 AlertDialog.Builder builder = new AlertDialog.Builder(schedule_month_view.this, R.style.AlertDialogTheme);
                 View view = LayoutInflater.from(schedule_month_view.this).inflate(R.layout.layout_dialog_box,
                         (ConstraintLayout) findViewById(R.id.layoutDialogContainer)
                 );
-                //builder.setTitle(formatted_date);
-                //builder.setMessage(formatted_date);
+
                 builder.setView(view);
                 final AlertDialog alertDialog = builder.create();
                 alertDialog.show();
                 TextView displayDate = (TextView) view.findViewById(R.id.text_date);
                 Button createShift = (Button) view.findViewById(R.id.create_button);
-                Button holidayShift = (Button) view.findViewById(R.id.holiday_button);
                 Button viewShiftButton = (Button) view.findViewById(R.id.view_button);
                 ImageButton cancelAlert = (ImageButton) view.findViewById(R.id.CAL_cancel_button);
                 if (Calendar.getInstance().after(clickedDayCalendar)) {
@@ -117,10 +104,6 @@ public class schedule_month_view extends AppCompatActivity {
                     createShift.setEnabled(false);
                     createShift.setClickable(false);
                     createShift.setBackgroundResource(R.drawable.disabled_corner);
-
-                    holidayShift.setEnabled(false);
-                    holidayShift.setClickable(false);
-                    holidayShift.setBackgroundResource(R.drawable.disabled_corner);
                 }
 
                 cancelAlert.setOnClickListener(new View.OnClickListener() {
@@ -136,7 +119,7 @@ public class schedule_month_view extends AppCompatActivity {
                         Bundle bundle = new Bundle();
                         bundle.putString("dayOfWeek", dayOfWeek);
                         bundle.putString("date", formatted_date);
-                        //TODO: Start new Intent here for viewing shift. Viewing shift takes you to screen with shift details. Click button to add employees.
+
                         int matches = getSelectedShift(calendarView, formatted_date);
                         // if there are 2 shifts on the same day (OPENING AND CLOSING) then we need to pass both shift id's
                         if (matches >= 2) {
@@ -159,10 +142,6 @@ public class schedule_month_view extends AppCompatActivity {
                         else {
                             Toast.makeText(schedule_month_view.this, "ERROR: Cannot view shift because shift does not exist on this date", Toast.LENGTH_SHORT).show();
                         }
-                        //Intent intent = new Intent(schedule_month_view.this, viewShiftDetails.class);
-                        // I need the shift-id. The shift-id is the formatted_date-Availability.
-                        // The problem is that there can be two shifts on one day. So when they hit view shift we need to grab the correct one.
-
                     }
                 });
 
@@ -283,15 +262,32 @@ public class schedule_month_view extends AppCompatActivity {
             boolean check = json.contains("type");
             Log.i("jsonContains: ", String.valueOf(check));
             int shiftFlag = checkShiftType(json);
+
+            // FOR WEEKEND SHIFTS
             if (shiftFlag == 1) {
                 viewShift = gson.fromJson(json, WeekendShifts.class);
                 this.shifts.add(viewShift);
-                mEventDays.add(new EventDay(viewShift.getCalendar(), R.drawable.schedule));
+
+                mEventDays.add(new EventDay(viewShift.getCalendar(), R.drawable.allday));
             }
+            // FOR WEEKDAY SHIFTS
             else if (shiftFlag == 2) {
                 viewShift = gson.fromJson(json, WeekdayShifts.class);
                 this.shifts.add(viewShift);
-                mEventDays.add(new EventDay(viewShift.getCalendar(), R.drawable.schedule));
+                String shift_timeblock = viewShift.time.toString();
+                if (shift_timeblock.matches("CLOSING")){
+                    // IF CLOSING SHIFT
+                    mEventDays.add(new EventDay(viewShift.getCalendar(), R.drawable.opening));
+                }
+                else if (shift_timeblock.matches("OPENING")){
+                    // IF OPENING SHIFT
+                    mEventDays.add(new EventDay(viewShift.getCalendar(), R.drawable.closing));
+                }
+                else{
+                    // IF OPENING & CLOSING
+                    mEventDays.add(new EventDay(viewShift.getCalendar(), R.drawable.opening_closing));
+                }
+
             }
             else {
                 Toast.makeText(schedule_month_view.this, "Failed to check contain rules", Toast.LENGTH_SHORT).show();
@@ -326,9 +322,11 @@ public class schedule_month_view extends AppCompatActivity {
                 Gson gson = new Gson();
                 Calendar selectedCalendarDate = gson.fromJson(selectedCalendarDateString, Calendar.class);
                 //TODO: Make Cases for displaying # of shifts
+
                 mEventDays.add(new EventDay(selectedCalendarDate, R.drawable.schedule));
                 final com.applandeo.materialcalendarview.CalendarView calendarView = (CalendarView) findViewById(R.id.calendar_month_view);
                 calendarView.setEvents(mEventDays);
+
                 Toast.makeText(schedule_month_view.this, "Shift Creation Successful", Toast.LENGTH_SHORT).show();
                 //Toast.makeText(schedule_month_view.this, selectedCalendarDateString, Toast.LENGTH_SHORT).show();
 

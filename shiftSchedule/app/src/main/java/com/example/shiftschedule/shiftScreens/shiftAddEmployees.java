@@ -68,6 +68,7 @@ public class shiftAddEmployees extends AppCompatActivity {
         employeeList.setLayoutManager(layoutManager);
         employeeList.setHasFixedSize(true);
         items = new ArrayList<listItem>();
+
         Gson gson = new Gson();
         Bundle bundle = getIntent().getExtras();
         if (bundle != null) {
@@ -82,7 +83,7 @@ public class shiftAddEmployees extends AppCompatActivity {
             else {
                 this.shift = gson.fromJson(shiftJson, WeekendShifts.class);
             }
-            Toast.makeText(shiftAddEmployees.this, "This is the flag: " + this.shiftFlag, Toast.LENGTH_SHORT).show();
+            // Toast.makeText(shiftAddEmployees.this, "This is the flag: " + this.shiftFlag, Toast.LENGTH_SHORT).show();
             replaceText();
         }
         fillList(employeeList);
@@ -175,11 +176,19 @@ public class shiftAddEmployees extends AppCompatActivity {
             if (!this.shift.checkIfEmployeeAlreadyWorks(viewEmployee)) {
                 // if this employee doesn't already work this shift, display them as available
                 Log.i("before availability check", "availability check");
-                if (checkAvailability(available) == true) {
+                if (checkAvailability(available)) {
+                    String shift_time_block = this.shift_id.split("-")[1];
+
                     // last check if they are currently working today already
                     Log.i("adding to list", "adding to list");
-                    listItem item = prepareListItem(viewEmployee);
-                    items.add(item);
+                    if (shift_time_block.matches("OPENING") && viewEmployee.isTrainedOpening()){
+                        listItem item = prepareListItem(viewEmployee);
+                        items.add(item);
+                    }
+                    else if (shift_time_block.matches("CLOSING") && viewEmployee.isTrainedClosing()){
+                        listItem item = prepareListItem(viewEmployee);
+                        items.add(item);
+                    }
                 }
             }
         }
