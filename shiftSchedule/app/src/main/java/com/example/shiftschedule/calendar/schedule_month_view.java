@@ -130,6 +130,7 @@ public class schedule_month_view extends AppCompatActivity {
                             Intent intent = new Intent(schedule_month_view.this, listShiftOnDay.class);
                             intent.putExtras(bundle);
                             startActivity(intent);
+                            finish();
                         }
                         else if (matches == 1) {
                             // we can view the shiftDetails right away.
@@ -138,6 +139,7 @@ public class schedule_month_view extends AppCompatActivity {
                             Intent intentViewShift = new Intent(schedule_month_view.this, viewShiftDetails.class);
                             intentViewShift.putExtras(bundle);
                             startActivity(intentViewShift);
+                            finish();
                         }
                         else {
                             Toast.makeText(schedule_month_view.this, "ERROR: Cannot view shift because shift does not exist on this date", Toast.LENGTH_SHORT).show();

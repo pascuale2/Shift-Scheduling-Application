@@ -24,7 +24,6 @@ import java.util.Map;
 
 public class employeePage extends AppCompatActivity {
 
-    //TODO: Display message if employee list is empty
 
     // members for displaying the employee list
     private RecyclerView employeeList;
@@ -68,12 +67,14 @@ public class employeePage extends AppCompatActivity {
             listItem item = new listItem (entry.getKey(), "Full Name: " + viewEmployee.getFullName() + "\n"  +
                     "Trained Opening: " + viewEmployee.isTrainedOpening() +
                     "\nTrained Closing: " + viewEmployee.isTrainedClosing(), viewEmployee.isTrainedClosing(), viewEmployee.isTrainedOpening(), "");
+
             items.add(item);
             //this.employees.add(viewEmployee);
             //this.displayEmployees.add(viewEmployee.toString());
         }
         this.adapter = new employeeAdapter(this, items);
         employees.setAdapter(adapter);
+        adapter.notifyDataSetChanged();
     }
 
     // onClick function for registerButton to take you to register Page/Activity
@@ -82,6 +83,10 @@ public class employeePage extends AppCompatActivity {
         Intent intent = new Intent(employeePage.this, eregisterpage.class);
         startActivity(intent);
         Log.d("open attempt2", "after opening");
+        finish();
+    }
+
+    public void autoUpdateList(View view){
         finish();
     }
 
