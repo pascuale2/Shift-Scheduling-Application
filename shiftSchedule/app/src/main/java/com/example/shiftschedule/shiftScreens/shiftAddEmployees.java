@@ -14,11 +14,14 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.applandeo.materialcalendarview.CalendarView;
 import com.example.shiftschedule.Available.Available;
 import com.example.shiftschedule.R;
 import com.example.shiftschedule.adapters.employeeAdapter;
+import com.example.shiftschedule.calendar.schedule_month_view;
 import com.example.shiftschedule.employee.Employee;
 import com.example.shiftschedule.employee.EmployeeAvailability;
+import com.example.shiftschedule.landingPage.landingPage;
 import com.example.shiftschedule.listItem;
 import com.example.shiftschedule.shifts.Shift;
 import com.example.shiftschedule.shifts.WeekdayShifts;
@@ -189,16 +192,54 @@ public class shiftAddEmployees extends AppCompatActivity {
                         listItem item = prepareListItem(viewEmployee);
                         items.add(item);
                     }
+
+                    else if (shift_time_block.matches("ALLDAY")) {
+                        if (viewEmployee.isTrainedClosing() || viewEmployee.isTrainedOpening()) {
+                            listItem item = prepareListItem(viewEmployee);
+                            items.add(item);
+                        }
+                    }
+
+                    else if ((!this.shift.getEmployeeList().isEmpty())){
+                        listItem item = prepareListItem(viewEmployee);
+                        items.add(item);
+                    }
+
                 }
+                // within the if statement of if they are not working
+
+            }
+            // else statement for if employees ARE working
+            else{
+
             }
         }
         Log.i("after", "after iterating through employees");
         this.adapter = new employeeAdapter(this, items);
         employees.setAdapter(this.adapter);
     }
+
+    protected String getSingleShift(CalendarView calendarView, String formatted_date) {
+        SharedPreferences.Editor editor = this.shiftStorage.edit();
+        Map<String, ?> allShifts = this.shiftStorage.getAll();
+        for (Map.Entry<String, ?> entry: allShifts.entrySet()) {
+            String shift_id = entry.getKey();
+            if (shift_id.contains(formatted_date))
+                return entry.getKey();
+        }
+        return "";
+    }
+
     public void SAEOnSaveChangesClick(View view) {
-        Intent resultIntent = new Intent();
+        Intent resultIntent = new Intent(shiftAddEmployees.this, schedule_month_view.class);
         setResult(RESULT_OK, resultIntent);
+        startActivity(resultIntent);
         finish();
+
+        /*
+        Intent resultIntent = new Intent();
+        setResult(RESULT_CANCELED, resultIntent);
+        finish();
+*/
     }
 }

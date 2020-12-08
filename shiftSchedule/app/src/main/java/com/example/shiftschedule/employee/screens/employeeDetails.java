@@ -18,7 +18,9 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.shiftschedule.R;
+import com.example.shiftschedule.calendar.schedule_month_view;
 import com.example.shiftschedule.employee.Employee;
+import com.example.shiftschedule.landingPage.landingPage;
 import com.google.gson.Gson;
 
 public class employeeDetails extends AppCompatActivity {
@@ -124,6 +126,11 @@ public class employeeDetails extends AppCompatActivity {
         Log.d("submitChanges", "Managed to submit all changes. About to commit");
         editor.commit();
         Toast.makeText(employeeDetails.this, "Changes Saved.", Toast.LENGTH_LONG).show();
+
+        Intent intent = new Intent(employeeDetails.this, employeePage.class);
+        startActivity(intent);
+        finish();
+
     }
 
 }

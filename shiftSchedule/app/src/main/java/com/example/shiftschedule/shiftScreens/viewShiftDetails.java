@@ -16,7 +16,9 @@ import android.widget.Toast;
 
 import com.example.shiftschedule.R;
 import com.example.shiftschedule.adapters.employeeAdapter;
+import com.example.shiftschedule.calendar.schedule_month_view;
 import com.example.shiftschedule.employee.Employee;
+import com.example.shiftschedule.landingPage.landingPage;
 import com.example.shiftschedule.listItem;
 import com.example.shiftschedule.shifts.Shift;
 import com.example.shiftschedule.shifts.WeekdayShifts;
@@ -103,6 +105,7 @@ public class viewShiftDetails extends AppCompatActivity {
             if (this.viewShift.getSpecial())
                 displayAsHolidayShift.setText("Shift Details: Holiday");
         }
+
         fillList(employeeList);
         if (this.viewShift.getEmployeeList().isEmpty()) {
             Toast.makeText(viewShiftDetails.this, "WARNING: NO EMPLOYEES WORKING SHIFT", Toast.LENGTH_SHORT).show();
@@ -132,11 +135,17 @@ public class viewShiftDetails extends AppCompatActivity {
     }
     public void OnAddEmployeeShiftClick(View view) {
         // Start Intent for adding employees.
+        //Intent intent = new Intent(viewShiftDetails.this, shiftAddEmployees.class);
+
+        //startActivityForResult(intent, 1);
+
         Intent intent = new Intent(viewShiftDetails.this, shiftAddEmployees.class);
         Bundle bundle = new Bundle();
         bundle.putString("shift_id", this.shift_id);
         intent.putExtras(bundle);
-        startActivityForResult(intent, 1);
+        startActivity(intent);
+        finish();
+
 
     }
     public void VSOnBackClick(View view) {
@@ -148,8 +157,9 @@ public class viewShiftDetails extends AppCompatActivity {
         SharedPreferences.Editor editor = this.shiftStorage.edit();
         editor.remove(this.shift_id);
         editor.apply();
+        Intent intent = new Intent(viewShiftDetails.this, schedule_month_view.class);
+        startActivity(intent);
         finish();
-        //TODO: Jaxon: I need you to update the calendar so that the event icon is removed from the day the shift used to be on.
     }
     public void VSOnHolidayClick(View view) {
         this.viewShift.setSpecial();
@@ -178,8 +188,8 @@ public class viewShiftDetails extends AppCompatActivity {
 
     public void VSOnConfirmChanges(View view) {
         //TODO: This is ideally where we would check whether the shift is good. We need to check if at least one employee is trained to work that shift (If allday, need 1 person to be trained opening, and another needs to be trained closing
-        Intent resultIntent = new Intent();
-        setResult(2, resultIntent);
+        Intent intent = new Intent(viewShiftDetails.this, schedule_month_view.class);
+        startActivity(intent);
         finish();
     }
     @Override
@@ -191,8 +201,9 @@ public class viewShiftDetails extends AppCompatActivity {
                 Toast.makeText(viewShiftDetails.this, "SUCCESS", Toast.LENGTH_SHORT).show();
             }
             if (resultCode == RESULT_CANCELED) {
-                Toast.makeText(viewShiftDetails.this, "Cancelled adding Employees to shift", Toast.LENGTH_SHORT).show();
+                Toast.makeText(viewShiftDetails.this, "Employees were not added to shift. Make sure they are trained!", Toast.LENGTH_LONG).show();
             }
+
         }
     }
 }

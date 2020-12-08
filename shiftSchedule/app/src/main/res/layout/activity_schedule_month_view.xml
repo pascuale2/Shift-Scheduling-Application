@@ -28,7 +28,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.0"
-        tools:layout_editor_absoluteX="0dp">
+        tools:layout_editor_absoluteX="0dp" >
 
     </com.applandeo.materialcalendarview.CalendarView>
 
@@ -41,6 +41,15 @@
         app:backgroundTint="@color/icon_orange"
         app:srcCompat="@drawable/help" />
 
+    <ImageView
+        android:id="@+id/imageView3"
+        android:layout_width="165dp"
+        android:layout_height="116dp"
+        android:layout_gravity="bottom|start"
+        android:maxWidth="165dp"
+        android:maxHeight="116dp"
+        android:paddingHorizontal="5dp"
+        app:srcCompat="@drawable/schedule_legend" />
 
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

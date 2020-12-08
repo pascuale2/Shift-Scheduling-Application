@@ -209,7 +209,8 @@ public class changeAvailability extends AppCompatActivity implements availabilit
         String json = gson.toJson(this.availability);
         editor.putString(this.email, json);
         editor.commit();
-        Toast.makeText(changeAvailability.this, "Changes Saved to File", Toast.LENGTH_LONG).show();
+        Toast.makeText(changeAvailability.this, "Changes Saved to File", Toast.LENGTH_SHORT).show();
+        finish();
     }
     // This is the override function which allows us to control what happens when the bottom screen buttons are clicked
     @Override
