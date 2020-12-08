@@ -38,8 +38,10 @@ import android.widget.Toast;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 public class schedule_month_view extends AppCompatActivity {
     protected List<Shift> shifts = new ArrayList<>();
@@ -76,15 +78,12 @@ public class schedule_month_view extends AppCompatActivity {
             public void onDayClick(EventDay eventDay) {
                 final Calendar clickedDayCalendar = eventDay.getCalendar();
                 SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
-
                 String getCurrentDateTime = sdf.format(calendar.getTime());
 
                 String unformatted_date = clickedDayCalendar.getTime().toString();
                 String split_string[] = unformatted_date.split(" ");
                 final String formatted_date = split_string[5] + "/" + split_string[1] + "/" + split_string[2];
                 final String dayOfWeek = split_string[0];
-
-                //Toast.makeText(schedule_month_view.this, "This is the day of the week: " + split_string[0], Toast.LENGTH_SHORT).show();
                 // split_string[0] is the day.
 
                 AlertDialog.Builder builder = new AlertDialog.Builder(schedule_month_view.this, R.style.AlertDialogTheme);
@@ -192,7 +191,7 @@ public class schedule_month_view extends AppCompatActivity {
 
     }
 
-    // checks the type of shift. We can't convert the string into a class without knowing which class it is (Weekend, Weekday, Holiday). 0 = Holiday, 1 = Weekend, 2 = Weekday.
+    // checks the type of shift. We can't convert the string into a class without knowing which class it is (Weekend, Weekday) 1 = Weekend, 2 = Weekday.
     protected int checkShiftType(String json) {
         String[] types = {"Holiday", "Weekend", "Weekday"};
         int i;
@@ -200,8 +199,6 @@ public class schedule_month_view extends AppCompatActivity {
             if (json.contains(types[i])) break;
         }
             switch (i) {
-                case 0:
-                    return 0;
                 case 1:
                     return 1;
                 default:
@@ -250,14 +247,28 @@ public class schedule_month_view extends AppCompatActivity {
         Shift viewShift;
         SharedPreferences.Editor editor = this.shiftStorage.edit();
         Gson gson = new Gson();
+
         Map<String, ?> allShifts = this.shiftStorage.getAll();
+        // GETTING COUNT OF DATES ~> date_frequences
+        Map<String,Integer> date_frequencies = new HashMap<>();
+
         if (allShifts.isEmpty()) {
             Toast.makeText(schedule_month_view.this, "No shifts created to display", Toast.LENGTH_SHORT).show();
             return;
         }
+
+
+        for (Map.Entry<String, ?> keys: allShifts.entrySet()){
+            String json2 = shiftStorage.getString(keys.getKey(),"");
+            // IF WEEKDAY SHIFT ONLY
+            if (checkShiftType(json2) == 2) {
+                Shift view_shift_dates = gson.fromJson(json2, WeekdayShifts.class);
+                date_frequencies.put(view_shift_dates.getDate(),date_frequencies.getOrDefault(view_shift_dates.getDate(),0) + 1 );
+            }
+        }
+
         for (Map.Entry<String, ?> entry: allShifts.entrySet()) {
             String json = shiftStorage.getString(entry.getKey(), "");
-            // Problem is that we don't know what class viewShift is going to be (WeekdayShift, WeekendShift, Holiday Shift).
             Log.i("JsonString", json);
             boolean check = json.contains("type");
             Log.i("jsonContains: ", String.valueOf(check));
@@ -266,35 +277,46 @@ public class schedule_month_view extends AppCompatActivity {
             // FOR WEEKEND SHIFTS
             if (shiftFlag == 1) {
                 viewShift = gson.fromJson(json, WeekendShifts.class);
-                this.shifts.add(viewShift);
 
-                mEventDays.add(new EventDay(viewShift.getCalendar(), R.drawable.allday));
+                this.shifts.add(viewShift);
+                // IF ITS A HOLIDAY THEN SET THE ICON TO HOLIDAY
+                if (viewShift.getSpecial()) {
+                    mEventDays.add(new EventDay(viewShift.getCalendar(), R.drawable.holiday));
+                }
+                else{
+                    mEventDays.add(new EventDay(viewShift.getCalendar(), R.drawable.allday));
+                }
             }
             // FOR WEEKDAY SHIFTS
             else if (shiftFlag == 2) {
                 viewShift = gson.fromJson(json, WeekdayShifts.class);
                 this.shifts.add(viewShift);
                 String shift_timeblock = viewShift.time.toString();
-                if (shift_timeblock.matches("CLOSING")){
-                    // IF CLOSING SHIFT
-                    mEventDays.add(new EventDay(viewShift.getCalendar(), R.drawable.opening));
+                // IF ITS A HOLIDAY THEN SET THE ICON TO HOLIDAY
+                if (viewShift.getSpecial()) {
+                    mEventDays.add(new EventDay(viewShift.getCalendar(), R.drawable.holiday));
                 }
-                else if (shift_timeblock.matches("OPENING")){
-                    // IF OPENING SHIFT
-                    mEventDays.add(new EventDay(viewShift.getCalendar(), R.drawable.closing));
+                else {
+                    // IF THERE IS MORE THAN ONE SHIFT CREATED ON THIS DAY DISPLAY OPENING &
+                    // CLOSING ICON AT THE SAME TIME
+                    if (date_frequencies.get(viewShift.getDate()) > 1) {
+                        mEventDays.add(new EventDay(viewShift.getCalendar(), R.drawable.opening_closing));
+                    }
+                    else {
+                        // IF CLOSING SHIFT DISPLAY CLOSING SHIFT ICON
+                        if (shift_timeblock.matches("CLOSING")) {
+                            mEventDays.add(new EventDay(viewShift.getCalendar(), R.drawable.closing));
+                        }
+                        // IF OPENING SHIFT DISPLAY OPENING SHIFT ICON
+                        else if (shift_timeblock.matches("OPENING")) {
+                            mEventDays.add(new EventDay(viewShift.getCalendar(), R.drawable.opening));
+                        }
+                    }
                 }
-                else{
-                    // IF OPENING & CLOSING
-                    mEventDays.add(new EventDay(viewShift.getCalendar(), R.drawable.opening_closing));
-                }
-
             }
             else {
                 Toast.makeText(schedule_month_view.this, "Failed to check contain rules", Toast.LENGTH_SHORT).show();
             }
-            //Toast.makeText(schedule_month_view.this, json, Toast.LENGTH_SHORT).show();
-            //this.shifts.add(viewShift);
-            //mEventDays.add(new EventDay(viewShift.getCalendar(), R.drawable.schedule));
         }
         calendarView.setEvents(mEventDays);
     }
@@ -309,7 +331,7 @@ public class schedule_month_view extends AppCompatActivity {
         super.onActivityResult(requestCode, resultCode, data);
         if (requestCode == VIEW_SHIFT) {
             if (resultCode == RESULT_OK) {
-
+                // DO NOTHING I GUESS?
             }
             if (resultCode == RESULT_CANCELED) {
                 Toast.makeText(schedule_month_view.this, "Failed to save changes to shift", Toast.LENGTH_SHORT).show();
@@ -317,19 +339,17 @@ public class schedule_month_view extends AppCompatActivity {
         }
         if (requestCode == DRAW_SHIFT) {
             if (resultCode == RESULT_OK) {
+                // TODO: WHEN CREATING TWO SHIFTS (FOR WEEKDAY) WE NEED TO REPLACE CURRENT ICON WITH THE DOUBLE ICONS.
                 // Ideally in here we will be getting back the Calendar if they chose to create a shift
                 String selectedCalendarDateString = data.getStringExtra("result");
                 Gson gson = new Gson();
                 Calendar selectedCalendarDate = gson.fromJson(selectedCalendarDateString, Calendar.class);
-                //TODO: Make Cases for displaying # of shifts
 
-                mEventDays.add(new EventDay(selectedCalendarDate, R.drawable.schedule));
                 final com.applandeo.materialcalendarview.CalendarView calendarView = (CalendarView) findViewById(R.id.calendar_month_view);
+                fillCalendarView(calendarView);
                 calendarView.setEvents(mEventDays);
 
                 Toast.makeText(schedule_month_view.this, "Shift Creation Successful", Toast.LENGTH_SHORT).show();
-                //Toast.makeText(schedule_month_view.this, selectedCalendarDateString, Toast.LENGTH_SHORT).show();
-
             }
             if (resultCode == RESULT_CANCELED) {
                 Toast.makeText(schedule_month_view.this, "Shift Creation Cancelled", Toast.LENGTH_SHORT).show();
