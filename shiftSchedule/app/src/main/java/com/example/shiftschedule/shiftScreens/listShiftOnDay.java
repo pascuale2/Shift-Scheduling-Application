@@ -48,7 +48,7 @@ public class listShiftOnDay extends AppCompatActivity {
         if (bundle != null) {
             this.dateOfShift = bundle.getString("date");
             this.dayOfWeek = bundle.getString("dayOfWeek");
-            dateLabel.setText("Showing shifts for " + this.dateOfShift);
+            dateLabel.setText("LISTING SHIFTS FOR\n" + this.dateOfShift);
             String openingID = bundle.getString("opening");
             String closingID = bundle.getString("closing");
             shift_ids.add(openingID);

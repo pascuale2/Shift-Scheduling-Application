@@ -19,36 +19,39 @@
 
     <com.applandeo.materialcalendarview.CalendarView
         android:id="@+id/calendar_month_view"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:layout_height="474dp"
         app:anotherMonthsDaysLabelsColor="#66000000"
         app:datePicker="false"
         app:headerColor="@color/colorPrimaryDark"
         app:headerLabelColor="#FFFFFF"
+        app:todayLabelColor="@color/colorPrimary"
+        app:abbreviationsBarColor="@color/icon_orange"
+        app:abbreviationsLabelsColor="#FFFFFF"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.0"
-        tools:layout_editor_absoluteX="0dp" >
+        tools:layout_editor_absoluteX="0dp">
 
     </com.applandeo.materialcalendarview.CalendarView>
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/fab"
+        android:visibility="invisible"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="bottom|end"
         android:layout_margin="@dimen/fab_margin"
-        app:backgroundTint="@color/icon_orange"
-        app:srcCompat="@drawable/help" />
+        android:background="#00FFFFFF"
+        app:backgroundTint="#00FF7F2A" />
 
     <ImageView
         android:id="@+id/imageView3"
-        android:layout_width="165dp"
-        android:layout_height="116dp"
+        android:layout_width="148dp"
+        android:layout_height="121dp"
         android:layout_gravity="bottom|start"
         android:maxWidth="165dp"
         android:maxHeight="116dp"
-        android:paddingHorizontal="5dp"
         app:srcCompat="@drawable/schedule_legend" />
 
 

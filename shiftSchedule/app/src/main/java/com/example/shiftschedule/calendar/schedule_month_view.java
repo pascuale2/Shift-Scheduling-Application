@@ -98,15 +98,25 @@ public class schedule_month_view extends AppCompatActivity {
                 Button createShift = (Button) view.findViewById(R.id.create_button);
                 Button viewShiftButton = (Button) view.findViewById(R.id.view_button);
                 ImageButton cancelAlert = (ImageButton) view.findViewById(R.id.CAL_cancel_button);
+
+                final int matches = getSelectedShift(calendarView, formatted_date);
+                // IF THERE ARE NO SHIFTS ON THIS DAY.
+                // ~> Then you can't click on the view shift button
+                if (matches == 0){
+                    viewShiftButton.setEnabled(false);
+                    viewShiftButton.setClickable(false);
+                    viewShiftButton.setBackgroundResource(R.drawable.disabled_corner);
+                }
+                // IF SHIFT IS IN THE PAST OR PRESENT
+                // ~> Then you can't click on the create shift button
                 if (Calendar.getInstance().after(clickedDayCalendar)) {
                     Toast.makeText(schedule_month_view.this, "WARNING: Cannot create a Shift on a past date or current date", Toast.LENGTH_SHORT).show();
                     createShift.setEnabled(false);
                     createShift.setClickable(false);
                     createShift.setBackgroundResource(R.drawable.disabled_corner);
                 }
-
+                // IF THE BACK BUTTON IS CLICKED ON THE DIALOGUE
                 cancelAlert.setOnClickListener(new View.OnClickListener() {
-
                     @Override
                     public void onClick(View v) {
                         alertDialog.dismiss();
@@ -118,8 +128,6 @@ public class schedule_month_view extends AppCompatActivity {
                         Bundle bundle = new Bundle();
                         bundle.putString("dayOfWeek", dayOfWeek);
                         bundle.putString("date", formatted_date);
-
-                        int matches = getSelectedShift(calendarView, formatted_date);
                         // if there are 2 shifts on the same day (OPENING AND CLOSING) then we need to pass both shift id's
                         if (matches >= 2) {
                             //need to make a list of shifts.
@@ -129,6 +137,7 @@ public class schedule_month_view extends AppCompatActivity {
                             Intent intent = new Intent(schedule_month_view.this, listShiftOnDay.class);
                             intent.putExtras(bundle);
                             startActivity(intent);
+                            alertDialog.dismiss();
                             finish();
                         }
                         else if (matches == 1) {
@@ -138,6 +147,7 @@ public class schedule_month_view extends AppCompatActivity {
                             Intent intentViewShift = new Intent(schedule_month_view.this, viewShiftDetails.class);
                             intentViewShift.putExtras(bundle);
                             startActivity(intentViewShift);
+                            alertDialog.dismiss();
                             finish();
                         }
                         else {
@@ -165,11 +175,13 @@ public class schedule_month_view extends AppCompatActivity {
                                 Intent intentWeekend = new Intent(schedule_month_view.this, createShiftWeekend.class);
                                 intentWeekend.putExtras(bundle);
                                 startActivityForResult(intentWeekend, 1);
+                                alertDialog.dismiss();
                                 break;
                                 default:
                                     Intent intent = new Intent(schedule_month_view.this, createShiftWeekday.class);
                                     intent.putExtras(bundle);
                                     startActivityForResult(intent, 1);
+                                    alertDialog.dismiss();
                         }
 
 
@@ -251,14 +263,13 @@ public class schedule_month_view extends AppCompatActivity {
         Gson gson = new Gson();
 
         Map<String, ?> allShifts = this.shiftStorage.getAll();
-        // GETTING COUNT OF DATES ~> date_frequences
+        // GETTING COUNT OF DATES ~> date_frequencies
         Map<String,Integer> date_frequencies = new HashMap<>();
 
         if (allShifts.isEmpty()) {
             Toast.makeText(schedule_month_view.this, "No shifts created to display", Toast.LENGTH_SHORT).show();
             return;
         }
-
 
         for (Map.Entry<String, ?> keys: allShifts.entrySet()){
             String json2 = shiftStorage.getString(keys.getKey(),"");
@@ -341,7 +352,6 @@ public class schedule_month_view extends AppCompatActivity {
         }
         if (requestCode == DRAW_SHIFT) {
             if (resultCode == RESULT_OK) {
-                // TODO: WHEN CREATING TWO SHIFTS (FOR WEEKDAY) WE NEED TO REPLACE CURRENT ICON WITH THE DOUBLE ICONS.
                 // Ideally in here we will be getting back the Calendar if they chose to create a shift
                 String selectedCalendarDateString = data.getStringExtra("result");
                 Gson gson = new Gson();
@@ -350,6 +360,10 @@ public class schedule_month_view extends AppCompatActivity {
                 final com.applandeo.materialcalendarview.CalendarView calendarView = (CalendarView) findViewById(R.id.calendar_month_view);
                 fillCalendarView(calendarView);
                 calendarView.setEvents(mEventDays);
+
+                // RELOADS THE PAGE SO THAT THE ICONS CAN REFRESH
+                finish();
+                startActivity(getIntent());
 
                 Toast.makeText(schedule_month_view.this, "Shift Creation Successful", Toast.LENGTH_SHORT).show();
             }

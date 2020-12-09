@@ -51,8 +51,7 @@ public class createShiftWeekday extends AppCompatActivity {
     protected RadioButton closingRadioButton;
     protected SharedPreferences shiftStorage;
     protected TextView displayDate;
-    //TODO: Create rest of member
-    // variables, and physically create a weekday Shift Object. Only testing on calendar has been done in regards to this (User cannot create a shift on a date in the past. Need to return Calendar in resultIntent if done.
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -119,7 +118,8 @@ public class createShiftWeekday extends AppCompatActivity {
         String shiftToString = gson.toJson(weekDayShift);
         Log.i("shift Object", "this is the shift object: " + shiftToString);
         editor.putString(weekDayShift.getShiftID(), shiftToString);
-        editor.commit();
+        editor.apply();
+
         // Returning the calendar to display onto the Calendar. Also need to store it
         String returnedCalendarDateString = gson.toJson(this.selectedCalendarDate);
         Intent resultIntent = new Intent();

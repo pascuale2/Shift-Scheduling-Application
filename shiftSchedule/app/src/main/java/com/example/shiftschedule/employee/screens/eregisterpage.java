@@ -40,7 +40,6 @@ public class eregisterpage extends AppCompatActivity {
                     Did not work. Crashed the whole application for some reason and couldn't figure out why in time.
                  -  Also testing Employee Storage implementation.
      */
-    // TODO: Can initialize their availability to default values here. That way can call check availability functions straight from this class.
     // If I do this, then I need to pass the context everytime to helper function, (I am NOT passing context as a hard pass to create an Employee class).
     private final int maxYear = 2020;
     private EditText email;

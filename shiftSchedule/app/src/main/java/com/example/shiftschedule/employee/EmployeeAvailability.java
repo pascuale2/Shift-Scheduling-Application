@@ -46,7 +46,6 @@ public class EmployeeAvailability {
     // bool checkWork function will be put in once wamiq is done creating shifts
 
     // SETTER FUNCTIONS
-    // TODO: if an email suddenly changes, we need to change all info linked to that email to the new email, which isn't that simple. WIP. Might not implement/allow
     // This will only change the email in this object, in order to change the linking, we have to do it in another screen
     public void setEmail(String email) {
         this.email = email;

@@ -105,15 +105,12 @@
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/VS_RecyclerView"
-        android:layout_width="367dp"
-        android:layout_height="251dp"
-        android:layout_marginBottom="156dp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_width="362dp"
+        android:layout_height="291dp"
+        android:layout_marginBottom="2dp"
+        app:layout_constraintBottom_toTopOf="@+id/VS_confirmChanges"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.514"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/VS_employeesLabel"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintStart_toStartOf="parent" />
 
     <ImageButton
         android:id="@+id/VS_goBack"
@@ -156,21 +153,6 @@
         app:layout_constraintTop_toTopOf="@+id/VS_addEmployees" />
 
     <Button
-        android:id="@+id/SD_setHoliday"
-        android:layout_width="120dp"
-        android:layout_height="wrap_content"
-        android:background="@drawable/orange_corner"
-        android:fontFamily="sans-serif-medium"
-        android:onClick="VSOnHolidayClick"
-        android:text="Designate\nHoliday"
-        android:textColor="#FFFFFF"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/VS_confirmChanges"
-        app:layout_constraintTop_toBottomOf="@+id/VS_RecyclerView"
-        app:layout_constraintVertical_bias="0.162" />
-
-    <Button
         android:id="@+id/VS_deleteShift"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -182,15 +164,15 @@
         android:textSize="16dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.501"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/VS_RecyclerView"
-        app:layout_constraintVertical_bias="0.662" />
+        app:layout_constraintTop_toBottomOf="@+id/VS_confirmChanges" />
 
     <Button
         android:id="@+id/VS_addEmployees"
         android:layout_width="120dp"
         android:layout_height="wrap_content"
+        android:layout_marginTop="2dp"
+        android:layout_marginBottom="44dp"
         android:background="@drawable/btn_bg_employee"
         android:fontFamily="sans-serif-medium"
         android:onClick="OnAddEmployeeShiftClick"
@@ -198,9 +180,26 @@
         android:textColor="#FFFFFF"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/VS_confirmChanges"
+        app:layout_constraintHorizontal_bias="0.75"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/VS_RecyclerView"
-        app:layout_constraintVertical_bias="0.162" />
+        app:layout_constraintTop_toBottomOf="@+id/VS_RecyclerView" />
+
+    <Button
+        android:id="@+id/SD_setHoliday"
+        android:layout_width="120dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="2dp"
+        android:layout_marginBottom="44dp"
+        android:background="@drawable/orange_corner"
+        android:fontFamily="sans-serif-medium"
+        android:onClick="VSOnHolidayClick"
+        android:text="Designate\nHoliday"
+        android:textColor="#FFFFFF"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.333"
+        app:layout_constraintStart_toEndOf="@+id/VS_confirmChanges"
+        app:layout_constraintTop_toBottomOf="@+id/VS_RecyclerView" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline"

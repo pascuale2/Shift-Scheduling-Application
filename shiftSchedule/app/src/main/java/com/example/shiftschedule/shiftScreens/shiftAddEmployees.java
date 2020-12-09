@@ -94,6 +94,8 @@ public class shiftAddEmployees extends AppCompatActivity {
 
     protected void replaceText() {
         numEmployees.setText(String.valueOf(this.shift.getEmployeeList().size()));
+        // TODO: (ERWIN) CHANGE THIS TO # OF TRAINED EMPLOYEES
+        trainedEmployees.setText(String.valueOf(this.shift.getEmployeeList().size()));
         timeOfShift.setText(this.shift.getTime().toString());
     }
 
@@ -121,7 +123,7 @@ public class shiftAddEmployees extends AppCompatActivity {
                     return true;
                 else
                     return (this.shift.getTime() == availability.getMonday());
-            case "Tues":
+            case "Tue":
                 if (availability.getTuesday() == Available.ALLDAY)
                     return true;
                 else
@@ -204,10 +206,8 @@ public class shiftAddEmployees extends AppCompatActivity {
                         listItem item = prepareListItem(viewEmployee);
                         items.add(item);
                     }
-
                 }
                 // within the if statement of if they are not working
-
             }
             // else statement for if employees ARE working
             else{

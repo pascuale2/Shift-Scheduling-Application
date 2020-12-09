@@ -10,14 +10,14 @@
         android:id="@+id/SAE_employeeNum"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="12dp"
         android:fontFamily="sans-serif-medium"
         android:text="0"
-        android:textSize="20sp"
-        app:layout_constraintEnd_toEndOf="parent"
 
-        app:layout_constraintHorizontal_bias="0.289"
-        app:layout_constraintStart_toEndOf="@+id/SAE_trainedLabel"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="@+id/SAE_numEmployees"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/SAE_numEmployees"
         app:layout_constraintTop_toBottomOf="@+id/toolbar3" />
 
     <TextView
@@ -28,10 +28,11 @@
         android:fontFamily="sans-serif-medium"
         android:gravity="center"
         android:text="Shift Time:"
+        android:textColor="#000000"
         android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.282"
+        app:layout_constraintHorizontal_bias="0.31"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/SAE_totalEmployeesLabel"
         app:layout_constraintVertical_bias="0.0" />
@@ -64,17 +65,22 @@
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/SAE_recyclerView"
-        android:layout_width="407dp"
-        android:layout_height="312dp"
+        android:layout_width="360dp"
+        android:layout_height="309dp"
         app:layout_constraintBottom_toTopOf="@+id/SAE_saveShiftChanges"
-        app:layout_constraintTop_toBottomOf="@+id/SAE_shiftTypeLabel" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.483"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/toolbar3"
+        app:layout_constraintVertical_bias="0.871" />
 
     <TextView
         android:id="@+id/SAE_trainedLabel"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:fontFamily="sans-serif-medium"
-        android:text="# of Employees trained for shift:"
+        android:text="Employees trained for shift:"
+        android:textColor="#000000"
         android:textSize="20sp"
         app:layout_constraintBottom_toTopOf="@+id/SAE_recyclerView"
         app:layout_constraintEnd_toEndOf="parent"
@@ -87,12 +93,13 @@
         android:id="@+id/SAE_totalEmployeesLabel"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="4dp"
         android:fontFamily="sans-serif-medium"
-        android:text="# of Employees Assigned:"
+        android:text="Employees Assigned:"
+        android:textColor="#000000"
         android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.076"
+        app:layout_constraintHorizontal_bias="0.27"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/SAE_employeeNum" />
 
@@ -106,10 +113,10 @@
         android:textSize="20sp"
         app:layout_constraintBottom_toTopOf="@+id/SAE_shiftType"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.614"
+        app:layout_constraintHorizontal_bias="0.459"
         app:layout_constraintStart_toEndOf="@+id/SAE_totalEmployeesLabel"
         app:layout_constraintTop_toBottomOf="@+id/SAE_employeeNum"
-        app:layout_constraintVertical_bias="0.444" />
+        app:layout_constraintVertical_bias="0.333" />
 
     <TextView
         android:id="@+id/SAE_shiftType"
@@ -119,11 +126,9 @@
         android:text="#TYPE"
         android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="@+id/SAE_shiftTypeLabel"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.815"
-        app:layout_constraintStart_toEndOf="@+id/SAE_shiftTypeLabel"
-        app:layout_constraintTop_toTopOf="@+id/SAE_shiftTypeLabel"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintEnd_toEndOf="@+id/SAE_numEmployees"
+        app:layout_constraintStart_toStartOf="@+id/SAE_numEmployees"
+        app:layout_constraintTop_toTopOf="@+id/SAE_shiftTypeLabel" />
 
     <Button
         android:id="@+id/SAE_saveShiftChanges"
@@ -138,4 +143,5 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -7,6 +7,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -104,11 +105,13 @@ public class employeeAdapter extends RecyclerView.Adapter<employeeAdapter.ViewHo
                 Log.d("Before Details", "before Starting Details");
                 context.startActivity(intent);
                 ((employeePage) context).finish();
-            } else if (context instanceof viewShiftDetails) {
+            }
+            // FILLS THE LIST WITH ASSIGNED EMPLOYEES FOR SHIFT
+            else if (context instanceof viewShiftDetails) {
+                System.out.println("==============================HELLLO=================================");
                 //notifyDataSetChanged();
                 // Perhaps delete employee if they click on it from the shift.
                 SharedPreferences shiftStorage = context.getSharedPreferences("shifts", Context.MODE_PRIVATE);
-                ;
                 SharedPreferences employeeStorage = context.getSharedPreferences("employeeStorage", Context.MODE_PRIVATE);
                 String employeeJson = employeeStorage.getString(item.getName(), "");
                 SharedPreferences.Editor shiftEditor = shiftStorage.edit();
@@ -131,11 +134,11 @@ public class employeeAdapter extends RecyclerView.Adapter<employeeAdapter.ViewHo
                 itemList.remove(getAdapterPosition());
                 notifyItemRemoved(position);
                 notifyItemRangeChanged(position, getItemCount());
-            } else {
-                // this is for shiftAddEmployees
-
+            }
+            // THIS } ELSE { BLOCK IS FOR THE
+            // ~> shiftAddEmployees.java PAGE
+            else {
                 SharedPreferences shiftStorage = context.getSharedPreferences("shifts", Context.MODE_PRIVATE);
-                ;
                 SharedPreferences employeeStorage = context.getSharedPreferences("employeeStorage", Context.MODE_PRIVATE);
                 SharedPreferences.Editor employeeEditor = employeeStorage.edit();
                 SharedPreferences.Editor shiftEditor = shiftStorage.edit();
@@ -155,9 +158,7 @@ public class employeeAdapter extends RecyclerView.Adapter<employeeAdapter.ViewHo
                     Log.i("containsCheck", String.valueOf(weekday.getEmployeeList().contains(employee)));
 
                     if (weekday.getEmployeeList().size() == 0) {
-
                         if (employee.isTrainedOpening() && (shift_time_block.matches("OPENING"))) {
-
                             System.out.println("MASSOCHISM");
 
                             weekday.addEmployee(employee, context);
@@ -375,13 +376,9 @@ public class employeeAdapter extends RecyclerView.Adapter<employeeAdapter.ViewHo
                                     itemList.remove(getAdapterPosition());
                                     notifyDataSetChanged();
                                 }
-
-
                             }
                         }
-
                     }
-
                 }
             }
         }

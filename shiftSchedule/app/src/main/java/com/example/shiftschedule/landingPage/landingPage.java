@@ -11,6 +11,7 @@ import android.view.View;
 import com.example.shiftschedule.R;
 import com.example.shiftschedule.employee.screens.employeePage;
 import com.example.shiftschedule.calendar.schedule_month_view;
+import com.example.shiftschedule.login.MainActivity;
 
 public class landingPage extends AppCompatActivity {
 
@@ -64,5 +65,7 @@ public class landingPage extends AppCompatActivity {
 
     public void LGgoBack (View view){
         finish();
+        Intent intent = new Intent(landingPage.this, MainActivity.class);
+        startActivity(intent);
     }
 }
