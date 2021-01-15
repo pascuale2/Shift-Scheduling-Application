@@ -1,7 +1,5 @@
-# f20lovelace
-
 # Work Scheduling Application
-group members:
+Project Members:
 - Alex Creencia
 - Erwin Pascual
 - Jaxon Strembitsky
