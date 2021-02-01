@@ -1,11 +1,10 @@
-# Work Scheduling Application
-> A nifty scheduling application for designed for managers of fast-food or retail related jobs which allow them to assign or designate shifts (Opening/Closing/All-Day/Holiday shifts) to employees. Each employee working for your organization have the option to be either trained opening or trained closing.
-
+# Shift Scheduling Application
 Project Members:
 - Alex Creencia
 - Erwin Pascual
 - Jaxon Strembitsky
 - Wamiq Hussain
+> A nifty scheduling application for designed for managers of fast-food or retail related jobs which allow them to assign or designate shifts (Opening/Closing/All-Day/Holiday shifts) to employees. Each employee working for your organization have the option to be either trained opening or trained closing.
 
 > Here is a preview of our application
 
