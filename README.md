@@ -1,9 +1,9 @@
 # Shift Scheduling Application
 Project Members:
-- Alex Creencia
-- Erwin Pascual
-- Jaxon Strembitsky
-- Wamiq Hussain
+- [Alex Creencia](https://github.com/Creenciaa)
+- [Erwin Pascual](https://github.com/pascuale2)
+- [Jaxon Strembitsky](https://github.com/Strembitsky)
+- [Wamiq Hussain](https://github.com/hussainm7)
 
 A nifty scheduling application for designed for managers of fast-food or retail related jobs which allow them to assign or designate shifts (Opening/Closing/All-Day/Holiday shifts) to employees. You can register or delete employees within your organization and can also assign them the option to be either trained opening or trained closing.
 
